@@ -1,0 +1,228 @@
+/* =============================================
+   BASE.CSS — Premium Dark Theme
+   ============================================= */
+
+/* ---- Design-Tokens ---- */
+:root {
+  /* Hintergründe */
+  --bg-page:     #0b0d14;
+  --bg-surface:  #12141e;
+  --bg-elevated: #1a1d2b;
+  --bg-border:   #232638;
+  --bg-subtle:   #0f1119;
+
+  /* Text */
+  --text-primary:   #eef0f8;
+  --text-secondary: #7c82a0;
+  --text-muted:     #4d5270;
+  --text-inverse:   #0b0d14;
+
+  /* Gold-Akzent */
+  --gold:        #c9a96e;
+  --gold-light:  #e0cb9a;
+  --gold-dark:   #9e7d45;
+  --gold-subtle: rgba(201,169,110,0.08);
+
+  /* Semantisch */
+  --success: #2e7d5a;
+  --error:   #c0392b;
+  --white:   #ffffff;
+
+  /* Typografie */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  /* Radien */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+
+  /* Schatten */
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.6);
+  --shadow-gold: 0 0 24px rgba(201,169,110,0.15);
+
+  /* Abstände */
+  --max-width:  740px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 5rem;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  min-height: 100vh;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--gold-light); }
+
+ul, ol { list-style: none; }
+
+/* ---- Typografie ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.18;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2rem, 5.5vw, 3.2rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); letter-spacing: -0.015em; }
+h3 { font-size: clamp(1.1rem, 3vw, 1.45rem); }
+h4 { font-size: 1.05rem; }
+
+p { margin-bottom: 1rem; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; color: var(--text-primary); }
+
+/* ---- Layout ---- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+.container--wide { max-width: 1000px; }
+
+.section { padding: var(--spacing-xl) 0; }
+.section--sm { padding: var(--spacing-lg) 0; }
+.section--dark { background: var(--bg-subtle); }
+.section--surface { background: var(--bg-surface); }
+
+.text-center { text-align: center; }
+
+/* ---- Trennlinie ---- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--bg-border);
+  margin: var(--spacing-lg) 0;
+}
+
+/* ---- Gold-Akzent-Linie ---- */
+.gold-line {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto var(--spacing-md);
+}
+.gold-line--left { margin-left: 0; }
+
+/* ---- Site-Header ---- */
+.site-header {
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--bg-border);
+  padding: 1.1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.site-logo span { color: var(--gold); }
+
+/* ---- Site-Footer ---- */
+.site-footer {
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--bg-border);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+.site-footer a { color: var(--text-secondary); }
+
+/* ---- Sektion-Label ---- */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+/* ---- Hilfeklassen ---- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* ---- Animationen ---- */
+.fade-in {
+  animation: fadeIn 0.45s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none !important; }
+
+/* ---- Spinner ---- */
+.spinner {
+  width: 38px;
+  height: 38px;
+  border: 2px solid var(--bg-border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 3rem;
+    --spacing-lg: 2rem;
+  }
+}

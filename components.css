@@ -1,0 +1,271 @@
+/* =============================================
+   COMPONENTS.CSS — Premium Dark Theme
+   ============================================= */
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover { text-decoration: none; }
+.btn:active { transform: scale(0.98); }
+
+/* Primary: Gold auf Dunkel */
+.btn--primary {
+  background: var(--gold);
+  color: #0b0d14;
+  border-color: var(--gold);
+}
+.btn--primary:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 28px rgba(201,169,110,0.35);
+  color: #0b0d14;
+}
+
+/* Ghost: Goldrahmen, transparenter Hintergrund */
+.btn--ghost {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.btn--ghost:hover {
+  background: var(--gold-subtle);
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+}
+
+/* Light: Helle Surface */
+.btn--surface {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--bg-border);
+}
+.btn--surface:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.btn--lg {
+  font-size: 1.05rem;
+  padding: 1.1rem 2.4rem;
+  letter-spacing: 0.04em;
+}
+
+.btn--full { width: 100%; }
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.card--elevated {
+  background: var(--bg-elevated);
+}
+
+.card--gold-border {
+  border-color: var(--gold-dark);
+  box-shadow: var(--shadow-gold);
+}
+
+/* ---- Häkchen-Liste ---- */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.975rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.check-list li::before {
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--gold-subtle);
+  border: 1px solid var(--gold-dark);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23c9a96e'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-size: 11px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ---- Formulare ---- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: var(--spacing-sm);
+}
+.form-group:last-child { margin-bottom: 0; }
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1.1rem;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-input::placeholder { color: var(--text-muted); }
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,169,110,0.12);
+}
+
+.form-input.is-error { border-color: var(--error); }
+
+.form-error { font-size: 0.8rem; color: var(--error); margin-top: 0.3rem; }
+.form-hint  { font-size: 0.8rem; color: var(--text-muted); }
+
+/* Inline-Formular */
+.form-inline {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.form-inline .form-input { flex: 1; min-width: 160px; }
+
+/* ---- Badges ---- */
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  background: var(--gold-subtle);
+  color: var(--gold);
+  border: 1px solid var(--gold-dark);
+}
+
+/* ---- Testimonials ---- */
+.testimonial {
+  background: var(--bg-elevated);
+  border: 1px solid var(--bg-border);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--spacing-md);
+}
+
+.testimonial__quote {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 0.6rem;
+}
+
+.testimonial__author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* ---- Proof-Leiste ---- */
+.proof-bar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--bg-border);
+  text-align: center;
+  padding: 0.7rem var(--spacing-sm);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+.proof-bar strong { color: var(--gold); font-weight: 600; }
+
+/* ---- Schritt-Nummer ---- */
+.step-number {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--gold-subtle);
+  border: 1px solid var(--gold-dark);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+}
+
+/* ---- Gold-Trennlinie ---- */
+.gold-divider {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: var(--spacing-md) auto;
+}
+
+/* ---- Erfolgs-Box ---- */
+.success-box {
+  background: rgba(46,125,90,0.12);
+  border: 1px solid rgba(46,125,90,0.35);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  color: #6fcca3;
+  text-align: center;
+}
+.success-box h3 { color: #6fcca3; margin-bottom: 0.4rem; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .card { padding: var(--spacing-md); }
+  .btn--lg { font-size: 0.975rem; padding: 1rem 1.75rem; }
+  .form-inline { flex-direction: column; }
+}
