@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan unterwegs | Fit Dad Audit</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* ---- Bestätigungs-Hero ---- */
+    .danke-hero {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .danke-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(201,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .danke-hero .container { position: relative; }
+
+    .check-ring {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-dark);
+      background: var(--gold-subtle);
+      color: var(--gold);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .danke-hero h1 { margin-bottom: 0.5rem; }
+    .danke-hero .sub { color: var(--text-secondary); font-size: 0.95rem; }
+
+    /* ---- Body ---- */
+    .danke-body {
+      padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
+    }
+
+    /* ---- Coach-Zitat ---- */
+    .coach-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+      position: relative;
+    }
+
+    .coach-block-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .coach-zitat {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      border-left: 3px solid var(--gold-dark);
+      padding-left: 1.1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .coach-sig {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* ---- Gespräch-Box ---- */
+    .gespraech-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gespraech-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+
+    .archetyp-chip {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .gespraech-box h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .gespraech-box > p { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: var(--spacing-md); }
+
+    .erwartet-liste {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .erwartet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .erwartet-item::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="site-logo">Fit Dad <span>Audit</span></span>
+    </div>
+  </header>
+
+  <!-- Bestätigung -->
+  <section class="danke-hero">
+    <div class="container">
+      <div class="check-ring" aria-hidden="true">&#10003;</div>
+      <h1 id="danke-titel">Dein Plan ist unterwegs.</h1>
+      <p class="sub" id="danke-sub">Schau in dein Postfach. Er sollte in den nächsten 2 Minuten ankommen.</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <main class="danke-body">
+    <div class="container">
+
+      <!-- Coach-Zitat -->
+      <div class="coach-block fade-in">
+        <p class="coach-block-label">Während du wartest</p>
+        <p class="coach-zitat">
+          Der Bericht erklärt dir das Warum. Warum du trotz Bemühungen keine Ergebnisse siehst. Warum es nicht an Willenskraft liegt. Und was konkret bei deinem Typ funktioniert.
+          Aber die meisten Väter, die ich kennenlerne, brauchen nicht mehr Informationen. Sie brauchen jemanden, der ihnen sagt, in welcher Reihenfolge sie anfangen sollen, und der da ist, wenn das Leben wieder dazwischen kommt.
+        </p>
+        <p class="coach-sig">[Dein Name], Fit-Dad-Coach</p>
+      </div>
+
+      <!-- Gespräch-Box -->
+      <div class="gespraech-box fade-in">
+        <div class="archetyp-chip" id="archetyp-chip">Dein Ergebnis</div>
+        <h2>Kostenloses 15-Minuten-Strategiegespräch</h2>
+        <p>
+          Der Bericht gibt dir den Plan. Das Gespräch gibt dir Klarheit, ob und wie 1-zu-1-Coaching der richtige nächste Schritt für dich ist. Kein Pitch, kein Druck.
+        </p>
+        <div class="erwartet-liste">
+          <div class="erwartet-item">Wir schauen gemeinsam, wo du wirklich stehst, nicht die Hochglanzversion</div>
+          <div class="erwartet-item">Du bekommst auf dem Gespräch eine konkrete 90-Tage-Roadmap, die dir gehört, egal was danach kommt</div>
+          <div class="erwartet-item">Du entscheidest am Ende, ob Coaching für dich passt</div>
+        </div>
+        <a href="termin.html" class="btn btn--primary btn--lg">
+          Gespräch kostenlos buchen &rarr;
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Fit Dad Audit &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="js/quiz-engine.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var params  = new URLSearchParams(window.location.search);
+      var urlTyp  = params.get('typ');
+      var urlName = params.get('name');
+      var gespeichert = window.FDA.ladeErgebnis();
+      var key = (urlTyp && window.FDA.ARCHETYPEN[urlTyp]) ? urlTyp
+              : (gespeichert ? gespeichert.archetyp : null);
+      var at  = key ? window.FDA.ARCHETYPEN[key] : null;
+
+      if (urlName) {
+        document.getElementById('danke-titel').textContent = urlName + ', dein Plan ist unterwegs.';
+        document.getElementById('danke-sub').textContent   = 'Schau in dein Postfach, ' + urlName + '. Er sollte in den n\xe4chsten 2 Minuten ankommen.';
+      }
+      if (at) {
+        document.getElementById('archetyp-chip').textContent = at.name;
+        var link = document.querySelector('a[href="termin.html"]');
+        if (link) link.href = 'termin.html?typ=' + key;
+      }
+    });
+  </script>
+</body>
+</html>

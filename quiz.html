@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fit Dad Audit | 10 Fragen</title>
+  <meta name="description" content="10 ehrliche Fragen. 2 Minuten. Dein persönlicher Fit-Dad-Typ und ein konkreter Plan.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body class="quiz-page">
+
+  <header class="quiz-header">
+    <div class="container">
+      <span class="quiz-logo">Fit Dad <span>Audit</span></span>
+      <div class="progress-wrap">
+        <div class="progress-label" id="progress-label">Frage 1 von 10</div>
+        <div class="progress-bar">
+          <div class="progress-bar__fill" id="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="quiz-stage" id="quiz-stage">
+    <div class="quiz-loading fade-in">
+      <div class="spinner"></div>
+      <p style="color:var(--text-muted); font-size:0.85rem; margin-top:1rem;">Wird geladen&hellip;</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Deine Antworten werden vertraulich behandelt und nicht an Dritte weitergegeben.</p>
+  </footer>
+
+  <script src="js/quiz-engine.js"></script>
+  <script src="js/quiz-ui.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', function() { window.FDA.initQuiz(); });</script>
+</body>
+</html>
