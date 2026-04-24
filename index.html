@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fit Dad Coaching | Kostenlos bis zu deinem ersten sichtbaren Ergebnis</title>
+  <meta name="description" content="1-zu-1-Coaching für verheiratete Väter mit 9-to-5-Job. Kostenlos bis deine Frau es bemerkt. Training, Ernährung, tägliche Begleitung, alles inklusive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* ---- Hero ---- */
+    .hero {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-xl) var(--spacing-sm);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dark);
+      background: var(--gold-subtle);
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      max-width: 720px;
+      margin: 0 auto 1.25rem;
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero .sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-meta {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .hero-meta span { margin: 0 0.5rem; opacity: 0.4; }
+
+    /* ---- Proof-Strip ---- */
+    .proof-strip {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--bg-border);
+      padding: 1rem var(--spacing-sm);
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .proof-strip strong { color: var(--gold); font-weight: 600; }
+
+    /* ---- Dream Outcome ---- */
+    .dream-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-page);
+    }
+    .dream-section .intro {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto var(--spacing-lg);
+    }
+    .dream-section .intro h2 { margin-bottom: 0.6rem; }
+    .dream-section .intro p  { color: var(--text-secondary); font-size: 0.95rem; }
+    .dream-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-sm);
+    }
+    .dream-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+    }
+    .dream-card .moment {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .dream-card p {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    /* ---- Für wen ---- */
+    .fuer-wen {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--bg-border);
+      border-bottom: 1px solid var(--bg-border);
+    }
+    .fuer-wen .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
+    .fuer-wen-text h2 { margin-bottom: 0.75rem; }
+    .fuer-wen-text p  { color: var(--text-secondary); margin-bottom: var(--spacing-lg); }
+    @media (max-width: 768px) {
+      .fuer-wen .container { grid-template-columns: 1fr; gap: var(--spacing-lg); }
+    }
+
+    /* ---- Angebot (Offer) ---- */
+    .angebot-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-page);
+    }
+    .angebot-inner {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .angebot-header {
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-lg);
+      text-align: center;
+      position: relative;
+    }
+    .angebot-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+    .angebot-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      padding: 0.28rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 0.85rem;
+    }
+    .angebot-header h2 { font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: 0.5rem; }
+    .angebot-header p  { color: var(--text-secondary); font-size: 0.9rem; max-width: 480px; margin: 0 auto; }
+    .angebot-body {
+      padding: var(--spacing-lg);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+    }
+    .angebot-features h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--spacing-sm);
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .feature-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 0.65rem;
+      color: var(--gold);
+    }
+    .feature-item strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+    .feature-item span {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .angebot-versprechen {
+      background: var(--bg-elevated);
+      border: 1px solid var(--gold-dark);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      text-align: center;
+    }
+    .angebot-versprechen h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .angebot-versprechen p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-sm);
+    }
+    .angebot-footer {
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-top: 1px solid var(--bg-border);
+      text-align: center;
+    }
+    .angebot-footer p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .angebot-body { grid-template-columns: 1fr; }
+    }
+
+    /* ---- Archetypen ---- */
+    .archetypen-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--bg-border);
+      border-bottom: 1px solid var(--bg-border);
+    }
+    .archetypen-section .intro {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto var(--spacing-lg);
+    }
+    .archetypen-section .intro h2 { margin-bottom: 0.6rem; }
+    .archetypen-section .intro p  { color: var(--text-secondary); font-size: 0.95rem; }
+    .archetypen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 1px;
+      background: var(--bg-border);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .archetyp-cell {
+      background: var(--bg-surface);
+      padding: 1.5rem 1.25rem;
+      transition: background 0.2s;
+    }
+    .archetyp-cell:hover { background: var(--bg-elevated); }
+    .archetyp-cell .nr {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .archetyp-cell h4 {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+      font-family: var(--font-heading);
+    }
+    .archetyp-cell p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* ---- Testimonials ---- */
+    .testimonials-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-page);
+    }
+    .testimonials-section .intro {
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+    .testimonials-section .intro h2 { margin-bottom: 0.5rem; }
+    .testimonials-section .intro p  { color: var(--text-secondary); font-size: 0.9rem; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+    }
+    .testimonial-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+    .transformation-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--bg-border);
+    }
+    .img-placeholder {
+      aspect-ratio: 3/4;
+      background: var(--bg-elevated);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .img-placeholder .img-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .img-placeholder .img-icon {
+      font-size: 1.5rem;
+      opacity: 0.3;
+    }
+    /* Wenn echte Bilder vorhanden sind: */
+    .transformation-imgs img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+    .testimonial-content {
+      padding: var(--spacing-md);
+    }
+    .testimonial-result {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .testimonial-quote {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 0.65rem;
+    }
+    .testimonial-who {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .testimonial-who span {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ---- Coach Carousel ---- */
+    .coach-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--bg-border);
+      border-bottom: 1px solid var(--bg-border);
+    }
+    .coach-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .coach-carousel {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .carousel-slide.active { opacity: 1; }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Placeholder wenn keine Bilder vorhanden */
+    .carousel-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-align: center;
+      padding: var(--spacing-md);
+    }
+    .carousel-placeholder .ph-icon { font-size: 2.5rem; opacity: 0.25; }
+    .carousel-placeholder .ph-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .carousel-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transition: background 0.3s;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    .carousel-dot.active { background: var(--gold); }
+    .coach-info h2 { margin-bottom: 0.5rem; font-size: clamp(1.3rem, 3vw, 1.8rem); }
+    .coach-tagline {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: var(--spacing-md);
+    }
+    .coach-text {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: var(--spacing-md);
+    }
+    .coach-stats {
+      display: flex;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-md);
+    }
+    .coach-stat-item { text-align: left; }
+    .coach-stat-item .zahl {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .coach-stat-item .label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 768px) {
+      .coach-layout {
+        grid-template-columns: 1fr;
+      }
+      .coach-carousel { aspect-ratio: 4/3; max-height: 300px; }
+      .coach-stats { gap: var(--spacing-md); }
+    }
+
+    /* ---- Wie es funktioniert ---- */
+    .wie-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-page);
+    }
+    .wie-section .intro { text-align: center; margin-bottom: var(--spacing-lg); }
+    .schritte {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+      position: relative;
+    }
+    .schritte::before {
+      content: '';
+      position: absolute;
+      top: 23px;
+      left: calc(16.6% + 23px);
+      right: calc(16.6% + 23px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold-dark), transparent, var(--gold-dark));
+    }
+    .schritt { text-align: center; }
+    .schritt-nr {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-dark);
+      background: var(--gold-subtle);
+      color: var(--gold);
+      font-weight: 700; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto var(--spacing-sm);
+      font-family: var(--font-heading);
+      position: relative;
+    }
+    .schritt h4 { margin-bottom: 0.4rem; font-size: 0.95rem; }
+    .schritt p  { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+    @media (max-width: 768px) {
+      .schritte { grid-template-columns: 1fr; }
+      .schritte::before { display: none; }
+    }
+
+    /* ---- Final CTA ---- */
+    .final-cta {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-subtle);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(201,169,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .final-cta .container { position: relative; }
+    .final-cta h2 { margin-bottom: 0.75rem; }
+    .final-cta p  {
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-lg);
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <span class="site-logo">Fit Dad <span>Coaching</span></span>
+      <a href="quiz.html" class="btn btn--ghost" style="padding:0.5rem 1.1rem; font-size:0.82rem;">
+        Audit starten &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Kostenlos bis zu deinem ersten sichtbaren Ergebnis</div>
+      <h1>Du warst mal der fittere Mann.<br><em>Du kannst es wieder sein.</em></h1>
+      <p class="sub">
+        1-zu-1-Coaching für verheiratete Väter mit 9-to-5-Job. Trainingsplan, Ernährung, tägliche Begleitung, alles inklusive. Du zahlst nichts, bis deine Frau es bemerkt.
+      </p>
+      <a href="quiz.html" class="btn btn--primary btn--lg">
+        Kostenlosen Audit machen &rarr;
+      </a>
+      <p class="hero-meta">
+        2 Minuten <span>·</span> Kostenlos <span>·</span> Kein Kreditkartendetails
+      </p>
+    </div>
+  </section>
+
+  <!-- Proof-Strip -->
+  <div class="proof-strip">
+    Verheiratete Väter mit 9-to-5-Job &nbsp;&middot;&nbsp; <strong>Kein separates Essen, kein 2-Stunden-Training, keine Familienopfer</strong>
+  </div>
+
+  <!-- Dream Outcomes -->
+  <section class="dream-section">
+    <div class="container container--wide">
+      <div class="intro">
+        <div class="section-label" style="text-align:center;">Was sich verändert</div>
+        <h2>Das ist der Moment, auf den wir hinarbeiten.</h2>
+        <p>Nicht die Zahl auf der Waage. Die Momente, die bleiben.</p>
+      </div>
+      <div class="dream-grid">
+        <div class="dream-card">
+          <div class="moment">Woche 3 bis 5</div>
+          <p>„Hast du abgenommen?" Deine Frau fragt es morgens beiläufig. Du merkst, dass sie dich anders ansieht.</p>
+        </div>
+        <div class="dream-card">
+          <div class="moment">Woche 4 bis 6</div>
+          <p>Du stehst morgens vor dem Spiegel und erkennst dich. Nicht perfekt. Aber wieder du.</p>
+        </div>
+        <div class="dream-card">
+          <div class="moment">Woche 6 bis 8</div>
+          <p>Ein Kollege hält inne. „Du siehst gut aus. Was machst du gerade?" Du lächelst und sagst es ihm.</p>
+        </div>
+        <div class="dream-card">
+          <div class="moment">Woche 8 bis 12</div>
+          <p>Du ziehst dein Shirt am Strand aus und denkst nicht einmal daran, es wieder anzuziehen. Deine Kinder rennen auf dich zu.</p>
+        </div>
+        <div class="dream-card">
+          <div class="moment">Jeden Abend</div>
+          <p>Um 19 Uhr hast du noch Energie. Nicht genug für alles. Aber genug für sie. Deine Kinder merken den Unterschied.</p>
+        </div>
+        <div class="dream-card">
+          <div class="moment">Dauerhaft</div>
+          <p>Du bist nicht mehr der Vater, der immer sagt: nächsten Monat. Du bist der, der es getan hat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Für wen -->
+  <section class="fuer-wen">
+    <div class="container">
+      <div class="fuer-wen-text">
+        <div class="section-label">Für wen das ist</div>
+        <h2>Das trifft auf dich zu, wenn&hellip;</h2>
+        <p>Du weißt, dass du etwas ändern musst. Du hast es vielleicht schon mehrfach versucht. Das Problem war nie deine Bereitschaft. Das Problem war, dass kein Programm für jemanden wie dich gemacht wurde.</p>
+        <a href="quiz.html" class="btn btn--primary">Meinen Typ herausfinden &rarr;</a>
+      </div>
+      <div>
+        <ul class="check-list">
+          <li>Du warst in deinen 20ern fit und erkennst dich im Spiegel kaum noch wieder</li>
+          <li>Du hast schon mehrfach angefangen und aufgehört, wenn das Leben dazwischenkam</li>
+          <li>Deine Familie isst, was sie isst, und du kannst nicht jeden Abend separat kochen</li>
+          <li>Ein „richtiges" Training braucht in deinem Kopf 90 Minuten, die du nicht hast</li>
+          <li>Du bist abends erschöpft und gibst dir die Schuld daran</li>
+          <li>Du vermeidest Fotos. Du vermeidest den Spiegel. Du vermeidest das Thema mit deiner Frau</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Angebot -->
+  <section class="angebot-section">
+    <div class="container container--wide">
+      <div class="angebot-inner">
+        <div class="angebot-header">
+          <div class="angebot-tag">Das Angebot</div>
+          <h2>Kostenlos bis zu deinem ersten sichtbaren Ergebnis.</h2>
+          <p>Du zahlst nichts, bis du deinen ersten Beweis siehst. Bis deine Frau es bemerkt. Bis du es im Spiegel siehst. Bis ein Kollege nachfragt. Erst dann beginnt die Investition.</p>
+        </div>
+        <div class="angebot-body">
+          <div class="angebot-features">
+            <h3>Was inklusive ist</h3>
+            <div class="feature-item">
+              <div class="feature-icon">&#9675;</div>
+              <div>
+                <strong>Personalisierter Trainingsplan</strong>
+                <span>20 bis 30 Minuten täglich, Zuhause oder Studio. Kein Gerät, das du nicht hast.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">&#9675;</div>
+              <div>
+                <strong>Wöchentliche Einkaufsliste</strong>
+                <span>Basierend auf dem, was deine Familie sowieso isst. Kein separates Kochen.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">&#9675;</div>
+              <div>
+                <strong>Tägliche Morgennachricht</strong>
+                <span>Jeden Morgen eine kurze Nachricht von deinem Coach. Damit der Tag richtig startet.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">&#9675;</div>
+              <div>
+                <strong>Direktzugang zum Coach</strong>
+                <span>Fragen, Probleme, spontane Situationen. Du schreibst, wir antworten.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">&#9675;</div>
+              <div>
+                <strong>Studio-Optimierung</strong>
+                <span>Wir machen mehr aus deinen 20 Minuten als andere aus 60. Jede Übung hat einen Grund.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">&#9675;</div>
+              <div>
+                <strong>Cortisol und Schlaf-Protokoll</strong>
+                <span>Für Männer, die auf Reserve laufen. Wir bauen Energie auf, nicht nur Muskeln.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">&#9675;</div>
+              <div>
+                <strong>Reise- und Ausnahme-Protokoll</strong>
+                <span>Dienstreise, Familienurlaub, Betriebsfest. Wir haben eine Antwort für jede Situation.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">&#9675;</div>
+              <div>
+                <strong>Wöchentlicher Check-in-Call</strong>
+                <span>15 Minuten. Wir schauen was funktioniert, was angepasst wird, und wie es dir wirklich geht.</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="angebot-versprechen">
+              <h3>Das Versprechen</h3>
+              <p>
+                Wir starten gemeinsam. Du bekommst deinen Plan, deine Begleitung, dein System. Wenn du nach den ersten 3 bis 4 Wochen deinen ersten sichtbaren Erfolg erlebt hast, sehen wir gemeinsam, ob du weitermachen möchtest.
+              </p>
+              <p>
+                Kein sichtbarer Erfolg? Dann schuldest du nichts. Kein Gespräch. Keine Erklärung.
+              </p>
+              <a href="quiz.html" class="btn btn--primary btn--full" style="margin-top:0.5rem;">
+                Jetzt kostenlos starten &rarr;
+              </a>
+            </div>
+            <div style="margin-top: var(--spacing-md);">
+              <p class="schmerz-titel" style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; font-weight:700;">Was als Deinen ersten Erfolg zählt</p>
+              <ul class="check-list">
+                <li>Deine Frau fragt, ob du abgenommen hast</li>
+                <li>Du schaust morgens in den Spiegel und erkennst dich</li>
+                <li>Ein Kollege oder Freund macht eine Bemerkung</li>
+                <li>Deine Hose sitzt anders als vor vier Wochen</li>
+                <li>Du hast abends noch Energie und das fühlt sich neu an</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="angebot-footer">
+          <a href="quiz.html" class="btn btn--primary btn--lg">Kostenlosen Audit machen &rarr;</a>
+          <p>2 Minuten &middot; Kostenlos &middot; Kein Kreditkartendetails &middot; Kein Pitch</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Archetypen -->
+  <section class="archetypen-section">
+    <div class="container container--wide">
+      <div class="intro">
+        <div class="section-label" style="text-align:center;">Die 5 Fit-Dad-Typen</div>
+        <h2>Einer davon bist du.</h2>
+        <p>Jeder Typ hat einen anderen Grund, warum er nicht vorankommt. Und jeder braucht eine andere Lösung. Der Audit findet deinen dominanten Typ in 2 Minuten.</p>
+      </div>
+      <div class="archetypen-grid">
+        <div class="archetyp-cell">
+          <div class="nr">Typ 01</div>
+          <h4>Der Stressgainer</h4>
+          <p>Dein Job frisst dich auf. Und das Fett ist der Beweis.</p>
+        </div>
+        <div class="archetyp-cell">
+          <div class="nr">Typ 02</div>
+          <h4>Der reaktive Esser</h4>
+          <p>Du triffst nie eine schlechte Entscheidung. Du triffst einfach gar keine.</p>
+        </div>
+        <div class="archetyp-cell">
+          <div class="nr">Typ 03</div>
+          <h4>Der unbeständige Trainer</h4>
+          <p>Du gehst ins Studio. Du gehst nur ins falsche, in deinem Kopf.</p>
+        </div>
+        <div class="archetyp-cell">
+          <div class="nr">Typ 04</div>
+          <h4>Der schlaflose Vater</h4>
+          <p>Du bist nicht faul. Du läufst auf Reserve, und dein Körper kämpft zurück.</p>
+        </div>
+        <div class="archetyp-cell">
+          <div class="nr">Typ 05</div>
+          <h4>Der sitzende Arbeiter</h4>
+          <p>Du trainierst. Dein Körper bewegt sich nicht. Das ist nicht dasselbe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container container--wide">
+      <div class="intro">
+        <div class="section-label" style="text-align:center;">Ergebnisse</div>
+        <h2>Väter wie du. Ergebnisse, die bleiben.</h2>
+        <p>Keine perfekten Ausgangsbedingungen. Keine 2-Stunden-Workouts. Kein separates Kochen.</p>
+      </div>
+      <div class="testimonials-grid">
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="transformation-imgs">
+            <!--
+              Bilder einsetzen:
+              <img src="assets/images/vorher-1.jpg" alt="Vorher">
+              <img src="assets/images/nachher-1.jpg" alt="Nachher">
+            -->
+            <div class="img-placeholder">
+              <div class="img-icon">&#128247;</div>
+              <div class="img-label">Vorher</div>
+            </div>
+            <div class="img-placeholder">
+              <div class="img-icon">&#128247;</div>
+              <div class="img-label">Nachher</div>
+            </div>
+          </div>
+          <div class="testimonial-content">
+            <div class="testimonial-result">-14 kg &middot; 11 Wochen</div>
+            <p class="testimonial-quote">„Meine Frau hat mich nach Woche 4 zum ersten Mal seit Jahren so angeschaut. Ich wusste sofort, dass sich etwas verändert hat."</p>
+            <div class="testimonial-who">Markus T. <span>&middot; 38 Jahre &middot; Vertriebsleiter &middot; 2 Kinder</span></div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="transformation-imgs">
+            <div class="img-placeholder">
+              <div class="img-icon">&#128247;</div>
+              <div class="img-label">Vorher</div>
+            </div>
+            <div class="img-placeholder">
+              <div class="img-icon">&#128247;</div>
+              <div class="img-label">Nachher</div>
+            </div>
+          </div>
+          <div class="testimonial-content">
+            <div class="testimonial-result">-11 kg &middot; 10 Wochen</div>
+            <p class="testimonial-quote">„Ich habe kein einziges Abendessen mit meiner Familie ausgelassen. Ich habe einfach anders gegessen als ich es zuvor nie für möglich gehalten hätte."</p>
+            <div class="testimonial-who">Stefan K. <span>&middot; 42 Jahre &middot; IT-Management &middot; 3 Kinder</span></div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="transformation-imgs">
+            <div class="img-placeholder">
+              <div class="img-icon">&#128247;</div>
+              <div class="img-label">Vorher</div>
+            </div>
+            <div class="img-placeholder">
+              <div class="img-icon">&#128247;</div>
+              <div class="img-label">Nachher</div>
+            </div>
+          </div>
+          <div class="testimonial-content">
+            <div class="testimonial-result">-9 kg &middot; 8 Wochen</div>
+            <p class="testimonial-quote">„Mein Sohn hat mich beim Fußball im Garten gefragt, ob ich jetzt trainiere. Ich habe das Wochenende nicht mehr bereut, sondern genossen."</p>
+            <div class="testimonial-who">Daniel R. <span>&middot; 36 Jahre &middot; Projektleiter &middot; 1 Kind</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Coach Carousel -->
+  <section class="coach-section">
+    <div class="container container--wide">
+      <div class="coach-layout">
+
+        <!-- Carousel -->
+        <div class="coach-carousel" id="coachCarousel">
+          <!--
+            BILDER EINSETZEN:
+            Ersetze die Placeholder-Slides durch echte Bilder.
+            Kopiere dieses Muster für jedes Bild:
+
+            <div class="carousel-slide active">
+              <img src="assets/images/coach-1.jpg" alt="[Dein Name]">
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/images/coach-2.jpg" alt="[Dein Name] mit Client">
+            </div>
+          -->
+          <div class="carousel-slide active">
+            <div class="carousel-placeholder">
+              <div class="ph-icon">&#128104;</div>
+              <div class="ph-label">Foto 1</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">assets/images/coach-1.jpg</div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-placeholder">
+              <div class="ph-icon">&#128104;</div>
+              <div class="ph-label">Foto 2</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">assets/images/coach-2.jpg</div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-placeholder">
+              <div class="ph-icon">&#128104;</div>
+              <div class="ph-label">Foto 3</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">assets/images/coach-3.jpg</div>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-placeholder">
+              <div class="ph-icon">&#128104;</div>
+              <div class="ph-label">Foto 4</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">assets/images/coach-4.jpg</div>
+            </div>
+          </div>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+
+        <!-- Coach Info -->
+        <div class="coach-info">
+          <div class="section-label">Dein Coach</div>
+          <h2>[Dein Name]</h2>
+          <p class="coach-tagline">„Ich baue Systeme für Männer, die nicht warten können, bis das Leben einfacher wird."</p>
+          <p class="coach-text">
+            Ich arbeite ausschließlich mit verheirateten Vätern, die einen 9-to-5-Job haben. Nicht weil ich niemanden anderen coachen kann. Sondern weil ich weiß, wie das Leben von innen aussieht, wenn du 40 Stunden pro Woche arbeitest, abends zu erschöpft für alles bist und trotzdem ein Vater sein willst, auf den deine Kinder stolz sind.
+          </p>
+          <p class="coach-text">
+            Kein Programm von mir wurde für jemanden ohne Familie gebaut. Jeder Trainingsplan, jede Einkaufsliste, jedes Protokoll passt zu einem echten Familienleben.
+          </p>
+          <div class="coach-stats">
+            <div class="coach-stat-item">
+              <span class="zahl">90</span>
+              <span class="label">Tage<br>Programm</span>
+            </div>
+            <div class="coach-stat-item">
+              <span class="zahl">20</span>
+              <span class="label">Min.<br>täglich</span>
+            </div>
+            <div class="coach-stat-item">
+              <span class="zahl">0</span>
+              <span class="label">Euro<br>bis zum ersten Erfolg</span>
+            </div>
+          </div>
+          <a href="quiz.html" class="btn btn--primary">Audit machen und starten &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Wie es funktioniert -->
+  <section class="wie-section">
+    <div class="container">
+      <div class="intro">
+        <div class="section-label" style="text-align:center;">Der Start</div>
+        <h2>Drei Schritte. Zwei Minuten.</h2>
+      </div>
+      <div class="schritte">
+        <div class="schritt">
+          <div class="schritt-nr">1</div>
+          <h4>Audit machen</h4>
+          <p>10 Fragen. Dein Typ wird ermittelt. Du weißt sofort, warum bisherige Versuche gescheitert sind.</p>
+        </div>
+        <div class="schritt">
+          <div class="schritt-nr">2</div>
+          <h4>Gespräch buchen</h4>
+          <p>15 Minuten. Wir schauen gemeinsam, wie dein Programm konkret aussieht. Kein Pitch. Nur Klarheit.</p>
+        </div>
+        <div class="schritt">
+          <div class="schritt-nr">3</div>
+          <h4>Kostenlos starten</h4>
+          <p>Dein Plan startet sofort. Du zahlst nichts, bis du deinen ersten sichtbaren Erfolg erlebt hast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <span class="gold-line"></span>
+      <h2>Bereit, der Mann zu werden,<br>der du sein willst?</h2>
+      <p>Kostenlos bis zu deinem ersten sichtbaren Ergebnis. Kein Risiko. Kein Pitch. Nur Ergebnisse.</p>
+      <a href="quiz.html" class="btn btn--primary btn--lg">Fit Dad Audit starten &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Fit Dad Coaching &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <!-- Coach Carousel JS -->
+  <script>
+    (function() {
+      var slides = document.querySelectorAll('#coachCarousel .carousel-slide');
+      var dotsContainer = document.getElementById('carouselDots');
+      var current = 0;
+
+      if (slides.length <= 1) return;
+
+      /* Dots erstellen */
+      slides.forEach(function(_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+        dot.addEventListener('click', function() { goTo(i); });
+        dotsContainer.appendChild(dot);
+      });
+
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        dotsContainer.children[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dotsContainer.children[current].classList.add('active');
+      }
+
+      /* Auto-cycle alle 4 Sekunden */
+      setInterval(function() { goTo(current + 1); }, 4000);
+    })();
+  </script>
+
+</body>
+</html>
