@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dein Fit-Dad-Typ | Ergebnis</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* ---- Phase A: Gate-Hero ---- */
+    .gate-hero {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .gate-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,169,110,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .gate-hero .container { position: relative; }
+
+    .gate-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dark);
+      background: var(--gold-subtle);
+      padding: 0.28rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .gate-hero h1 {
+      font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .gate-hero p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* Blurred Vorschau des Archetyp-Namens */
+    .name-preview {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--gold);
+      filter: blur(8px);
+      user-select: none;
+      margin: 1rem 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---- E-Mail-Gate-Bereich ---- */
+    .gate-body {
+      padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
+    }
+
+    .gate-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      position: relative;
+      overflow: hidden;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .gate-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+
+    .gate-box h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .gate-box .gate-sub {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .trust-zeile {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.85rem;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---- Phase B: Ergebnis-Enthüllung (initial versteckt) ---- */
+    .ergebnis-section {
+      padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
+    }
+
+    .ergebnis-hero {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ergebnis-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,169,110,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ergebnis-hero .container { position: relative; }
+
+    .ergebnis-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dark);
+      background: var(--gold-subtle);
+      padding: 0.28rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .ergebnis-hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .ergebnis-hero .tagline {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .beschreibung-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .beschreibung-box p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+    }
+
+    .schmerz-titel {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .schmerz-liste {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .schmerz-punkt {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-left: 3px solid var(--gold-dark);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+
+    /* Schnellgewinn-Box */
+    .schnellgewinn-box {
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .schnellgewinn-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .schnellgewinn-box p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* CTA-Box */
+    .cta-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+
+    .cta-box h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: var(--spacing-md);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-erwartet {
+      list-style: none;
+      margin-bottom: var(--spacing-md);
+      text-align: left;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-erwartet li {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-erwartet li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .cta-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+    }
+
+    .hook-zitat {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold-light);
+      border-left: 3px solid var(--gold-dark);
+      padding-left: 1rem;
+      margin-bottom: var(--spacing-lg);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="site-logo">Fit Dad <span>Audit</span></span>
+    </div>
+  </header>
+
+  <!-- ============================================
+       PHASE A: E-Mail-Gate (vor der Enthüllung)
+       ============================================ -->
+  <div id="email-gate-wrap">
+
+    <!-- Teaser-Hero ohne Archetyp-Name -->
+    <section class="gate-hero">
+      <div class="container">
+        <div class="gate-eyebrow">Dein Ergebnis liegt bereit</div>
+        <h1>Wir haben deinen<br>Fit-Dad-Typen ermittelt.</h1>
+        <div class="name-preview" aria-hidden="true">Der &#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</div>
+        <p>Gib deine E-Mail ein, um deinen Typ und deinen personalisierten Aktionsplan zu sehen.</p>
+      </div>
+    </section>
+
+    <!-- E-Mail-Formular -->
+    <section class="gate-body">
+      <div class="container">
+        <div class="gate-box">
+          <h2>Wo soll ich deinen Plan hinschicken?</h2>
+          <p class="gate-sub">Kostenlos. In deinem Postfach in unter 2 Minuten. Kein Spam.</p>
+
+          <form id="email-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="vorname">Vorname</label>
+              <input class="form-input" type="text" id="vorname" name="vorname"
+                     placeholder="Max" autocomplete="given-name" required>
+            </div>
+            <div class="form-group" style="margin-bottom: var(--spacing-sm);">
+              <label class="form-label" for="email">E-Mail-Adresse</label>
+              <input class="form-input" type="email" id="email" name="email"
+                     placeholder="max@beispiel.de" autocomplete="email" required>
+            </div>
+            <button class="btn btn--primary btn--full btn--lg" id="btn-submit" type="submit">
+              Mein Ergebnis anzeigen &rarr;
+            </button>
+            <div id="form-status" role="alert"></div>
+            <p class="trust-zeile">Kein Spam. Nur dein persönlicher Plan. Jederzeit abmeldbar.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end #email-gate-wrap -->
+
+
+  <!-- ============================================
+       PHASE B: Ergebnis-Enthüllung (initial hidden)
+       ============================================ -->
+  <div id="ergebnis-reveal" class="hidden">
+
+    <!-- Archetyp-Hero -->
+    <section class="ergebnis-hero">
+      <div class="container">
+        <div class="ergebnis-eyebrow">Dein Fit-Dad-Typ</div>
+        <h1 id="archetyp-name">Wird geladen…</h1>
+        <p class="tagline" id="archetyp-tagline"></p>
+      </div>
+    </section>
+
+    <!-- Ergebnis-Inhalt -->
+    <section class="ergebnis-section">
+      <div class="container">
+
+        <!-- Beschreibung -->
+        <div class="beschreibung-box">
+          <p id="archetyp-beschreibung"></p>
+        </div>
+
+        <!-- Coaching-Hook-Zitat -->
+        <p class="hook-zitat" id="hook-zitat"></p>
+
+        <!-- Schmerzpunkte -->
+        <p class="schmerz-titel">Das kennst du</p>
+        <div class="schmerz-liste" id="schmerz-liste"></div>
+
+        <!-- Schnellgewinn -->
+        <div class="schnellgewinn-box">
+          <p class="schnellgewinn-label">Dein Schnellgewinn diese Woche</p>
+          <p id="schnellgewinn"></p>
+        </div>
+
+        <!-- CTA: Strategiegespräch buchen -->
+        <div class="cta-box">
+          <h2>Bereit, das wirklich anzugehen?</h2>
+          <p>
+            Der Plan zeigt dir das Was. Im Gespräch bauen wir gemeinsam das Wie, konkret auf deinen Alltag zugeschnitten.
+          </p>
+          <ul class="cta-erwartet">
+            <li>Wir analysieren deine Situation direkt auf Basis deines Typs</li>
+            <li>Du bekommst eine 90-Tage-Roadmap, die dir gehört, egal was danach kommt</li>
+            <li>Du entscheidest, ob Coaching passt. Kein Druck, kein Pitch</li>
+          </ul>
+          <a id="cta-termin-btn" href="termin.html" class="btn btn--primary btn--lg">
+            Kostenloses Strategiegespräch buchen &rarr;
+          </a>
+          <p class="cta-meta">Kostenlos &middot; 15 Minuten &middot; Kein Pitch</p>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- end #ergebnis-reveal -->
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Fit Dad Audit &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="quiz-engine.js"></script>
+  <script src="email-capture.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var urlTyp = params.get('typ');
+      var key = (urlTyp && window.FDA.ARCHETYPEN[urlTyp]) ? urlTyp : null;
+      if (!key) {
+        var g = window.FDA.ladeErgebnis();
+        if (g && g.archetyp && window.FDA.ARCHETYPEN[g.archetyp]) key = g.archetyp;
+      }
+      if (!key) { window.location.href = 'index.html'; return; }
+
+      var at = window.FDA.ARCHETYPEN[key];
+
+      /* Ergebnis-Inhalte vorausfüllen (werden nach Opt-in sichtbar) */
+      document.getElementById('archetyp-name').textContent        = at.name;
+      document.getElementById('archetyp-tagline').textContent     = at.tagline;
+      document.getElementById('archetyp-beschreibung').textContent = at.beschreibung;
+      document.getElementById('hook-zitat').textContent           = at.hookZitat;
+      document.getElementById('schnellgewinn').textContent        = at.schnellgewinn;
+
+      var liste = document.getElementById('schmerz-liste');
+      at.schmerzpunkte.forEach(function(t) {
+        var d = document.createElement('div');
+        d.className = 'schmerz-punkt';
+        d.textContent = t;
+        liste.appendChild(d);
+      });
+
+      /* Termin-Button mit Archetyp-Param versehen */
+      document.getElementById('cta-termin-btn').href = 'termin.html?typ=' + key;
+
+      /* Seitentitel */
+      document.title = 'Dein Fit-Dad-Typ | Ergebnis';
+
+      /* E-Mail-Capture initialisieren */
+      window.FDA.initEmailCapture(key);
+    });
+  </script>
+</body>
+</html>
