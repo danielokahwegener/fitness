@@ -147,6 +147,25 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
+
+    /* ---- Mobile ---- */
+    @media (max-width: 768px) {
+      .danke-hero  { padding: 2rem 1rem 1.5rem; }
+      .danke-hero h1 { font-size: clamp(1.4rem, 6vw, 2rem); }
+      .danke-body  { padding: 1.5rem 1rem 2rem; }
+      .coach-block { padding: var(--spacing-md); }
+      .coach-zitat { font-size: 0.95rem; }
+      .gespraech-box { padding: var(--spacing-md); }
+      .gespraech-box h2 { font-size: 1.1rem; }
+      .erwartet-liste { gap: 0.5rem; }
+      .erwartet-item  { font-size: 0.85rem; }
+      .check-ring { width: 50px; height: 50px; font-size: 1.3rem; }
+    }
+
+    @media (max-width: 480px) {
+      .danke-hero h1 { font-size: 1.35rem; }
+      .coach-zitat   { font-size: 0.9rem; }
+    }
   </style>
 </head>
 <body>
@@ -180,20 +199,13 @@
         <p class="coach-sig">[Dein Name], Fit-Dad-Coach</p>
       </div>
 
-      <!-- Gespräch-Box -->
-      <div class="gespraech-box fade-in">
-        <div class="archetyp-chip" id="archetyp-chip">Dein Ergebnis</div>
-        <h2>Kostenloses 15-Minuten-Strategiegespräch</h2>
-        <p>
-          Der Bericht gibt dir den Plan. Das Gespräch gibt dir Klarheit, ob und wie 1-zu-1-Coaching der richtige nächste Schritt für dich ist. Kein Pitch, kein Druck.
+      <!-- Weicher Hinweis (kein harter Pitch) -->
+      <div class="gespraech-box fade-in" style="text-align:center;">
+        <p id="hint-text" style="color:var(--text-secondary); font-size:0.92rem; margin-bottom:var(--spacing-sm);">
+          Schau zuerst in dein Postfach und lies deinen persönlichen Bericht. Wenn du danach nicht warten willst, kannst du schon jetzt einen Termin sichern.
         </p>
-        <div class="erwartet-liste">
-          <div class="erwartet-item">Wir schauen gemeinsam, wo du wirklich stehst, nicht die Hochglanzversion</div>
-          <div class="erwartet-item">Du bekommst auf dem Gespräch eine konkrete 90-Tage-Roadmap, die dir gehört, egal was danach kommt</div>
-          <div class="erwartet-item">Du entscheidest am Ende, ob Coaching für dich passt</div>
-        </div>
-        <a href="termin.html" class="btn btn--primary btn--lg">
-          Gespräch kostenlos buchen &rarr;
+        <a id="soft-termin-link" href="termin.html" style="font-size:0.85rem; color:var(--gold); text-decoration:underline;">
+          Kostenloses Gespräch vormerken &rarr;
         </a>
       </div>
 

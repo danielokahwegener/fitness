@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ergebnisse und Geschichten | Fit Dad Coaching</title>
+  <meta name="description" content="Echte Ergebnisse von Vätern mit 9-to-5-Job, Kindern und echtem Alltag. Keine Hochglanz-Fotos. Die ganzen Geschichten.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* ---- Hero ---- */
+    .hero {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-xl) var(--spacing-sm);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; }
+    .hero h1 { margin-bottom: 1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero .sub {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    /* ---- Angebot-Zusammenfassung ---- */
+    .angebot-strip {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    .angebot-strip .container {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--spacing-lg);
+      align-items: center;
+      max-width: 800px;
+    }
+    .angebot-text h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .angebot-text p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .angebot-features-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+    .feature-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .angebot-strip .container { grid-template-columns: 1fr; }
+    }
+
+    /* ---- Archetyp-Navigation ---- */
+    .typ-nav {
+      background: var(--bg-page);
+      border-bottom: 1px solid var(--bg-border);
+      padding: 0.75rem var(--spacing-sm);
+      position: sticky;
+      top: 64px;
+      z-index: 50;
+    }
+    .typ-nav-inner {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-bottom: 2px;
+    }
+    .typ-nav-inner::-webkit-scrollbar { display: none; }
+    .typ-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid var(--bg-border);
+      background: var(--bg-surface);
+      padding: 0.4rem 0.85rem;
+      border-radius: 100px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+    .typ-link:hover {
+      border-color: var(--gold-dark);
+      color: var(--gold);
+      background: var(--gold-subtle);
+      text-decoration: none;
+    }
+
+    /* ---- Archetyp-Sektion ---- */
+    .archetyp-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      border-bottom: 1px solid var(--bg-border);
+    }
+    .archetyp-section:nth-child(odd) { background: var(--bg-page); }
+    .archetyp-section:nth-child(even) { background: var(--bg-subtle); }
+
+    .archetyp-header {
+      margin-bottom: var(--spacing-lg);
+    }
+    .archetyp-header .typ-nr {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .archetyp-header h2 { margin-bottom: 0.4rem; }
+    .archetyp-header .tagline {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    /* ---- Case Study Cards ---- */
+    .case-studies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .case-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-card-top {
+      padding: var(--spacing-md);
+      border-bottom: 1px solid var(--bg-border);
+      position: relative;
+    }
+    .case-card-top::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+
+    .case-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .case-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .case-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+    }
+    .case-details {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .case-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      border-radius: 100px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .case-card-body {
+      padding: var(--spacing-md);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .case-block-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+    .case-block-text {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .case-quote {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--gold-dark);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.75rem 1rem;
+      margin-top: auto;
+    }
+    .case-quote p {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ---- Foto-Placeholder ---- */
+    .transformation-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--bg-border);
+      margin-bottom: var(--spacing-sm);
+    }
+    .trans-img {
+      aspect-ratio: 1/1;
+      background: var(--bg-elevated);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      font-size: 1.5rem;
+      opacity: 0.4;
+    }
+    .trans-img span {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    /* Wenn echte Bilder da sind: */
+    .transformation-strip img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ---- FAQ ---- */
+    .faq-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-page);
+    }
+    .faq-section .intro {
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+    .faq-section .intro h2 { margin-bottom: 0.5rem; }
+    .faq-section .intro p  { color: var(--text-secondary); font-size: 0.9rem; }
+
+    .faq-list {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--bg-border);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .faq-item {
+      background: var(--bg-surface);
+    }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: var(--spacing-md);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q:hover { color: var(--gold); }
+    .faq-icon {
+      color: var(--gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      display: none;
+      padding: 0 var(--spacing-md) var(--spacing-md);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ---- Finaler CTA ---- */
+    .final-cta {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-subtle);
+      text-align: center;
+      border-top: 1px solid var(--bg-border);
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(201,169,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .final-cta .container { position: relative; }
+    .final-cta h2 { margin-bottom: 0.75rem; }
+    .final-cta .lead {
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto var(--spacing-lg);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .cta-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .case-studies { grid-template-columns: 1fr; }
+      .typ-nav { top: 56px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="site-logo">Fit Dad <span>Coaching</span></span>
+      <a href="termin.html" class="btn btn--ghost" style="padding:0.5rem 1.1rem;font-size:0.82rem;">
+        Gespräch buchen &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="section-label" style="text-align:center; margin-bottom:0.75rem;">Echte Ergebnisse</div>
+      <h1>Was wirklich passiert, <em>wenn Väter wie du anfangen.</em></h1>
+      <p class="sub">
+        Keine Hochglanz-Fotos. Keine perfekten Ausgangsbedingungen. Die ganzen Geschichten, mit dem Hindernis das es gab, und wie es trotzdem funktioniert hat.
+      </p>
+      <a href="termin.html" class="btn btn--primary btn--lg">
+        Kostenloses Gespräch buchen &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Angebot-Zusammenfassung -->
+  <section class="angebot-strip">
+    <div class="container">
+      <div class="angebot-text">
+        <h3>Was jeder dieser Männer bekommen hat</h3>
+        <p>Denselben Ansatz. Auf ihre Situation zugeschnitten. Kostenlos, bis der erste sichtbare Erfolg da war.</p>
+        <div class="angebot-features-mini">
+          <span class="feature-tag">Persönlicher Trainingsplan</span>
+          <span class="feature-tag">Wöchentliche Einkaufsliste</span>
+          <span class="feature-tag">Tägliche Morgennachricht</span>
+          <span class="feature-tag">Direktzugang zum Coach</span>
+          <span class="feature-tag">Wöchentlicher Check-in-Call</span>
+          <span class="feature-tag">Reise- und Ausnahme-Protokoll</span>
+        </div>
+      </div>
+      <a href="termin.html" class="btn btn--ghost" style="flex-shrink:0;">
+        Gespräch buchen &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Archetyp-Navigation -->
+  <nav class="typ-nav" aria-label="Zu einem Typ springen">
+    <div class="typ-nav-inner">
+      <a href="#stressgainer"     class="typ-link">Der Stressgainer</a>
+      <a href="#reaktiver-esser"  class="typ-link">Der reaktive Esser</a>
+      <a href="#unbestaendiger"   class="typ-link">Der unbeständige Trainer</a>
+      <a href="#schlafsloser"     class="typ-link">Der schlaflose Vater</a>
+      <a href="#sitzender"        class="typ-link">Der sitzende Arbeiter</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ========== TYP 1: STRESSGAINER ========== -->
+    <section class="archetyp-section" id="stressgainer">
+      <div class="container container--wide">
+        <div class="archetyp-header">
+          <div class="typ-nr">Typ 01</div>
+          <h2>Der Stressgainer</h2>
+          <p class="tagline">Sein Job frisst ihn auf. Und das Fett ist der Beweis.</p>
+        </div>
+        <div class="case-studies">
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Fabian T.</span>
+                  <span class="case-details">41 Jahre &middot; Abteilungsleiter &middot; 3 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 8 kg &middot; 9 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Chronischer Termindruck, abends nie abschalten. Bauchfett trotz vernünftiger Ernährung. Hat zuerst nicht geglaubt, dass sein Stresslevel das eigentliche Problem ist.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Kein Diätplan in den ersten vier Wochen. Nur eine tägliche 20-Minuten-Auszeit, fest im Kalender, nicht verhandelbar. Dazu eine Abend-Routine ohne Bildschirm.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Meine Frau hat mich nach neun Wochen gefragt, ob ich abnehme. Ich hab gesagt: nicht aktiv. Aber irgendwas verändert sich."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Thomas K.</span>
+                  <span class="case-details">38 Jahre &middot; Außendienstler &middot; 2 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 11 kg &middot; 12 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Montag bis Donnerstag unterwegs. Kein fester Tagesablauf, Hotelessen, Stress im Auto. Er dachte, er kann erst anfangen, wenn sein Leben ruhiger wird.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Eine Morgenroutine, die überall funktioniert, auch im Hotelzimmer. Training nur mit dem eigenen Körpergewicht, 18 Minuten. Kein Diätplan, aber Bewusstsein dafür, was er bei Geschäftsessen isst.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich habe aufgehört zu warten, bis mein Leben ruhiger wird. Es wird nicht ruhiger. Ich habe einfach angefangen."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Andreas M.</span>
+                  <span class="case-details">44 Jahre &middot; Selbstständig &middot; 1 Kind</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 6 kg &middot; 8 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Das Büro ist zuhause. Der Laptop ist immer auf. Auch am Wochenende. Kein klarer Schnitt zwischen Arbeit und Feierabend.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Laptop-Aus um 19:30 Uhr, täglich. Dazu ein zehnminütiger Spaziergang nach Arbeitsende als festes Signal: der Arbeitstag ist vorbei. Keine Mahlzeit geändert in den ersten vier Wochen.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Minus 6 Kilo, ohne eine einzige Mahlzeit geändert zu haben. Das hätte ich nie für möglich gehalten."</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TYP 2: REAKTIVER ESSER ========== -->
+    <section class="archetyp-section" id="reaktiver-esser">
+      <div class="container container--wide">
+        <div class="archetyp-header">
+          <div class="typ-nr">Typ 02</div>
+          <h2>Der reaktive Esser</h2>
+          <p class="tagline">Er trifft nie eine schlechte Entscheidung. Er trifft einfach gar keine.</p>
+        </div>
+        <div class="case-studies">
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Christoph B.</span>
+                  <span class="case-details">39 Jahre &middot; Projektmanager &middot; 2 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 11 kg &middot; 10 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Isst nicht schlecht. Isst keinen Junk. Versteht nicht, warum er zunimmt. Als wir seinen Alltag analysiert haben: täglich 400 bis 600 Kalorien, die er nicht als Essen registriert hat.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Die Dad-Teller-Methode: Portionen anpassen, ohne separat zu kochen. Ein einfaches Frühstück in vier Minuten. Eine Regel für das Greifen nach dem Abendessen.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich esse dasselbe wie meine Familie. Ich esse es nur anders. Kein einziges Abendessen ausgelassen."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Stefan W.</span>
+                  <span class="case-details">43 Jahre &middot; Softwareentwickler &middot; 3 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 9 kg &middot; 8 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Vollständig im Homeoffice. Das Büro ist fünf Meter von der Küche entfernt. Er isst nie eine richtige Mahlzeit, aber er isst den ganzen Tag. Er merkt es nicht einmal.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Ein strukturiertes Essfenster: zwei definierte Mahlzeiten plus ein geplanter Snack. Alles andere wird nicht gegessen. Die Küche ist außerhalb dieser Zeiten kein Ort, an dem er sich aufhält.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich esse jetzt weniger als vorher und bin zufriedener als je zuvor. Das hat mich überrascht."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Michael H.</span>
+                  <span class="case-details">36 Jahre &middot; Vertriebler &middot; 1 Kind</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 8 kg &middot; 9 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Büro mit kostenlosem Catering und ständig Kuchen. Geburtstage, Teamessen, Betriebsevents. Ablehnen fühlt sich sozial unangenehm an, also sagt er fast immer ja.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Eine Regel: Er entscheidet einmal täglich, welches soziale Essen er einplant, und lässt den Rest stehen, ohne Erklärung und ohne Aufsehen.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich habe aufgehört, mich zu erklären. Ich esse, was ich entscheide. Nicht was vor mir steht."</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TYP 3: UNBESTÄNDIGER TRAINER ========== -->
+    <section class="archetyp-section" id="unbestaendiger">
+      <div class="container container--wide">
+        <div class="archetyp-header">
+          <div class="typ-nr">Typ 03</div>
+          <h2>Der unbeständige Trainer</h2>
+          <p class="tagline">Er geht ins Studio. Er geht nur ins falsche, in seinem Kopf.</p>
+        </div>
+        <div class="case-studies">
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Oliver S.</span>
+                  <span class="case-details">37 Jahre &middot; Softwareentwickler &middot; 2 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">14 Wochen Konstanz &middot; Kein einziger Neustart</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Dasselbe Muster seit Jahren: drei gute Wochen, dann eine Unterbrechung, dann Monate nichts. Er hat versucht, sich stärker zu motivieren. Podcasts, Bücher, Ziele. Nichts hat funktioniert.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Ein System statt Motivation. Ein Plan, der ihm sagt, was er tut. Eine Regel für verpasste Einheiten. Wöchentlicher Check-in, der ihn aus dem Schweigen holt, bevor eine Woche zur Ausrede wird.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich habe seit 14 Wochen nicht einen einzigen Montag von vorne angefangen. Das war für mich unvorstellbar."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">David L.</span>
+                  <span class="case-details">40 Jahre &middot; Banker &middot; 3 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 9 kg &middot; 10 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Das Studio liegt 25 Minuten entfernt. Mit Anfahrt, Umziehen und Dusche kostet eine Einheit fast zwei Stunden. Er fährt kaum noch hin, und wenn, muss es das volle Programm sein. Das macht er selten.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Heimtraining. 20 bis 25 Minuten, drei Mal pro Woche, in einem Zwei-Meter-Radius. Die Fahrzeit entfällt als Hindernis komplett.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Das Studio war meine Ausrede, nicht meine Lösung. Das habe ich jetzt verstanden."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Kai R.</span>
+                  <span class="case-details">35 Jahre &middot; Lehrer &middot; 3 Kinder unter 5</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 7 kg &middot; 12 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Drei Kinder unter fünf. Kein planbarer Abend. Er hat aufgehört zu planen, weil die Kinder jeden Plan zunichte machen.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">6-Uhr-Morgen-Protokoll: 22 Minuten, bevor das Haus aufwacht. Das Fenster war immer da. Er hat es nur nie genutzt.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich habe aufgehört, auf den richtigen Moment zu warten. Es gibt keinen richtigen Moment."</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TYP 4: SCHLAFSLOSER VATER ========== -->
+    <section class="archetyp-section" id="schlafsloser">
+      <div class="container container--wide">
+        <div class="archetyp-header">
+          <div class="typ-nr">Typ 04</div>
+          <h2>Der schlaflose Vater</h2>
+          <p class="tagline">Er ist nicht faul. Er läuft auf Reserve, und sein Körper kämpft zurück.</p>
+        </div>
+        <div class="case-studies">
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Tobias F.</span>
+                  <span class="case-details">34 Jahre &middot; Softwareentwickler &middot; 1 Kind (14 Monate)</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 9 kg &middot; 11 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Sein Kind schläft nicht durch. Seit über einem Jahr kein voller Schlaf. Er war überzeugt, dass er warten muss, bis das besser wird, bevor er anfangen kann.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Mit dem gearbeitet, was er hatte. Training angepasst an seinen Energielevel. Eine Ernährungsstruktur, die den Hunger stabilisiert, auch bei wenig Schlaf.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich dachte, ich müsste warten. Das war der Fehler. Sein Kind schläft immer noch nicht durch."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Felix P.</span>
+                  <span class="case-details">32 Jahre &middot; Ingenieur &middot; Zwillinge (18 Monate)</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 8 kg &middot; 13 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Zwei Kinder, die sich beim Aufwachen abwechseln. Manchmal drei Unterbrechungen pro Nacht. Er hat nicht mal den Kopf, um an Ernährung oder Training zu denken.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Radikal vereinfachtes System. Nur eine Sache täglich: Eiweiß zum Frühstück. Das war der einzige Einstieg. Erst wenn das sitzt, kommt der nächste Schritt.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich dachte, ich brauche einen kompletten Neustart. Ich brauchte nur einen Anfang, der klein genug ist, dass ich ihn wirklich mache."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Robert G.</span>
+                  <span class="case-details">39 Jahre &middot; Steuerberater &middot; 3 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 7 kg &middot; 10 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Schläft schlecht wegen des Babys und wegen der älteren Tochter, die Albträume hat. Durchschlafen ist seit drei Jahren kein realistisches Ziel. Er hat sich damit abgefunden, dauerhaft erschöpft zu sein.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Schlafqualität verbessert, ohne mehr Stunden zu bekommen. Kein Bildschirm nach 21:30 Uhr. Kein Koffein nach 14 Uhr. Ein kurzes Abendritual, das den Körper auf Schlaf vorbereitet.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich schlafe immer noch wenig. Aber ich wache nicht mehr so zerstört auf."</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TYP 5: SITZENDER ARBEITER ========== -->
+    <section class="archetyp-section" id="sitzender">
+      <div class="container container--wide">
+        <div class="archetyp-header">
+          <div class="typ-nr">Typ 05</div>
+          <h2>Der sitzende Arbeiter</h2>
+          <p class="tagline">Er trainiert. Sein Körper bewegt sich nicht. Das ist nicht dasselbe.</p>
+        </div>
+        <div class="case-studies">
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Markus D.</span>
+                  <span class="case-details">43 Jahre &middot; IT-Leiter &middot; 3 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 10 kg &middot; 12 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Geht zweimal die Woche ins Studio. Isst gesund. Trinkt wenig. Versteht nicht, warum sich nichts verändert. Fünf Tage Homeoffice pro Woche.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Training kaum verändert. Nur Alltagsbewegung strukturiert: Pausen, Schritte, Bewegungsunterbrechungen. Dann das Training auf wirkungsvolle Übungen umgestellt.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ein Kollege im Video-Call: Hast du abgenommen? Ich: Ich gehe genauso oft ins Studio wie immer."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Jan V.</span>
+                  <span class="case-details">38 Jahre &middot; Berater &middot; 2 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 8 kg &middot; 9 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Komplett remote auf dem Land. Kein Arbeitsweg, kein Bürogebäude. Er verlässt das Haus manchmal gar nicht. Manche Tage unter 1.500 Schritte.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Strukturierte Bewegungspausen im Arbeitstag. Nach jedem zweistündigen Arbeitsblock zehn Minuten draußen. Dazu ein kurzer Abendspaziergang als Übergang zwischen Arbeit und Familienzeit.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich hatte keine Ahnung, wie wenig ich mich bewegte, weil ich dachte, dass Training Bewegung ist."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="transformation-strip" aria-hidden="true">
+              <div class="trans-img">&#128247;<span>Vorher</span></div>
+              <div class="trans-img">&#128247;<span>Nachher</span></div>
+            </div>
+            <div class="case-card-top">
+              <div class="case-profile">
+                <div class="case-avatar" aria-hidden="true">&#128104;</div>
+                <div>
+                  <span class="case-name">Philipp E.</span>
+                  <span class="case-details">45 Jahre &middot; Finanzvorstand &middot; 2 Kinder</span>
+                </div>
+              </div>
+              <div class="case-result">Minus 12 kg &middot; 11 Wochen</div>
+            </div>
+            <div class="case-card-body">
+              <div>
+                <p class="case-block-label">Das Hindernis</p>
+                <p class="case-block-text">Versuchte, mit mehr Training das Sitzen zu kompensieren. Samstag 90 Minuten, Sonntag Krafttraining. Er war erschöpft, erholte sich kaum, die Ergebnisse blieben aus.</p>
+              </div>
+              <div>
+                <p class="case-block-label">Was sich verändert hat</p>
+                <p class="case-block-text">Trainingsvolumen halbiert, dafür jeden Tag mehr Alltagsbewegung eingebaut. Wochenendtraining auf 30 Minuten mit Plan reduziert.</p>
+              </div>
+              <div class="case-quote">
+                <p>„Ich habe weniger trainiert und mehr erreicht. Das hat mein Verständnis von Sport komplett verändert."</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="intro">
+          <div class="section-label" style="text-align:center;">Häufige Fragen</div>
+          <h2>Was du wissen willst, bevor du buchst.</h2>
+          <p>Ehrliche Antworten. Kein Marketing-Sprech.</p>
+        </div>
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Was genau passiert im kostenlosen Zeitraum?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              Du bekommst vom ersten Tag an alles: deinen persönlichen Trainingsplan, die wöchentliche Einkaufsliste, tägliche Nachrichten von mir und direkten Zugang, wenn du Fragen hast. Der kostenlose Zeitraum endet, wenn du deinen ersten sichtbaren Erfolg erlebt hast. Das passiert bei den meisten Männern zwischen Woche 3 und Woche 5.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Wer entscheidet, wann der erste Erfolg da ist?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              Du. Du meldest mir, wenn du ihn erlebt hast. Das kann sein: deine Frau bemerkt es, du siehst es im Spiegel, ein Kollege macht eine Bemerkung, deine Hose sitzt anders, oder du hast abends wieder Energie. Ich frage dich nicht danach. Du meldest es, wenn es da ist.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Was wenn kein Ergebnis kommt?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              Dann schuldest du nichts. Kein Gespräch, keine Erklärung. Das Risiko liegt komplett bei mir. Ich nehme dieses Risiko, weil ich weiß, was mit Männern passiert, wenn sie ein System haben, das zu ihrer Situation passt.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Muss ich separat kochen oder mich anders ernähren als meine Familie?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              Nein. Die Einkaufsliste basiert auf dem, was deine Familie sowieso isst. Wir passen an, wie du isst, nicht was auf dem Tisch steht. Du sitzt weiterhin beim Familienessen. Du kochst nichts extra.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Wie viel Zeit brauche ich täglich?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              Training: 20 bis 30 Minuten, drei bis vier Mal pro Woche. Zuhause oder im Studio, beides funktioniert. Die Ernährungsstruktur kostet dich keine extra Zeit. Die Morgenroutine dauert wenige Minuten. Das ist der Kern: ein System, das in ein volles Familienleben passt.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Was kostet es nach dem ersten Erfolg?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">
+              Das besprechen wir beim Strategiegespräch, bevor du anfängst. Ich sage dir die Zahl im Gespräch, direkt und ohne Umwege. Es gibt keine versteckten Kosten und keinen Druck, danach weiterzumachen.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FINALER CTA ========== -->
+    <section class="final-cta">
+      <div class="container">
+        <span class="gold-line"></span>
+        <h2>Bereit, deine eigene Geschichte zu schreiben?</h2>
+        <p class="lead">
+          Das Gespräch dauert 15 Minuten. Wir schauen gemeinsam, welcher Typ du bist, was dein konkretes Hindernis ist, und wie ein Plan für deine Situation aussieht. Kein Druck. Kein Pitch.
+        </p>
+        <a href="termin.html" class="btn btn--primary btn--lg">
+          Kostenloses Gespräch buchen &rarr;
+        </a>
+        <p class="cta-meta">Kostenlos &middot; 15 Minuten &middot; Direkt mit dem Coach</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Fit Dad Coaching &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <!-- FAQ Accordion -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+  </script>
+
+</body>
+</html>

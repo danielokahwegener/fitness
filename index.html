@@ -90,7 +90,7 @@
     .dream-section .intro p  { color: var(--text-secondary); font-size: 0.95rem; }
     .dream-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: var(--spacing-sm);
     }
     .dream-card {
@@ -268,7 +268,7 @@
     .archetypen-section .intro p  { color: var(--text-secondary); font-size: 0.95rem; }
     .archetypen-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 1px;
       background: var(--bg-border);
       border: 1px solid var(--bg-border);
@@ -454,6 +454,7 @@
       z-index: 2;
     }
     .carousel-dot {
+      /* Visuell klein, aber Touch-Target ist 44px via padding */
       width: 6px;
       height: 6px;
       border-radius: 50%;
@@ -461,9 +462,11 @@
       transition: background 0.3s;
       cursor: pointer;
       border: none;
-      padding: 0;
+      padding: 19px; /* Erweitert Hit-Area auf ~44px */
+      background-clip: content-box;
+      margin: -19px;
     }
-    .carousel-dot.active { background: var(--gold); }
+    .carousel-dot.active { background: var(--gold); background-clip: content-box; }
     .coach-info h2 { margin-bottom: 0.5rem; font-size: clamp(1.3rem, 3vw, 1.8rem); }
     .coach-tagline {
       font-family: var(--font-heading);
@@ -497,12 +500,17 @@
       color: var(--text-muted);
       letter-spacing: 0.04em;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .coach-layout {
         grid-template-columns: 1fr;
       }
-      .coach-carousel { aspect-ratio: 4/3; max-height: 300px; }
+      .coach-carousel { aspect-ratio: 4/3; max-height: 340px; }
       .coach-stats { gap: var(--spacing-md); }
+      .coach-info h2 { margin-top: var(--spacing-sm); }
+    }
+
+    @media (max-width: 480px) {
+      .coach-carousel { aspect-ratio: 1/1; max-height: 280px; }
     }
 
     /* ---- Wie es funktioniert ---- */
@@ -569,6 +577,63 @@
       max-width: 420px;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    /* ============================================
+       MOBILE — Ergänzende Fixes für index.html
+       ============================================ */
+    @media (max-width: 768px) {
+      /* Hero */
+      .hero { padding: 2rem 1rem; }
+      .hero h1 { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+      .hero .sub { font-size: 0.95rem; margin-bottom: 1.75rem; }
+      .hero-meta { font-size: 0.72rem; }
+
+      /* Dream Grid: 2 Spalten auf Tablet, 1 auf sehr kleinen Screens */
+      .dream-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* Für-wen */
+      .fuer-wen { padding: 2rem 1rem; }
+
+      /* Angebot */
+      .angebot-header { padding: var(--spacing-md); }
+      .angebot-body   { padding: var(--spacing-md); gap: var(--spacing-md); }
+
+      /* Archetypen */
+      .archetypen-grid { grid-template-columns: repeat(2, 1fr); }
+      .archetyp-cell { padding: 1rem; }
+
+      /* Testimonials */
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .transformation-imgs .img-placeholder { aspect-ratio: 1/1; }
+
+      /* Coach Carousel Dots — mehr Abstand zueinander auf Mobile */
+      .carousel-dots { gap: 10px; }
+
+      /* Wie-Section */
+      .wie-section { padding: 2rem 1rem; }
+
+      /* Final CTA */
+      .final-cta { padding: 2.5rem 1rem; }
+      .final-cta h2 { font-size: clamp(1.3rem, 5vw, 1.8rem); }
+    }
+
+    @media (max-width: 480px) {
+      /* Dream Grid: 1 Spalte auf sehr kleinen Screens */
+      .dream-grid { grid-template-columns: 1fr; }
+
+      /* Archetypen: 1 Spalte */
+      .archetypen-grid { grid-template-columns: 1fr; }
+
+      /* Hero */
+      .hero { padding: 1.75rem 0.875rem; }
+
+      /* Angebot Features */
+      .feature-icon { display: none; }
+      .feature-item { gap: 0; }
+
+      /* Proof-Strip */
+      .proof-strip { font-size: 0.78rem; line-height: 1.5; }
     }
   </style>
 </head>
@@ -661,108 +726,6 @@
           <li>Du bist abends erschöpft und gibst dir die Schuld daran</li>
           <li>Du vermeidest Fotos. Du vermeidest den Spiegel. Du vermeidest das Thema mit deiner Frau</li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Angebot -->
-  <section class="angebot-section">
-    <div class="container container--wide">
-      <div class="angebot-inner">
-        <div class="angebot-header">
-          <div class="angebot-tag">Das Angebot</div>
-          <h2>Kostenlos bis zu deinem ersten sichtbaren Ergebnis.</h2>
-          <p>Du zahlst nichts, bis du deinen ersten Beweis siehst. Bis deine Frau es bemerkt. Bis du es im Spiegel siehst. Bis ein Kollege nachfragt. Erst dann beginnt die Investition.</p>
-        </div>
-        <div class="angebot-body">
-          <div class="angebot-features">
-            <h3>Was inklusive ist</h3>
-            <div class="feature-item">
-              <div class="feature-icon">&#9675;</div>
-              <div>
-                <strong>Personalisierter Trainingsplan</strong>
-                <span>20 bis 30 Minuten täglich, Zuhause oder Studio. Kein Gerät, das du nicht hast.</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">&#9675;</div>
-              <div>
-                <strong>Wöchentliche Einkaufsliste</strong>
-                <span>Basierend auf dem, was deine Familie sowieso isst. Kein separates Kochen.</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">&#9675;</div>
-              <div>
-                <strong>Tägliche Morgennachricht</strong>
-                <span>Jeden Morgen eine kurze Nachricht von deinem Coach. Damit der Tag richtig startet.</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">&#9675;</div>
-              <div>
-                <strong>Direktzugang zum Coach</strong>
-                <span>Fragen, Probleme, spontane Situationen. Du schreibst, wir antworten.</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">&#9675;</div>
-              <div>
-                <strong>Studio-Optimierung</strong>
-                <span>Wir machen mehr aus deinen 20 Minuten als andere aus 60. Jede Übung hat einen Grund.</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">&#9675;</div>
-              <div>
-                <strong>Cortisol und Schlaf-Protokoll</strong>
-                <span>Für Männer, die auf Reserve laufen. Wir bauen Energie auf, nicht nur Muskeln.</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">&#9675;</div>
-              <div>
-                <strong>Reise- und Ausnahme-Protokoll</strong>
-                <span>Dienstreise, Familienurlaub, Betriebsfest. Wir haben eine Antwort für jede Situation.</span>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">&#9675;</div>
-              <div>
-                <strong>Wöchentlicher Check-in-Call</strong>
-                <span>15 Minuten. Wir schauen was funktioniert, was angepasst wird, und wie es dir wirklich geht.</span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="angebot-versprechen">
-              <h3>Das Versprechen</h3>
-              <p>
-                Wir starten gemeinsam. Du bekommst deinen Plan, deine Begleitung, dein System. Wenn du nach den ersten 3 bis 4 Wochen deinen ersten sichtbaren Erfolg erlebt hast, sehen wir gemeinsam, ob du weitermachen möchtest.
-              </p>
-              <p>
-                Kein sichtbarer Erfolg? Dann schuldest du nichts. Kein Gespräch. Keine Erklärung.
-              </p>
-              <a href="quiz.html" class="btn btn--primary btn--full" style="margin-top:0.5rem;">
-                Jetzt kostenlos starten &rarr;
-              </a>
-            </div>
-            <div style="margin-top: var(--spacing-md);">
-              <p class="schmerz-titel" style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; font-weight:700;">Was als Deinen ersten Erfolg zählt</p>
-              <ul class="check-list">
-                <li>Deine Frau fragt, ob du abgenommen hast</li>
-                <li>Du schaust morgens in den Spiegel und erkennst dich</li>
-                <li>Ein Kollege oder Freund macht eine Bemerkung</li>
-                <li>Deine Hose sitzt anders als vor vier Wochen</li>
-                <li>Du hast abends noch Energie und das fühlt sich neu an</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="angebot-footer">
-          <a href="quiz.html" class="btn btn--primary btn--lg">Kostenlosen Audit machen &rarr;</a>
-          <p>2 Minuten &middot; Kostenlos &middot; Kein Kreditkartendetails &middot; Kein Pitch</p>
-        </div>
       </div>
     </div>
   </section>

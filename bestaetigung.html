@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gespräch bestätigt | Fit Dad Coaching</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .best-hero {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .best-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(201,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .best-hero .container { position: relative; }
+
+    .check-ring {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-dark);
+      background: var(--gold-subtle);
+      color: var(--gold);
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .best-hero h1 { margin-bottom: 0.5rem; }
+    .best-hero .sub { color: var(--text-secondary); font-size: 0.95rem; }
+
+    .best-body {
+      padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
+    }
+
+    /* Nächste Schritte */
+    .naechste-schritte {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .naechste-schritte::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+    .schritte-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--spacing-sm);
+    }
+    .schritte-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+    .schritt-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .schritt-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .schritt-text strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+    .schritt-text span {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* Vorbereitungsfrage */
+    .vorbereitung-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+    .vorbereitung-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .vorbereitung-frage {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .vorbereitung-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Coach-Erwartung */
+    .coach-erwartung {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-left: 3px solid var(--gold-dark);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: var(--spacing-md) var(--spacing-lg);
+    }
+    .coach-erwartung p {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 0.5rem;
+    }
+    .coach-sig {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .best-hero { padding: 2rem 1rem 1.5rem; }
+      .best-body { padding: 1.5rem 1rem 2rem; }
+      .naechste-schritte { padding: var(--spacing-md); }
+      .coach-erwartung { padding: var(--spacing-sm) var(--spacing-md); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="site-logo">Fit Dad <span>Coaching</span></span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="best-hero">
+    <div class="container">
+      <div class="check-ring" aria-hidden="true">&#10003;</div>
+      <h1>Dein Gespräch ist gebucht.</h1>
+      <p class="sub">Du bekommst eine Bestätigung per E-Mail mit allen Details.</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <main class="best-body">
+    <div class="container">
+
+      <!-- Nächste Schritte -->
+      <div class="naechste-schritte fade-in">
+        <p class="schritte-label">Was als nächstes passiert</p>
+        <div class="schritte-list">
+          <div class="schritt-item">
+            <div class="schritt-num">1</div>
+            <div class="schritt-text">
+              <strong>Du bekommst eine Bestätigung</strong>
+              <span>Eine E-Mail mit dem Termin, dem Link und allem, was du brauchst. Schau auch im Spam-Ordner.</span>
+            </div>
+          </div>
+          <div class="schritt-item">
+            <div class="schritt-num">2</div>
+            <div class="schritt-text">
+              <strong>Wir schauen uns deinen Audit an</strong>
+              <span>Ich lese dein Ergebnis vor dem Gespräch. Wir fangen genau da an, wo du stehst. Keine allgemeinen Fragen, keine Vorstellungsrunde.</span>
+            </div>
+          </div>
+          <div class="schritt-item">
+            <div class="schritt-num">3</div>
+            <div class="schritt-text">
+              <strong>Das Gespräch: 15 Minuten, ehrlich, ohne Pitch</strong>
+              <span>Ich stelle dir Fragen. Ich höre zu. Am Ende weißt du, was dein nächster Schritt ist, egal ob du danach mit mir arbeitest oder nicht.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vorbereitungsfrage -->
+      <div class="vorbereitung-box fade-in">
+        <p class="vorbereitung-label">Deine Vorbereitung</p>
+        <p class="vorbereitung-frage">
+          Was war der Moment, in dem du entschieden hast, dass sich etwas ändern muss?
+        </p>
+        <p class="vorbereitung-hint">
+          Kein Aufsatz nötig. Aber denk kurz daran. Das ist meistens der wichtigste Moment im ganzen Gespräch.
+        </p>
+      </div>
+
+      <!-- Coach-Erwartung -->
+      <div class="coach-erwartung fade-in">
+        <p>
+          Komm bereit, ehrlich zu sein. Nicht die Version, die du deinen Kollegen erzählst. Die echte. Das Gespräch funktioniert nur, wenn wir beide wissen, wo du wirklich stehst.
+        </p>
+        <p class="coach-sig">[Dein Name], Fit-Dad-Coach</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Fit Dad Coaching &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
