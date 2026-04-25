@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dein Fit-Dad-Typ | Ergebnis</title>
+  <title>Dein Athleten-Profil | Ergebnis</title>
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -302,13 +302,42 @@
       margin-bottom: var(--spacing-lg);
       line-height: 1.6;
     }
+
+    /* ============================================
+       MOBILE
+       ============================================ */
+    @media (max-width: 768px) {
+      .gate-hero  { padding: 2rem 1rem 1.5rem; }
+      .gate-hero h1 { font-size: clamp(1.5rem, 6vw, 2rem); }
+      .gate-body  { padding: 1.5rem 1rem 2rem; }
+      .gate-box   { padding: var(--spacing-md); }
+
+      .ergebnis-hero { padding: 2rem 1rem 1.5rem; }
+      .ergebnis-hero h1 { font-size: clamp(1.5rem, 6vw, 2rem); }
+      .ergebnis-section { padding: 1.5rem 1rem 2rem; }
+
+      .beschreibung-box { padding: var(--spacing-md); }
+      .schnellgewinn-box { padding: var(--spacing-sm) var(--spacing-md); }
+      .cta-box { padding: var(--spacing-md); }
+      .cta-erwartet { max-width: 100%; }
+
+      /* Form auf Mobile: Inputs untereinander */
+      .form-inline { flex-direction: column; }
+      .form-group  { margin-bottom: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .gate-hero h1 { font-size: 1.45rem; }
+      .name-preview { font-size: 1.2rem; filter: blur(6px); }
+      .cta-box h2   { font-size: 1.1rem; }
+    }
   </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="container">
-      <span class="site-logo">Fit Dad <span>Audit</span></span>
+      <span class="site-logo">Athlete <span>Audit</span></span>
     </div>
   </header>
 
@@ -320,10 +349,10 @@
     <!-- Teaser-Hero ohne Archetyp-Name -->
     <section class="gate-hero">
       <div class="container">
-        <div class="gate-eyebrow">Dein Ergebnis liegt bereit</div>
-        <h1>Wir haben deinen<br>Fit-Dad-Typen ermittelt.</h1>
+        <div class="gate-eyebrow">Dein Athleten-Profil liegt bereit</div>
+        <h1>Wir haben dein<br>Athleten-Profil ermittelt.</h1>
         <div class="name-preview" aria-hidden="true">Der &#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;&#x2588;</div>
-        <p>Gib deine E-Mail ein, um deinen Typ und deinen personalisierten Aktionsplan zu sehen.</p>
+        <p>Gib deine E-Mail ein, um dein Profil und deinen personalisierten Comeback-Plan zu sehen.</p>
       </div>
     </section>
 
@@ -366,7 +395,7 @@
     <!-- Archetyp-Hero -->
     <section class="ergebnis-hero">
       <div class="container">
-        <div class="ergebnis-eyebrow">Dein Fit-Dad-Typ</div>
+        <div class="ergebnis-eyebrow">Dein Athleten-Profil</div>
         <h1 id="archetyp-name">Wird geladen…</h1>
         <p class="tagline" id="archetyp-tagline"></p>
       </div>
@@ -396,13 +425,13 @@
 
         <!-- CTA: Strategiegespräch buchen -->
         <div class="cta-box">
-          <h2>Bereit, das wirklich anzugehen?</h2>
+          <h2>Bereit, das Comeback anzugehen?</h2>
           <p>
-            Der Plan zeigt dir das Was. Im Gespräch bauen wir gemeinsam das Wie, konkret auf deinen Alltag zugeschnitten.
+            Der Plan zeigt dir das Was. Im Gespräch bauen wir gemeinsam das Wie, konkret auf dein Athleten-Profil und deinen Alltag zugeschnitten.
           </p>
           <ul class="cta-erwartet">
-            <li>Wir analysieren deine Situation direkt auf Basis deines Typs</li>
-            <li>Du bekommst eine 90-Tage-Roadmap, die dir gehört, egal was danach kommt</li>
+            <li>Wir analysieren deine Situation auf Basis deines Athleten-Profils</li>
+            <li>Du bekommst deinen 90-Tage-Comeback-Plan, der zu deiner sportlichen Geschichte passt</li>
             <li>Du entscheidest, ob Coaching passt. Kein Druck, kein Pitch</li>
           </ul>
           <a id="cta-termin-btn" href="termin.html" class="btn btn--primary btn--lg">
@@ -418,7 +447,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>Fit Dad Audit &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
+      <p>Athlete Comeback Coaching &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
     </div>
   </footer>
 
@@ -456,7 +485,7 @@
       document.getElementById('cta-termin-btn').href = 'termin.html?typ=' + key;
 
       /* Seitentitel */
-      document.title = 'Dein Fit-Dad-Typ | Ergebnis';
+      document.title = 'Dein Athleten-Profil | Ergebnis';
 
       /* E-Mail-Capture initialisieren */
       window.FDA.initEmailCapture(key);

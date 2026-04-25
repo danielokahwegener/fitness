@@ -104,7 +104,7 @@
       '<div class="quiz-loading fade-in">' +
         '<div class="spinner"></div>' +
         '<h2 style="margin-top:1.5rem;">Wir analysieren deine Antworten…</h2>' +
-        '<p>Einen Moment. Wir ermitteln deinen pers\xf6nlichen Fit-Dad-Typen.</p>' +
+        '<p>Einen Moment. Wir ermitteln dein pers\xf6nliches Athleten-Profil.</p>' +
       '</div>';
 
     setTimeout(function() {

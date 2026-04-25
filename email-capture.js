@@ -10,11 +10,11 @@ window.FDA.CK_CONFIG = {
   endpunkt: 'https://api.convertkit.com/v3/forms/FORM_ID/subscribe',
   apiKey: 'DEIN_API_KEY',
   tagIds: {
-    S: 'TAG_ID_STRESSGAINER',
-    R: 'TAG_ID_REAKTIVER_ESSER',
-    T: 'TAG_ID_UNBESTAENDIGER_TRAINER',
-    P: 'TAG_ID_SCHLAFSLOSER_VATER',
-    W: 'TAG_ID_SITZENDER_ARBEITER'
+    V: 'TAG_ID_VOLLGAS_ATHLET',
+    T: 'TAG_ID_TEAMKIND',
+    R: 'TAG_ID_ROST_VETERAN',
+    M: 'TAG_ID_METABOLISMUS_SCHOCK',
+    L: 'TAG_ID_LEISTUNGSBLOCKIERTE'
   }
 };
 
