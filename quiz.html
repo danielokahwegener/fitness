@@ -18,7 +18,7 @@
   <header class="quiz-header">
     <div class="container">
       <span class="quiz-logo">Ex-Athleten <span>Audit</span></span>
-      <div class="progress-wrap">
+      <div class="progress-wrap" id="progress-wrap" style="display:none;">
         <div class="progress-label" id="progress-label">Frage 1 von 7</div>
         <div class="progress-bar">
           <div class="progress-bar__fill" id="progress-fill" style="width: 0%"></div>
@@ -27,7 +27,29 @@
     </div>
   </header>
 
-  <main class="quiz-stage" id="quiz-stage">
+  <!-- Start Screen -->
+  <main id="quiz-start-screen" style="display:flex; align-items:center; justify-content:center; min-height:calc(100vh - 64px); padding:2rem 1rem;">
+    <div style="max-width:520px; width:100%; text-align:center;">
+      <div style="display:inline-block; font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold-dark); background:var(--gold-subtle); padding:0.28rem 0.9rem; border-radius:100px; margin-bottom:1.5rem;">
+        Ex-Athleten Audit &middot; 7 Fragen &middot; 2 Minuten
+      </div>
+      <h2 style="font-size:clamp(1.6rem,5vw,2.4rem); margin-bottom:1rem; line-height:1.2;">
+        Finde heraus, warum es<br>bisher immer an derselben<br>Stelle aufgehört hat.
+      </h2>
+      <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:2rem; font-size:0.95rem;">
+        Das Audit ermittelt dein dominantes Ex-Athleten-Profil: deinen Typ, deinen Hauptblocker, und den ersten Schritt, der bei dir konkret funktioniert. Keine richtigen oder falschen Antworten.
+      </p>
+      <button class="btn btn--primary btn--lg" id="start-audit-btn" type="button">
+        Audit jetzt starten &rarr;
+      </button>
+      <p style="font-size:0.72rem; color:var(--text-muted); margin-top:1rem; letter-spacing:0.03em;">
+        Deine Antworten werden vertraulich behandelt und nicht an Dritte weitergegeben.
+      </p>
+    </div>
+  </main>
+
+  <!-- Quiz Stage (shown after start) -->
+  <main class="quiz-stage" id="quiz-stage" style="display:none;">
     <div class="quiz-loading fade-in">
       <div class="spinner"></div>
       <p style="color:var(--text-muted); font-size:0.85rem; margin-top:1rem;">Wird geladen&hellip;</p>
@@ -40,6 +62,13 @@
 
   <script src="quiz-engine.js"></script>
   <script src="quiz-ui.js"></script>
-  <script>document.addEventListener('DOMContentLoaded', function() { window.FDA.initQuiz(); });</script>
+  <script>
+    document.getElementById('start-audit-btn').addEventListener('click', function() {
+      document.getElementById('quiz-start-screen').style.display = 'none';
+      document.getElementById('quiz-stage').style.display = '';
+      document.getElementById('progress-wrap').style.display = '';
+      window.FDA.initQuiz();
+    });
+  </script>
 </body>
 </html>
