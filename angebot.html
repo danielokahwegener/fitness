@@ -362,6 +362,67 @@
       background: var(--bg-border);
     }
 
+    /* ---- Verfügbarkeit ---- */
+    .verfuegbarkeit-strip {
+      background: var(--navy);
+      color: var(--cream);
+      text-align: center;
+      padding: 0.6rem var(--spacing-sm);
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid rgba(201,169,110,0.3);
+    }
+    .verfuegbarkeit-strip strong { color: var(--gold); }
+    .verfuegbarkeit-strip .dot { margin: 0 0.5rem; opacity: 0.4; }
+
+    /* ---- FAQ ---- */
+    .faq-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-subtle);
+    }
+    .faq-section .intro { text-align: center; margin-bottom: var(--spacing-lg); }
+    .faq-section .intro h2 { margin-bottom: 0.5rem; }
+    .faq-section .intro p { color: var(--text-secondary); font-size: 0.9rem; }
+    .faq-list {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--bg-border);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .faq-item { background: var(--bg-surface); }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: var(--spacing-md);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q:hover { color: var(--gold); }
+    .faq-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      display: none;
+      padding: 0 var(--spacing-md) var(--spacing-md);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a { display: block; }
+
     /* Mobile */
     @media (max-width: 768px) {
       .angebot-hero h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
@@ -378,6 +439,10 @@
   </style>
 </head>
 <body>
+
+  <div class="verfuegbarkeit-strip">
+    Nächste Gruppe startet am <strong>[STARTDATUM]</strong><span class="dot">&middot;</span>Noch <strong>[ANZAHL] Plätze</strong> verfügbar<span class="dot">&middot;</span>Jede weitere Woche ohne System ist eine Woche, die du nicht zurückbekommst.
+  </div>
 
   <header class="site-header">
     <div class="container">
@@ -632,18 +697,90 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="intro">
+        <div class="section-label" style="text-align:center;">Häufige Fragen</div>
+        <h2>Bevor du buchst.</h2>
+        <p>Direkte Antworten. Kein Marketing-Sprech.</p>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Wie viel Zeit brauche ich wirklich pro Woche?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">
+            3 Einheiten pro Woche, je 45 Minuten. Zuhause oder im Studio. Das Programm ist gebaut für jemanden mit einem vollen 9-to-5-Job, nicht für jemanden, der zweimal täglich trainieren kann. Mehr als das wird nicht erwartet.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Ich habe alte Verletzungen aus meiner Sportlerzeit. Kann ich trotzdem mitmachen?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">
+            Ja. Die Verletzungs-Bibliothek enthält 50 Übungsmodifikationen für die fünf häufigsten Verletzungsbereiche aus Mannschaftssportarten: Knie, Schulter, unterer Rücken, Hüfte, Sprunggelenk. Beim Erstgespräch erfassen wir deine spezifischen Einschränkungen und passen das Programm entsprechend an. Es gibt einen Unterschied zwischen "kann nicht trainieren" und "weiß nicht, wie man mit dieser Geschichte trainiert." Den klären wir.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Was passiert nach Tag 100? Gibt es eine automatische Zahlung?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">
+            Nein. Kein Kreditkartendetail, kein automatischer Abzug, keine versteckte Verlängerung. An Tag 90 führen wir ein kurzes Gespräch: Was hast du erreicht, wo willst du als nächstes hin? Wenn du weitermachen willst, gibt es das bezahlte Coaching-Programm. Wenn du aufhören willst: du behältst alle Materialien und die Community-Mitgliedschaft. Deine Entscheidung, zu dem Zeitpunkt, wenn du die Ergebnisse siehst.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Was wenn ich eine Woche verpasse oder auf Dienstreise bin?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">
+            Dafür gibt es den Reset-Killer-Plan: drei Szenarien, drei Protokolle. Dienstreise. Krankheit. Verpasste Woche. Für jeden Fall steht, was du jetzt tust, nicht nächsten Montag. Eine verpasste Woche ist kein Reset. Das ist der einzige strukturelle Unterschied zwischen diesem Programm und allem, was du vorher versucht hast.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA -->
   <section class="angebot-cta">
     <div class="container">
       <span class="gold-line"></span>
       <h2>Bereit, es zu testen?</h2>
       <p>Starte mit dem kostenlosen Athlete Audit. 2 Minuten. Dein Profil sofort. Dein Programm direkt danach.</p>
+      <p style="font-size:0.8rem; color:var(--gold); font-weight:600; margin-bottom:var(--spacing-sm); letter-spacing:0.04em;">
+        Nächste Gruppe: [STARTDATUM] &middot; Noch [ANZAHL] Plätze frei
+      </p>
       <a href="termin.html" class="btn btn--primary btn--lg">
         Kostenloses Erstgespräch buchen &rarr;
       </a>
       <p class="cta-hinweis">Kein Kreditkartendetail &middot; Kein automatischer Abzug &middot; 100 Tage Testphase</p>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:var(--spacing-sm);">
+        <a href="ergebnisse.html" style="color:var(--gold); text-decoration:underline;">Echte Ergebnisse ehemaliger Athleten ansehen &rarr;</a>
+      </p>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+  </script>
 
   <footer class="site-footer">
     <div class="container">
