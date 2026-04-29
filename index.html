@@ -444,6 +444,29 @@
       text-transform: uppercase;
       color: var(--gold);
     }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.42);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      padding: 0;
+    }
+    .carousel-arrow:hover { background: rgba(0,0,0,0.72); }
+    .carousel-arrow--prev { left: 10px; }
+    .carousel-arrow--next { right: 10px; }
+
     .carousel-dots {
       position: absolute;
       bottom: 12px;
@@ -840,6 +863,8 @@
           <div class="carousel-slide">
             <img src="coach-4.jpg" alt="[Dein Name]">
           </div>
+          <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Vorheriges Foto">&#8592;</button>
+          <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Nächstes Foto">&#8594;</button>
           <div class="carousel-dots" id="carouselDots"></div>
         </div>
 
@@ -925,6 +950,7 @@
       var slides = document.querySelectorAll('#coachCarousel .carousel-slide');
       var dotsContainer = document.getElementById('carouselDots');
       var current = 0;
+      var timer;
 
       if (slides.length <= 1) return;
 
@@ -933,20 +959,33 @@
         var dot = document.createElement('button');
         dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
         dot.setAttribute('aria-label', 'Foto ' + (i + 1));
-        dot.addEventListener('click', function() { goTo(i); });
+        dot.addEventListener('click', function() { goTo(i); resetTimer(); });
         dotsContainer.appendChild(dot);
+      });
+
+      /* Pfeile */
+      document.getElementById('carousel-prev').addEventListener('click', function() {
+        goTo(current - 1); resetTimer();
+      });
+      document.getElementById('carousel-next').addEventListener('click', function() {
+        goTo(current + 1); resetTimer();
       });
 
       function goTo(index) {
         slides[current].classList.remove('active');
-        dotsContainer.children[current].classList.remove('active');
+        if (dotsContainer.children[current]) dotsContainer.children[current].classList.remove('active');
         current = (index + slides.length) % slides.length;
         slides[current].classList.add('active');
-        dotsContainer.children[current].classList.add('active');
+        if (dotsContainer.children[current]) dotsContainer.children[current].classList.add('active');
       }
 
-      /* Auto-cycle alle 4 Sekunden */
-      setInterval(function() { goTo(current + 1); }, 4000);
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(function() { goTo(current + 1); }, 4000);
+      }
+
+      /* Auto-cycle starten */
+      timer = setInterval(function() { goTo(current + 1); }, 4000);
     })();
   </script>
 
