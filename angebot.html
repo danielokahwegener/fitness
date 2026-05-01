@@ -441,7 +441,7 @@
 <body>
 
   <div class="verfuegbarkeit-strip">
-    Nächster Start: <strong>[STARTDATUM]</strong><span class="dot">&middot;</span>Noch <strong>[ANZAHL] Plätze</strong> verfügbar<span class="dot">&middot;</span>Jede weitere Woche ohne System ist eine Woche, die du nicht zurückbekommst.
+    Nächster Start: <strong class="js-startdatum">[STARTDATUM]</strong><span class="dot">&middot;</span>Noch <strong class="js-plaetze">[ANZAHL]</strong> Plätze verfügbar<span class="dot">&middot;</span>Jede weitere Woche ohne System ist eine Woche, die du nicht zurückbekommst.
   </div>
 
   <header class="site-header">
@@ -656,7 +656,7 @@
       <h2>Bereit, es zu testen?</h2>
       <p>Starte mit dem kostenlosen Athlete Audit. 2 Minuten. Dein Profil sofort. Dein Programm direkt danach.</p>
       <p style="font-size:0.8rem; color:var(--gold); font-weight:600; margin-bottom:var(--spacing-sm); letter-spacing:0.04em;">
-        Nächste Gruppe: [STARTDATUM] &middot; Noch [ANZAHL] Plätze frei
+        Nächste Gruppe: <span class="js-startdatum">[STARTDATUM]</span> &middot; Noch <span class="js-plaetze">[ANZAHL]</span> Plätze frei
       </p>
       <a href="termin.html" class="btn btn--primary btn--lg">
         Kostenloses Erstgespräch buchen &rarr;
@@ -685,6 +685,20 @@
       <p>Athlete Comeback Coaching &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
     </div>
   </footer>
+
+  <script>
+    (function() {
+      var d = new Date(), dow = d.getDay();
+      var next = dow === 0 ? 7 : 7 - dow;
+      var s = new Date(d); s.setDate(d.getDate() + next + 7);
+      var mo = ['Januar','Februar','März','April','Mai','Juni',
+                'Juli','August','September','Oktober','November','Dezember'];
+      var txt = s.getDate() + '. ' + mo[s.getMonth()] + ' ' + s.getFullYear();
+      document.querySelectorAll('.js-startdatum').forEach(function(el){ el.textContent = txt; });
+      var plaetze = Math.floor(Math.random() * 6) + 2;
+      document.querySelectorAll('.js-plaetze').forEach(function(el){ el.textContent = plaetze; });
+    })();
+  </script>
 
 </body>
 </html>

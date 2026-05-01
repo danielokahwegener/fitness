@@ -16,7 +16,7 @@
 <body>
 
   <div style="background:var(--navy); color:var(--cream); text-align:center; padding:0.6rem var(--spacing-sm); font-size:0.8rem; border-bottom:1px solid rgba(201,169,110,0.3);">
-    Nächster Start: <strong style="color:var(--gold);">[STARTDATUM]</strong> &nbsp;&middot;&nbsp; Noch <strong style="color:var(--gold);">[ANZAHL] Plätze</strong> verfügbar &nbsp;&middot;&nbsp; <em>Jede weitere Woche ohne System ist eine Woche, die du nicht zurückbekommst.</em>
+    Nächster Start: <strong class="js-startdatum" style="color:var(--gold);">[STARTDATUM]</strong> &nbsp;&middot;&nbsp; Noch <strong class="js-plaetze" style="color:var(--gold);">[ANZAHL]</strong> Plätze verfügbar &nbsp;&middot;&nbsp; <em>Jede weitere Woche ohne System ist eine Woche, die du nicht zurückbekommst.</em>
   </div>
 
   <header class="site-header">
@@ -104,6 +104,20 @@
       <p>Athlete Comeback Coaching &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
     </div>
   </footer>
+
+  <script>
+    (function() {
+      var d = new Date(), dow = d.getDay();
+      var next = dow === 0 ? 7 : 7 - dow;
+      var s = new Date(d); s.setDate(d.getDate() + next + 7);
+      var mo = ['Januar','Februar','März','April','Mai','Juni',
+                'Juli','August','September','Oktober','November','Dezember'];
+      var txt = s.getDate() + '. ' + mo[s.getMonth()] + ' ' + s.getFullYear();
+      document.querySelectorAll('.js-startdatum').forEach(function(el){ el.textContent = txt; });
+      var plaetze = Math.floor(Math.random() * 6) + 2;
+      document.querySelectorAll('.js-plaetze').forEach(function(el){ el.textContent = plaetze; });
+    })();
+  </script>
 
   <script src="quiz-engine.js"></script>
   <script>
