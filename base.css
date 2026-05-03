@@ -147,7 +147,7 @@ strong { font-weight: 600; color: var(--text-primary); }
 .site-header {
   background: var(--bg-page);
   border-bottom: 1px solid var(--bg-border);
-  padding: 0.75rem 0;
+  padding: 0.5rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -163,7 +163,7 @@ strong { font-weight: 600; color: var(--text-primary); }
 
 .site-logo {
   display: block;
-  height: 36px;
+  height: 64px;
   width: auto;
 }
 
@@ -240,6 +240,8 @@ strong { font-weight: 600; color: var(--text-primary); }
   .container {
     padding: 0 1rem;
   }
+
+  .site-logo { height: 48px; }
 
   .site-header .btn {
     min-height: 44px;
