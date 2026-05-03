@@ -1,27 +1,33 @@
 /* =============================================
-   BASE.CSS — Premium Dark Theme
+   BASE.CSS — RePrime Athlet Coaching
+   Black · Silver · Red
    ============================================= */
 
 /* ---- Design-Tokens ---- */
 :root {
-  /* Hintergründe */
-  --bg-page:     #0b0d14;
-  --bg-surface:  #12141e;
-  --bg-elevated: #1a1d2b;
-  --bg-border:   #232638;
-  --bg-subtle:   #0f1119;
+  /* Hintergründe — neutral schwarz, kein Blau */
+  --bg-page:     #080808;
+  --bg-surface:  #111111;
+  --bg-elevated: #1C1C1C;
+  --bg-border:   #2E2E2E;
+  --bg-subtle:   #050505;
 
   /* Text */
-  --text-primary:   #eef0f8;
-  --text-secondary: #7c82a0;
-  --text-muted:     #4d5270;
-  --text-inverse:   #0b0d14;
+  --text-primary:   #F2F2F2;
+  --text-secondary: #9A9A9A;
+  --text-muted:     #555555;
+  --text-inverse:   #080808;
 
-  /* Rot-Akzent */
+  /* Rot — primäre Akzentfarbe (Aktion, CTA, Highlight) */
   --gold:        #CC1111;
   --gold-light:  #E03333;
   --gold-dark:   #8B0000;
   --gold-subtle: rgba(204,17,17,0.08);
+
+  /* Silber — sekundäre Akzentfarbe (Struktur, Labels, Dekor) */
+  --silver:        #C0C0C0;
+  --silver-dark:   #888888;
+  --silver-subtle: rgba(192,192,192,0.08);
 
   /* Semantisch */
   --success: #2e7d5a;
@@ -39,10 +45,11 @@
   --radius-xl:  20px;
 
   /* Schatten */
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.5);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,0.6);
-  --shadow-gold: 0 0 24px rgba(204,17,17,0.15);
+  --shadow-sm:     0 1px 4px rgba(0,0,0,0.6);
+  --shadow-md:     0 4px 20px rgba(0,0,0,0.7);
+  --shadow-lg:     0 8px 40px rgba(0,0,0,0.8);
+  --shadow-gold:   0 0 24px rgba(204,17,17,0.18);
+  --shadow-silver: 0 0 24px rgba(192,192,192,0.10);
 
   /* Abstände */
   --max-width:  740px;
@@ -126,12 +133,12 @@ strong { font-weight: 600; color: var(--text-primary); }
   margin: var(--spacing-lg) 0;
 }
 
-/* ---- Gold-Akzent-Linie ---- */
+/* ---- Akzent-Linie (Silber) ---- */
 .gold-line {
   display: block;
   width: 40px;
   height: 2px;
-  background: var(--gold);
+  background: var(--silver);
   margin: 0 auto var(--spacing-md);
 }
 .gold-line--left { margin-left: 0; }
@@ -140,7 +147,7 @@ strong { font-weight: 600; color: var(--text-primary); }
 .site-header {
   background: var(--bg-page);
   border-bottom: 1px solid var(--bg-border);
-  padding: 1.1rem 0;
+  padding: 0.75rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -168,23 +175,24 @@ strong { font-weight: 600; color: var(--text-primary); }
 
 /* ---- Site-Footer ---- */
 .site-footer {
-  background: var(--bg-subtle);
+  background: var(--bg-surface);
   border-top: 1px solid var(--bg-border);
   color: var(--text-muted);
   font-size: 0.82rem;
   text-align: center;
   padding: var(--spacing-lg) var(--spacing-sm);
 }
-.site-footer a { color: var(--text-secondary); }
+.site-footer a { color: var(--silver-dark); }
+.site-footer a:hover { color: var(--silver); }
 
-/* ---- Sektion-Label ---- */
+/* ---- Sektion-Label (Silber — strukturell) ---- */
 .section-label {
   font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--silver);
   margin-bottom: 0.6rem;
 }
 
@@ -233,7 +241,6 @@ strong { font-weight: 600; color: var(--text-primary); }
     padding: 0 1rem;
   }
 
-  /* Header-Button Touch-Target */
   .site-header .btn {
     min-height: 44px;
     padding: 0.65rem 1rem;

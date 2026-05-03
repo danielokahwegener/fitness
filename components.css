@@ -1,5 +1,6 @@
 /* =============================================
-   COMPONENTS.CSS — Premium Dark Theme
+   COMPONENTS.CSS — RePrime Athlet Coaching
+   Black · Silver · Red
    ============================================= */
 
 /* ---- Buttons ---- */
@@ -10,11 +11,12 @@
   gap: 0.5rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   line-height: 1;
   padding: 0.95rem 2rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -27,46 +29,46 @@
 .btn:hover { text-decoration: none; }
 .btn:active { transform: scale(0.98); }
 
-/* Primary: Gold auf Dunkel */
+/* Primary: Rot auf Schwarz — Hauptaktion */
 .btn--primary {
   background: var(--gold);
-  color: #0b0d14;
+  color: #ffffff;
   border-color: var(--gold);
 }
 .btn--primary:hover {
   background: var(--gold-light);
   border-color: var(--gold-light);
-  box-shadow: 0 0 28px rgba(204,17,17,0.35);
-  color: #0b0d14;
+  box-shadow: 0 0 32px rgba(204,17,17,0.45);
+  color: #ffffff;
 }
 
-/* Ghost: Goldrahmen, transparenter Hintergrund */
+/* Ghost: Silberrahmen — sekundäre Aktion */
 .btn--ghost {
   background: transparent;
-  color: var(--gold);
-  border-color: var(--gold);
+  color: var(--silver);
+  border-color: var(--silver-dark);
 }
 .btn--ghost:hover {
-  background: var(--gold-subtle);
-  color: var(--gold-light);
-  border-color: var(--gold-light);
+  background: var(--silver-subtle);
+  color: var(--silver);
+  border-color: var(--silver);
 }
 
-/* Light: Helle Surface */
+/* Surface: Dunkelgrau */
 .btn--surface {
   background: var(--bg-elevated);
   color: var(--text-primary);
   border-color: var(--bg-border);
 }
 .btn--surface:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--silver);
+  color: var(--silver);
 }
 
 .btn--lg {
-  font-size: 1.05rem;
+  font-size: 1rem;
   padding: 1.1rem 2.4rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
 }
 
 .btn--full { width: 100%; }
@@ -91,8 +93,8 @@
 }
 
 .card--gold-border {
-  border-color: var(--gold-dark);
-  box-shadow: var(--shadow-gold);
+  border-color: var(--silver-dark);
+  box-shadow: var(--shadow-silver);
 }
 
 /* ---- Häkchen-Liste ---- */
@@ -121,7 +123,7 @@
   border-radius: 50%;
   background: var(--gold-subtle);
   border: 1px solid var(--gold-dark);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23c9a96e'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23CC1111'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
   background-size: 11px;
   background-repeat: no-repeat;
   background-position: center;
@@ -141,7 +143,7 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--silver-dark);
 }
 
 .form-input {
@@ -162,7 +164,7 @@
 .form-input:focus {
   outline: none;
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(204,17,17,0.12);
+  box-shadow: 0 0 0 3px rgba(204,17,17,0.15);
 }
 
 .form-input.is-error { border-color: var(--error); }
@@ -178,7 +180,7 @@
 }
 .form-inline .form-input { flex: 1; min-width: 160px; }
 
-/* ---- Badges ---- */
+/* ---- Badges (Silber) ---- */
 .badge {
   display: inline-block;
   font-size: 0.68rem;
@@ -187,9 +189,9 @@
   text-transform: uppercase;
   padding: 0.3rem 0.75rem;
   border-radius: 100px;
-  background: var(--gold-subtle);
-  color: var(--gold);
-  border: 1px solid var(--gold-dark);
+  background: var(--silver-subtle);
+  color: var(--silver);
+  border: 1px solid var(--silver-dark);
 }
 
 /* ---- Testimonials ---- */
@@ -212,7 +214,7 @@
 .testimonial__author {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--silver);
 }
 
 /* ---- Proof-Leiste ---- */
@@ -225,16 +227,16 @@
   color: var(--text-secondary);
   letter-spacing: 0.01em;
 }
-.proof-bar strong { color: var(--gold); font-weight: 600; }
+.proof-bar strong { color: var(--silver); font-weight: 600; }
 
-/* ---- Schritt-Nummer ---- */
+/* ---- Schritt-Nummer (Silber) ---- */
 .step-number {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: var(--gold-subtle);
-  border: 1px solid var(--gold-dark);
-  color: var(--gold);
+  background: var(--silver-subtle);
+  border: 1px solid var(--silver-dark);
+  color: var(--silver);
   font-weight: 700;
   font-size: 1rem;
   display: flex;
@@ -244,11 +246,11 @@
   font-family: var(--font-heading);
 }
 
-/* ---- Gold-Trennlinie ---- */
+/* ---- Akzent-Trennlinie (Silber) ---- */
 .gold-divider {
   width: 48px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--silver-dark), transparent);
   margin: var(--spacing-md) auto;
 }
 
@@ -268,7 +270,7 @@
   .card { padding: var(--spacing-md); }
 
   .btn--lg {
-    font-size: 0.975rem;
+    font-size: 0.95rem;
     padding: 1rem 1.5rem;
     width: 100%;
     text-align: center;
@@ -276,14 +278,13 @@
   }
 
   .btn {
-    /* Mindest-Touch-Target */
     min-height: 44px;
   }
 
   .form-inline { flex-direction: column; }
 
   .form-input {
-    font-size: 1rem; /* Verhindert iOS Auto-Zoom bei focus */
+    font-size: 1rem;
     min-height: 48px;
   }
 
@@ -292,7 +293,7 @@
 
 @media (max-width: 480px) {
   .btn--lg {
-    font-size: 0.93rem;
+    font-size: 0.9rem;
     padding: 0.9rem 1.25rem;
   }
 }
