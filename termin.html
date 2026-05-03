@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="components.css">
   <link rel="stylesheet" href="termin.css">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 
@@ -30,28 +31,22 @@
     Dein Typ: <span id="archetyp-banner-name"></span>. Wir starten das Gespräch genau da, wo du stehst.
   </div>
 
-  <!-- Compact Hero -->
+  <!-- Hero mit Buchungs-CTA -->
   <section class="termin-hero">
     <div class="container">
       <div class="section-label" style="text-align:center; margin-bottom:0.6rem;">Kostenlos &middot; 45 Minuten &middot; Kein Druck</div>
       <h1>Finde heraus, ob wir dir helfen können</h1>
       <p>Kein Pitch. Kein Druck. Wir schauen gemeinsam auf deine sportliche Geschichte und entscheiden ehrlich, ob Coaching für dich der richtige nächste Schritt ist.</p>
+      <a href=""
+         onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'}); return false;"
+         class="btn btn--primary btn--lg termin-cta">
+        Termin buchen &rarr;
+      </a>
+      <p class="termin-sub">Wähle einen Termin, der zu dir passt. Dauert weniger als eine Minute.</p>
     </div>
   </section>
 
-  <!-- Calendly -->
-  <section class="calendly-section">
-    <div class="container">
-      <div
-        class="calendly-inline-widget"
-        data-url="https://calendly.com/risepp/sign-up"
-        style="min-width:320px; width:100%;"
-      ></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    </div>
-  </section>
-
-  <!-- Was dich erwartet (below the fold) -->
+  <!-- Was dich erwartet -->
   <section class="termin-erwartungen">
     <div class="container">
       <p class="erwartungen-titel">Was dich im Gespräch erwartet</p>
@@ -99,5 +94,7 @@
       }
     });
   </script>
+
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
