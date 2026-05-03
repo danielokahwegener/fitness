@@ -499,6 +499,113 @@
     @media (max-width: 768px) {
       .testimonials-grid { grid-template-columns: 1fr; }
     }
+
+    /* ---- Coach Section ---- */
+    .coach-section {
+      padding: var(--spacing-xl) var(--spacing-sm);
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--bg-border);
+      border-bottom: 1px solid var(--bg-border);
+    }
+    .coach-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .coach-carousel {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+    }
+    .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; }
+    .carousel-slide.active { opacity: 1; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.42);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      padding: 0;
+    }
+    .carousel-arrow:hover { background: rgba(0,0,0,0.72); }
+    .carousel-arrow--prev { left: 10px; }
+    .carousel-arrow--next { right: 10px; }
+    .carousel-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transition: background 0.3s;
+      cursor: pointer;
+      border: none;
+      padding: 19px;
+      background-clip: content-box;
+      margin: -19px;
+    }
+    .carousel-dot.active { background: var(--gold); background-clip: content-box; }
+    .coach-info h2 { margin-bottom: 0.5rem; font-size: clamp(1.3rem, 3vw, 1.8rem); }
+    .coach-tagline {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: var(--spacing-md);
+    }
+    .coach-text {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: var(--spacing-md);
+    }
+    .coach-stats {
+      display: flex;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-md);
+    }
+    .coach-stat-item .zahl {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .coach-stat-item .label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em; }
+    @media (max-width: 900px) {
+      .coach-layout { grid-template-columns: 1fr; }
+      .coach-carousel { aspect-ratio: 4/3; max-height: 300px; }
+      .coach-stats { gap: var(--spacing-md); }
+    }
+    @media (max-width: 480px) {
+      .coach-carousel { aspect-ratio: 1/1; max-height: 260px; }
+    }
   </style>
 </head>
 <body>
@@ -716,6 +823,60 @@
     </div>
   </section>
 
+  <!-- Coach -->
+  <section class="coach-section">
+    <div class="container container--wide">
+      <div class="coach-layout">
+
+        <div class="coach-carousel" id="coachCarousel">
+          <div class="carousel-slide active">
+            <img src="coach-1.jpg" alt="Daniel">
+          </div>
+          <div class="carousel-slide">
+            <img src="coach-2.jpg" alt="Daniel">
+          </div>
+          <div class="carousel-slide">
+            <img src="coach-3.jpg" alt="Daniel">
+          </div>
+          <div class="carousel-slide">
+            <img src="coach-4.jpg" alt="Daniel">
+          </div>
+          <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Vorheriges Foto">&#8592;</button>
+          <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Nächstes Foto">&#8594;</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+
+        <div class="coach-info">
+          <div class="section-label">Dein Coach</div>
+          <h2>Daniel</h2>
+          <p class="coach-tagline">„Ich helfe ehemaligen Mannschaftssportlern in den 30ern und 40ern, die seit ihrem letzten Spiel über 20 kg zugenommen haben, einen starken, schlanken Körper aufzubauen. Ohne Extremdiät. Ohne Training wie zu aktiven Zeiten."</p>
+          <p class="coach-text">
+            Ich arbeite ausschließlich mit ehemaligen Mannschaftssportlern, die einen anspruchsvollen 9-to-5-Job haben und seit dem Ende ihrer aktiven Zeit deutlich zugenommen haben. Nicht weil ich niemanden anderen coachen könnte. Sondern weil ich weiß, wie es sich anfühlt, jahrelang mit Teamstruktur und Wettkampfdruck trainiert zu haben, und dann plötzlich in einem Körper aufzuwachen, den man nicht mehr erkennt.
+          </p>
+          <p class="coach-text">
+            Kein Programm von mir wurde für jemanden gebaut, der als 25-Jähriger zweimal täglich trainieren kann. Jeder Plan, jedes Protokoll, jede Anpassung ist für jemanden gemacht, der früher Leistungssportler war und heute einen Vollzeitjob hat.
+          </p>
+          <div class="coach-stats">
+            <div class="coach-stat-item">
+              <span class="zahl">100</span>
+              <span class="label">Tage<br>kostenlos testen</span>
+            </div>
+            <div class="coach-stat-item">
+              <span class="zahl">1-zu-1</span>
+              <span class="label">Coaching<br>persönlich</span>
+            </div>
+            <div class="coach-stat-item">
+              <span class="zahl">0</span>
+              <span class="label">Mal<br>Extremdiät</span>
+            </div>
+          </div>
+          <a href="termin.html" class="btn btn--primary">Kostenloses Erstgespräch buchen &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="faq-section">
     <div class="container">
@@ -788,6 +949,34 @@
       </p>
     </div>
   </section>
+
+  <script>
+    (function() {
+      var slides = document.querySelectorAll('#coachCarousel .carousel-slide');
+      var dotsContainer = document.getElementById('carouselDots');
+      var current = 0;
+      var timer;
+      if (slides.length <= 1) return;
+      slides.forEach(function(_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+        dot.addEventListener('click', function() { goTo(i); resetTimer(); });
+        dotsContainer.appendChild(dot);
+      });
+      document.getElementById('carousel-prev').addEventListener('click', function() { goTo(current - 1); resetTimer(); });
+      document.getElementById('carousel-next').addEventListener('click', function() { goTo(current + 1); resetTimer(); });
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        if (dotsContainer.children[current]) dotsContainer.children[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        if (dotsContainer.children[current]) dotsContainer.children[current].classList.add('active');
+      }
+      function resetTimer() { clearInterval(timer); timer = setInterval(function() { goTo(current + 1); }, 4000); }
+      timer = setInterval(function() { goTo(current + 1); }, 4000);
+    })();
+  </script>
 
   <script>
     document.querySelectorAll('.faq-q').forEach(function(btn) {
