@@ -269,16 +269,19 @@
 @media (max-width: 768px) {
   .card { padding: var(--spacing-md); }
 
-  .btn--lg {
-    font-size: 0.95rem;
-    padding: 1rem 1.5rem;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
-
   .btn {
     min-height: 44px;
+    white-space: normal;
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+
+  .btn--lg {
+    font-size: 0.9rem;
+    padding: 0.9rem 1.25rem;
+    width: 100%;
+    justify-content: center;
+    letter-spacing: 0.04em;
   }
 
   .form-inline { flex-direction: column; }
