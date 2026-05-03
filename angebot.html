@@ -526,50 +526,25 @@
     .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; }
     .carousel-slide.active { opacity: 1; }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 3;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.42);
-      border: 1px solid rgba(255,255,255,0.18);
-      color: #fff;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s;
-      padding: 0;
-    }
-    .carousel-arrow:hover { background: rgba(0,0,0,0.72); }
-    .carousel-arrow--prev { left: 10px; }
-    .carousel-arrow--next { right: 10px; }
     .carousel-dots {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
-      gap: 6px;
-      z-index: 2;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
     }
     .carousel-dot {
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      transition: background 0.3s;
+      background: var(--bg-border);
+      border: 1px solid var(--text-muted);
       cursor: pointer;
-      border: none;
-      padding: 19px;
-      background-clip: content-box;
-      margin: -19px;
+      padding: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      flex-shrink: 0;
     }
-    .carousel-dot.active { background: var(--gold); background-clip: content-box; }
+    .carousel-dot:hover { border-color: var(--gold); }
+    .carousel-dot.active { background: var(--gold); border-color: var(--gold); transform: scale(1.25); }
     .coach-info h2 { margin-bottom: 0.5rem; font-size: clamp(1.3rem, 3vw, 1.8rem); }
     .coach-tagline {
       font-family: var(--font-heading);
@@ -828,21 +803,21 @@
     <div class="container container--wide">
       <div class="coach-layout">
 
-        <div class="coach-carousel" id="coachCarousel">
-          <div class="carousel-slide active">
-            <img src="coach-1.jpg" alt="Daniel">
+        <div>
+          <div class="coach-carousel" id="coachCarousel">
+            <div class="carousel-slide active">
+              <img src="coach-1.jpg" alt="Daniel">
+            </div>
+            <div class="carousel-slide">
+              <img src="coach-2.jpg" alt="Daniel">
+            </div>
+            <div class="carousel-slide">
+              <img src="coach-3.jpg" alt="Daniel">
+            </div>
+            <div class="carousel-slide">
+              <img src="coach-4.jpg" alt="Daniel">
+            </div>
           </div>
-          <div class="carousel-slide">
-            <img src="coach-2.jpg" alt="Daniel">
-          </div>
-          <div class="carousel-slide">
-            <img src="coach-3.jpg" alt="Daniel">
-          </div>
-          <div class="carousel-slide">
-            <img src="coach-4.jpg" alt="Daniel">
-          </div>
-          <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Vorheriges Foto">&#8592;</button>
-          <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Nächstes Foto">&#8594;</button>
           <div class="carousel-dots" id="carouselDots"></div>
         </div>
 
@@ -964,8 +939,6 @@
         dot.addEventListener('click', function() { goTo(i); resetTimer(); });
         dotsContainer.appendChild(dot);
       });
-      document.getElementById('carousel-prev').addEventListener('click', function() { goTo(current - 1); resetTimer(); });
-      document.getElementById('carousel-next').addEventListener('click', function() { goTo(current + 1); resetTimer(); });
       function goTo(index) {
         slides[current].classList.remove('active');
         if (dotsContainer.children[current]) dotsContainer.children[current].classList.remove('active');
