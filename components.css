@@ -36,7 +36,7 @@
 .btn--primary:hover {
   background: var(--gold-light);
   border-color: var(--gold-light);
-  box-shadow: 0 0 28px rgba(201,169,110,0.35);
+  box-shadow: 0 0 28px rgba(204,17,17,0.35);
   color: #0b0d14;
 }
 
@@ -162,7 +162,7 @@
 .form-input:focus {
   outline: none;
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201,169,110,0.12);
+  box-shadow: 0 0 0 3px rgba(204,17,17,0.12);
 }
 
 .form-input.is-error { border-color: var(--error); }
