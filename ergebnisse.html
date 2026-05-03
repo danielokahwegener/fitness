@@ -335,6 +335,7 @@
       .typ-nav { top: 56px; }
     }
   </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 
@@ -355,7 +356,7 @@
       <p class="sub">
         Keine Performance-Athleten mit idealen Ausgangsbedingungen. Ehemalige Teamsportler mit 9-to-5-Job, alter Verletzungshistorie und dem Drei-Wochen-Kreislauf hinter sich.
       </p>
-      <a href="termin.html" class="btn btn--primary btn--lg">
+      <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'}); return false;" class="btn btn--primary btn--lg">
         100 Tage kostenlos testen &rarr;
       </a>
     </div>
@@ -895,5 +896,6 @@
     });
   </script>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>

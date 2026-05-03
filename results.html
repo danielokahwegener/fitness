@@ -332,6 +332,7 @@
       .cta-box h2   { font-size: 1.1rem; }
     }
   </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 
@@ -438,7 +439,7 @@
             Kostenlos testen starten &rarr;
           </a>
           <p class="cta-meta">Kein Kreditkartendetail &middot; 100 Tage Testphase &middot; Kein Risiko</p>
-          <p style="font-size:0.78rem; margin-top:0.6rem; color:var(--text-muted);">Oder: <a href="termin.html" style="color:var(--gold); text-decoration:underline;">Erst ein kostenloses Gespräch buchen &rarr;</a></p>
+          <p style="font-size:0.78rem; margin-top:0.6rem; color:var(--text-muted);">Oder: <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'}); return false;" style="color:var(--gold); text-decoration:underline;">Erst ein kostenloses Gespräch buchen &rarr;</a></p>
         </div>
 
       </div>
@@ -489,5 +490,6 @@
       window.FDA.initEmailCapture(key);
     });
   </script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>

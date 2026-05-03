@@ -600,6 +600,7 @@
       .coach-stats { flex-wrap: wrap; gap: var(--spacing-sm); justify-content: center; }
     }
   </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 
@@ -621,7 +622,7 @@
       <p class="sub">
         100 Tage vollständig personalisiertes 1-zu-1-Online-Coaching, ohne einen Euro zu bezahlen. Tägliche Kommunikation, wöchentliche 1-zu-1-Calls und ein Plan, der nach unserem ersten Gespräch komplett auf dich zugeschnitten wird. Wenn du nach 100 Tagen weitermachen willst, entscheidest du das dann.
       </p>
-      <a href="termin.html" class="btn btn--primary btn--lg">
+      <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'}); return false;" class="btn btn--primary btn--lg">
         Kostenloses Erstgespräch buchen &rarr;
       </a>
       <p class="hero-garantie">Kostenloses Erstgespräch &middot; 45 Minuten &middot; Kein Pitch &middot; Du entscheidest danach</p>
@@ -676,7 +677,7 @@
 
       </div>
       <div style="text-align:center; margin-top:var(--spacing-lg);">
-        <a href="termin.html" class="btn btn--primary btn--lg">Kostenloses Erstgespräch buchen &rarr;</a>
+        <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'}); return false;" class="btn btn--primary btn--lg">Kostenloses Erstgespräch buchen &rarr;</a>
         <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.75rem;">Kein Kreditkartendetail &middot; Kein Risiko</p>
       </div>
     </div>
@@ -773,7 +774,7 @@
         </div>
       </div>
       <div style="text-align:center; margin-top:var(--spacing-xl);">
-        <a href="termin.html" class="btn btn--primary btn--lg">Jetzt Erstgespräch buchen &rarr;</a>
+        <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'}); return false;" class="btn btn--primary btn--lg">Jetzt Erstgespräch buchen &rarr;</a>
         <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.75rem;">45 Minuten &middot; Kostenlos &middot; Kein Pitch</p>
       </div>
     </div>
@@ -863,7 +864,7 @@
               <span class="label">Mal<br>Extremdiät</span>
             </div>
           </div>
-          <a href="termin.html" class="btn btn--primary">Kostenloses Erstgespräch buchen &rarr;</a>
+          <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'}); return false;" class="btn btn--primary">Kostenloses Erstgespräch buchen &rarr;</a>
         </div>
 
       </div>
@@ -933,7 +934,7 @@
       <p style="font-size:0.8rem; color:var(--gold); font-weight:600; margin-bottom:var(--spacing-sm); letter-spacing:0.04em;">
         Nächste Gruppe: <span class="js-startdatum">[STARTDATUM]</span> &middot; Noch <span class="js-plaetze">[ANZAHL]</span> Plätze frei
       </p>
-      <a href="termin.html" class="btn btn--primary btn--lg">
+      <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'}); return false;" class="btn btn--primary btn--lg">
         Kostenloses Erstgespräch buchen &rarr;
       </a>
       <p class="cta-hinweis">Kein Kreditkartendetail &middot; Kein automatischer Abzug &middot; 100 Tage Testphase</p>
@@ -1001,5 +1002,6 @@
     })();
   </script>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
