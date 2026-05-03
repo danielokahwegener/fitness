@@ -155,14 +155,16 @@ strong { font-weight: 600; color: var(--text-primary); }
 }
 
 .site-logo {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.01em;
+  display: block;
+  height: 36px;
+  width: auto;
 }
 
-.site-logo span { color: var(--gold); }
+.site-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
 
 /* ---- Site-Footer ---- */
 .site-footer {
