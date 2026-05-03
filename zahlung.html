@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weiterhin dabei | Athlete Comeback Coaching</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="zahlung.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="site-logo">Athlete <span>Comeback</span></span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="zahlung-hero">
+    <div class="container">
+      <div class="badge">100 Tage abgeschlossen</div>
+      <h1>Du hast 100 Tage investiert. Hier ist der nächste Schritt.</h1>
+      <p class="hero-tagline">Alles, was du aufgebaut hast, ist die Grundlage. Jetzt geht es weiter.</p>
+    </div>
+  </section>
+
+  <!-- Was enthalten ist -->
+  <section class="includes-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--spacing-lg);">
+        <div class="section-label">Im bezahlten Coaching enthalten</div>
+        <h2>Was dich in der bezahlten Phase erwartet</h2>
+      </div>
+      <ul class="check-list" style="max-width: 520px; margin: 0 auto;">
+        <li>Wöchentliche 1-zu-1-Calls, persönlich auf dich abgestimmt</li>
+        <li>Laufende Programmanpassung und tägliche Kommunikation mit deinem Coach</li>
+        <li>Du baust auf allem auf, was du in 100 Tagen erarbeitet hast</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Preis und CTA -->
+  <section class="preis-section">
+    <div class="container">
+      <div class="preis-block card card--gold-border fade-in">
+
+        <div class="preis-label">
+          <div class="section-label">Dein Investment</div>
+        </div>
+
+        <p style="margin-bottom: 0.25rem;">
+          <span class="preis-waehrung">&euro;</span><span class="preis-hauptzahl">[PREIS_PRO_MONAT]</span>
+        </p>
+        <p class="preis-pro-monat">pro Monat</p>
+
+        <div class="preis-details">
+          <p class="preis-laufzeit">Mindestlaufzeit: [LAUFZEIT_MONATE] Monate</p>
+          <p class="preis-gesamt">Gesamtinvestment: &euro;&nbsp;[GESAMTPREIS]</p>
+        </div>
+
+        <a href="[STRIPE_PAYMENT_LINK]" class="btn btn--primary btn--lg btn--full" id="stripe-cta">
+          Jetzt bezahlen und weitermachen &rarr;
+        </a>
+
+        <p class="trust-strip">
+          Kein Vertrag mit Ausstiegsgebühr &nbsp;&middot;&nbsp; Monatlich kündbar nach Mindestlaufzeit &nbsp;&middot;&nbsp; Sichere Zahlung via Stripe
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="intro">
+        <div class="section-label">Fragen zur Zahlung</div>
+        <h2>Abrechnung und Kündigung</h2>
+        <p>Kurze Antworten auf die zwei Fragen, die am häufigsten gestellt werden.</p>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Wann werde ich belastet und wie funktioniert die Abrechnung?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">
+            Du wirst direkt beim Abschluss der Zahlung für den ersten Monat belastet. Die monatlichen Folgebeträge werden automatisch zum gleichen Tag des Folgemonats eingezogen. Nach jeder Zahlung bekommst du eine automatische Rechnung von Stripe an deine E-Mail-Adresse.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Wie kann ich nach der Mindestlaufzeit kündigen?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">
+            Nach Ablauf der Mindestlaufzeit von [LAUFZEIT_MONATE] Monaten kannst du jederzeit zum Ende eines Abrechnungsmonats kündigen. Schreib dazu einfach eine kurze Nachricht an <a href="mailto:[COACH_EMAIL]">[COACH_EMAIL]</a>. Keine Formulare, kein Aufwand.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Athlete Comeback Coaching &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  </script>
+
+</body>
+</html>

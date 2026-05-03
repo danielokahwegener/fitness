@@ -85,15 +85,8 @@ window.FDA.initEmailCapture = function(archetypKey) {
 
     window.FDA.sendeAnMailerLite(vorname, email, archetypKey)
       .then(function() {
-        /* Gate ausblenden, Ergebnis einblenden */
-        if (gateWrap) gateWrap.style.display = 'none';
-        if (reveal) {
-          reveal.classList.remove('hidden');
-          reveal.classList.add('fade-in');
-          setTimeout(function() {
-            reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 100);
-        }
+        /* Profil per E-Mail gesendet — Weiterleitung zur Bestätigungsseite */
+        window.location.href = 'danke.html?name=' + encodeURIComponent(vorname);
       })
       .catch(function(err) {
         console.error('MailerLite-Fehler:', err);

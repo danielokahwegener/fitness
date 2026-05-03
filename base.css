@@ -222,7 +222,33 @@ strong { font-weight: 600; color: var(--text-primary); }
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   :root {
-    --spacing-xl: 3rem;
-    --spacing-lg: 2rem;
+    --spacing-xl: 2.5rem;
+    --spacing-lg: 1.75rem;
+    --spacing-md: 1.25rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Header-Button Touch-Target */
+  .site-header .btn {
+    min-height: 44px;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  h1 { font-size: clamp(1.65rem, 7vw, 2.5rem); }
+  h2 { font-size: clamp(1.3rem, 5vw, 1.75rem); }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --spacing-xl: 2rem;
+    --spacing-lg: 1.5rem;
+  }
+
+  .container {
+    padding: 0 0.875rem;
   }
 }

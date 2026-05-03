@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zahlung bestätigt | Athlete Comeback Coaching</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .confirm-hero {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--bg-border);
+      padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .confirm-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(201,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .confirm-hero .container { position: relative; }
+
+    .check-ring {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-dark);
+      background: var(--gold-subtle);
+      color: var(--gold);
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .confirm-hero h1 { margin-bottom: 0.5rem; }
+    .confirm-hero .sub { color: var(--text-secondary); font-size: 0.95rem; }
+
+    .confirm-body {
+      padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
+    }
+
+    .naechste-schritte {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .naechste-schritte::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+    .schritte-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--spacing-sm);
+    }
+    .schritte-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+    .schritt-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .schritt-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .schritt-text strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+    .schritt-text span {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: var(--spacing-lg);
+    }
+
+    @media (max-width: 768px) {
+      .confirm-hero { padding: 2rem 1rem 1.5rem; }
+      .confirm-body { padding: 1.5rem 1rem 2rem; }
+      .naechste-schritte { padding: var(--spacing-md); }
+      .cta-group .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <span class="site-logo">Athlete <span>Comeback</span></span>
+    </div>
+  </header>
+
+  <section class="confirm-hero">
+    <div class="container">
+      <div class="check-ring" aria-hidden="true">&#10003;</div>
+      <h1>Zahlung bestätigt. Willkommen im nächsten Kapitel.</h1>
+      <p class="sub">Du bekommst eine Bestätigung per E-Mail von Stripe mit allen Details.</p>
+    </div>
+  </section>
+
+  <main class="confirm-body">
+    <div class="container">
+
+      <div class="naechste-schritte fade-in">
+        <p class="schritte-label">Was jetzt passiert</p>
+        <div class="schritte-list">
+          <div class="schritt-item">
+            <div class="schritt-num">1</div>
+            <div class="schritt-text">
+              <strong>Stripe-Bestätigung</strong>
+              <span>Eine automatische Zahlungsbestätigung und Rechnung von Stripe kommt direkt an deine E-Mail-Adresse. Schau auch im Spam-Ordner.</span>
+            </div>
+          </div>
+          <div class="schritt-item">
+            <div class="schritt-num">2</div>
+            <div class="schritt-text">
+              <strong>Dein Coach meldet sich</strong>
+              <span>Innerhalb von 24 Stunden nach deiner Zahlung kontaktiert dich Daniel persönlich, um den Start der bezahlten Phase zu besprechen.</span>
+            </div>
+          </div>
+          <div class="schritt-item">
+            <div class="schritt-num">3</div>
+            <div class="schritt-text">
+              <strong>Nächsten Termin buchen</strong>
+              <span>Buch deinen ersten Termin für die bezahlte Phase direkt hier, damit wir ohne Verzögerung weitermachen.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-group fade-in">
+        <a href="termin.html" class="btn btn--primary btn--lg">Nächsten Termin buchen &rarr;</a>
+        <a href="mailto:[COACH_EMAIL]" class="btn btn--ghost">Coach direkt schreiben</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Athlete Comeback Coaching &copy; 2025 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

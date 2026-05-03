@@ -266,6 +266,33 @@
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .card { padding: var(--spacing-md); }
-  .btn--lg { font-size: 0.975rem; padding: 1rem 1.75rem; }
+
+  .btn--lg {
+    font-size: 0.975rem;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .btn {
+    /* Mindest-Touch-Target */
+    min-height: 44px;
+  }
+
   .form-inline { flex-direction: column; }
+
+  .form-input {
+    font-size: 1rem; /* Verhindert iOS Auto-Zoom bei focus */
+    min-height: 48px;
+  }
+
+  .testimonial { padding: var(--spacing-sm); }
+}
+
+@media (max-width: 480px) {
+  .btn--lg {
+    font-size: 0.93rem;
+    padding: 0.9rem 1.25rem;
+  }
 }

@@ -15,8 +15,8 @@
 </head>
 <body>
 
-  <div style="background:var(--navy); color:var(--cream); text-align:center; padding:0.6rem var(--spacing-sm); font-size:0.8rem; border-bottom:1px solid rgba(201,169,110,0.3);">
-    Nächster Start: <strong class="js-startdatum" style="color:var(--gold);">[STARTDATUM]</strong> &nbsp;&middot;&nbsp; Noch <strong class="js-plaetze" style="color:var(--gold);">[ANZAHL]</strong> Plätze verfügbar &nbsp;&middot;&nbsp; <em>Jede weitere Woche ohne System ist eine Woche, die du nicht zurückbekommst.</em>
+  <div class="urgency-strip">
+    Nächster Start: <strong class="js-startdatum" style="color:var(--gold);">[STARTDATUM]</strong> &nbsp;&middot;&nbsp; Noch <strong class="js-plaetze" style="color:var(--gold);">[ANZAHL]</strong> Plätze verfügbar
   </div>
 
   <header class="site-header">
@@ -30,23 +30,28 @@
     Dein Typ: <span id="archetyp-banner-name"></span>. Wir starten das Gespräch genau da, wo du stehst.
   </div>
 
-  <!-- Hero -->
+  <!-- Compact Hero -->
   <section class="termin-hero">
     <div class="container">
-      <div class="section-label" style="text-align:center; margin-bottom:0.75rem;">
-        Kostenlos &middot; 45 Minuten &middot; Kein Druck
-      </div>
+      <div class="section-label" style="text-align:center; margin-bottom:0.6rem;">Kostenlos &middot; 45 Minuten &middot; Kein Druck</div>
       <h1>Finde heraus, ob wir dir helfen können</h1>
-      <p>
-        45 Minuten. Wir schauen gemeinsam auf deine sportliche Geschichte, deine aktuelle Situation, und was vollständig personalisiertes 1-zu-1-Coaching konkret für dich bedeuten würde. Kein Pitch. Kein Druck. Du entscheidest danach.
-      </p>
-      <p style="margin-top:var(--spacing-sm); font-size:0.85rem; color:var(--text-muted); font-style:italic;">
-        Du hast dir lange genug versprochen, dass du anfängst. Jeder Tag im selben Muster ist ein Tag, den du nicht zurückbekommst.
-      </p>
+      <p>Kein Pitch. Kein Druck. Wir schauen gemeinsam auf deine sportliche Geschichte und entscheiden ehrlich, ob Coaching für dich der richtige nächste Schritt ist.</p>
     </div>
   </section>
 
-  <!-- Was dich erwartet -->
+  <!-- Calendly -->
+  <section class="calendly-section">
+    <div class="container">
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/risepp/sign-up"
+        style="min-width:320px; width:100%;"
+      ></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </div>
+  </section>
+
+  <!-- Was dich erwartet (below the fold) -->
   <section class="termin-erwartungen">
     <div class="container">
       <p class="erwartungen-titel">Was dich im Gespräch erwartet</p>
@@ -55,44 +60,6 @@
         <li>Du erfährst, wie vollständig personalisiertes 1-zu-1-Online-Coaching für deine Situation aussieht. Kein Standardprogramm. Alles wird auf dich zugeschnitten, nach diesem Gespräch</li>
         <li>Wir entscheiden gemeinsam, ob und wie wir dir helfen können. Ehrlich. Ohne Pitch. Du entscheidest.</li>
       </ul>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="termin-testimonials">
-    <div class="container">
-      <div class="testimonials-grid">
-        <div class="testimonial">
-          <p class="testimonial__quote">
-            „Das Gespräch war das Ehrlichste, was mir jemand zum Thema Fitness gesagt hat. Kein Verkauf, keine Versprechen. Ich wusste danach genau, was ich tun musste."
-          </p>
-          <p class="testimonial__author">Markus T., 38 &middot; ehem. Fußballer &middot; Vertrieb</p>
-        </div>
-        <div class="testimonial">
-          <p class="testimonial__quote">
-            „Ich hatte erwartet, dass er mir sein Programm verkauft. Stattdessen hat er mir Fragen gestellt, die ich mir selbst nie gestellt hatte. Das allein war es schon wert."
-          </p>
-          <p class="testimonial__author">Stefan K., 42 &middot; ehem. Basketballer &middot; IT-Management</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Calendly -->
-  <section class="calendly-section">
-    <div class="container">
-      <div class="section-label" style="text-align:center; margin-bottom:0.5rem;">Termin wählen</div>
-      <h2 style="text-align:center; margin-bottom:var(--spacing-lg);">Wähle einen Termin, der zu dir passt</h2>
-
-      <!-- Calendly inline widget begin -->
-      <div
-        class="calendly-inline-widget"
-        data-url="https://calendly.com/risepp/sign-up"
-        style="min-width:320px; width:100%; height:700px; overflow:hidden;"
-      ></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      <!-- Calendly inline widget end -->
-
     </div>
   </section>
 
