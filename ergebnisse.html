@@ -335,7 +335,7 @@
       .typ-nav { top: 56px; }
     }
   </style>
-  <script src="js/calendly-lazy.js"></script>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 
@@ -356,7 +356,7 @@
       <p class="sub">
         Keine Performance-Athleten mit idealen Ausgangsbedingungen. Ehemalige Teamsportler mit 9-to-5-Job, alter Verletzungshistorie und dem Drei-Wochen-Kreislauf hinter sich.
       </p>
-      <a href="javascript:void(0)" onclick="openCalendly()" class="btn btn--primary btn--lg">
+      <a onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'})" class="btn btn--primary btn--lg">
         Ich bin startbereit &rarr;
       </a>
     </div>
@@ -868,7 +868,7 @@
         <p class="lead">
           Das 100-Tage-Testprogramm kostet nichts. Kein Kreditkartendetail, kein automatischer Abzug. Du siehst, was sich verändert. Du entscheidest danach.
         </p>
-        <a href="javascript:void(0)" onclick="openCalendly()" class="btn btn--primary btn--lg">
+        <a onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'})" class="btn btn--primary btn--lg">
           Ich bin startbereit &rarr;
         </a>
         <p class="cta-meta">Kein Kreditkartendetail &middot; Kein Risiko &middot; Du entscheidest nach Ergebnissen</p>
@@ -896,5 +896,6 @@
     });
   </script>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>

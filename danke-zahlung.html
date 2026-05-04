@@ -125,7 +125,7 @@
       .cta-group .btn { width: 100%; }
     }
   </style>
-  <script src="js/calendly-lazy.js"></script>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 
@@ -174,7 +174,7 @@
       </div>
 
       <div class="cta-group fade-in">
-        <a href="javascript:void(0)" onclick="openCalendly()" class="btn btn--primary btn--lg">Nächsten Termin buchen &rarr;</a>
+        <a onclick="Calendly.initPopupWidget({url:'https://calendly.com/risepp/sign-up'})" class="btn btn--primary btn--lg">Nächsten Termin buchen &rarr;</a>
         <a href="mailto:[COACH_EMAIL]" class="btn btn--ghost">Coach direkt schreiben</a>
       </div>
 
@@ -187,5 +187,6 @@
     </div>
   </footer>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
