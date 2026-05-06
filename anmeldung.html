@@ -84,6 +84,102 @@
       padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
     }
 
+    /* ---- Coach-Karte ---- */
+    .coach-karte {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .coach-karte-foto {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--bg-border);
+    }
+    .coach-karte-foto-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 2px solid var(--bg-border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+    }
+    .coach-karte-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .coach-karte h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text-primary);
+    }
+    .coach-karte p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ---- Testimonials ---- */
+    .testimonials-block {
+      margin-bottom: var(--spacing-lg);
+    }
+    .testimonials-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--silver-dark);
+      margin-bottom: 0.75rem;
+    }
+    .testimonial-mini {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-left: 3px solid var(--gold-dark);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 0.55rem;
+    }
+    .testimonial-mini:last-child { margin-bottom: 0; }
+    .testimonial-result-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+    .testimonial-mini blockquote {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 0 0.4rem;
+    }
+    .testimonial-mini cite {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
     /* ---- Offer card ---- */
     .angebot-card {
       background: var(--bg-surface);
@@ -152,9 +248,7 @@
     }
 
     /* ---- CTA ---- */
-    .cta-wrap {
-      text-align: center;
-    }
+    .cta-wrap { text-align: center; }
     .cta-meta {
       font-size: 0.72rem;
       color: var(--text-muted);
@@ -180,10 +274,7 @@
       justify-content: center;
       margin: 0 auto var(--spacing-md);
     }
-    .success-wrap h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
+    .success-wrap h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
     .success-wrap p {
       color: var(--text-secondary);
       font-size: 0.9rem;
@@ -198,9 +289,13 @@
     }
 
     @media (max-width: 768px) {
-      .anm-hero  { padding: 2rem 1rem 1.5rem; }
-      .anm-body  { padding: 1.5rem 1rem 2rem; }
+      .anm-hero    { padding: 2rem 1rem 1.5rem; }
+      .anm-body    { padding: 1.5rem 1rem 2rem; }
       .angebot-card { padding: var(--spacing-md); }
+      .coach-karte  { padding: var(--spacing-sm) var(--spacing-md); }
+    }
+    @media (max-width: 480px) {
+      .coach-karte { flex-direction: column; align-items: center; text-align: center; }
     }
   </style>
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
@@ -219,7 +314,7 @@
   <div class="spots-bar">
     Nächste Gruppe: <strong class="js-startdatum">[STARTDATUM]</strong>
     &nbsp;&middot;&nbsp;
-    Noch <strong><span class="js-plaetze">[ANZAHL]</span> kostenlose Plaetze</strong> frei
+    Noch <strong><span class="js-plaetze">[ANZAHL]</span> kostenlose Plätze</strong> frei
   </div>
 
   <!-- Hero -->
@@ -235,6 +330,40 @@
   <!-- Body -->
   <main class="anm-body">
     <div class="container">
+
+      <!-- Wer ist Daniel -->
+      <div class="coach-karte fade-in">
+        <img src="coach-1.jpg" alt="Daniel" class="coach-karte-foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="coach-karte-foto-placeholder" style="display:none;">D</div>
+        <div>
+          <p class="coach-karte-label">Dein Coach</p>
+          <h3>Daniel Okahwegener</h3>
+          <p>Ich arbeite ausschließlich mit ehemaligen Vereinssportlern, die einen anspruchsvollen 9-to-5-Job haben und seit dem Ende ihrer aktiven Zeit deutlich zugenommen haben. Jeder Plan, jede Anpassung ist für jemanden gemacht, der früher Leistungssportler war und heute einen Vollzeitjob hat.</p>
+        </div>
+      </div>
+
+      <!-- Ergebnisse -->
+      <div class="testimonials-block fade-in">
+        <p class="testimonials-label">Das sagen ehemalige Vereinssportler</p>
+
+        <div class="testimonial-mini">
+          <div class="testimonial-result-badge">-13 kg &middot; 11 Wochen</div>
+          <blockquote>„Ich habe 12 Jahre Fußball gespielt und danach nie wieder eine Struktur gefunden, die gehalten hat. Nach 6 Wochen merkte ich, dass es diesmal anders ist."</blockquote>
+          <cite>Markus T. &middot; 38 Jahre &middot; ehem. Fußballer &middot; Vertriebsleiter</cite>
+        </div>
+
+        <div class="testimonial-mini">
+          <div class="testimonial-result-badge">-10 kg &middot; 10 Wochen</div>
+          <blockquote>„Als Basketball-Spieler war ich es gewohnt, dass ein Coach mir sagt, was zu tun ist. Genau das hat gefehlt. Mit dem Programm hatte ich das wieder."</blockquote>
+          <cite>Stefan K. &middot; 41 Jahre &middot; ehem. Basketballer &middot; IT-Management</cite>
+        </div>
+
+        <div class="testimonial-mini">
+          <div class="testimonial-result-badge">-9 kg &middot; 9 Wochen</div>
+          <blockquote>„Mein Knie hat mich seit meiner Rugbyzeit begrenzt. Das erste Mal seit Jahren habe ich einen Plan, der damit umgeht statt drumherum."</blockquote>
+          <cite>Daniel R. &middot; 36 Jahre &middot; ehem. Rugbyspieler &middot; Projektleiter</cite>
+        </div>
+      </div>
 
       <!-- Angebot-Karte -->
       <div class="angebot-card fade-in" id="angebot-karte">
@@ -252,13 +381,13 @@
           </li>
           <li>
             <span>
-              <strong>Täglicher Check-in mit persoenlicher Antwort</strong>
+              <strong>Täglicher Check-in mit persönlicher Antwort</strong>
               Sprachnotiz morgens, Antwort von Daniel innerhalb von 2 Stunden - jeden Tag.
             </span>
           </li>
           <li>
             <span>
-              <strong>Woechentlicher Strategy-Call (20 Min.)</strong>
+              <strong>Wöchentlicher Strategy-Call (20 Min.)</strong>
               Einmal pro Woche schauen wir gemeinsam auf den Plan, die Daten und die nächste Woche.
             </span>
           </li>
@@ -278,7 +407,7 @@
           <div id="btn-status" style="font-size:0.8rem; color:var(--error); margin-top:0.5rem;"></div>
         </div>
 
-        <!-- Erfolgs-Zustand (eingeblendet nach API-Call) -->
+        <!-- Erfolgs-Zustand -->
         <div class="success-wrap" id="success-wrap">
           <div class="check-ring" aria-hidden="true">&#10003;</div>
           <h2>Platz gesichert.</h2>
@@ -287,7 +416,7 @@
           <p class="spam-hint">Nichts erhalten? Schau im Spam-Ordner oder schreib mir direkt: <a href="mailto:daniel@reprimecoaching.com" style="color:var(--gold);">daniel@reprimecoaching.com</a></p>
         </div>
 
-      </div><!-- end angebot-karte -->
+      </div>
 
     </div>
   </main>
@@ -300,14 +429,10 @@
 
   <script src="quiz-engine.js"></script>
   <script>
-    /* ---- MailerLite config (same key, new group ID) ---- */
-    var ML_API_KEY = window.FDA.ML_CONFIG
-      ? window.FDA.ML_CONFIG.apiKey
-      : '';
-
+    var ML_API_KEY = window.FDA.ML_CONFIG ? window.FDA.ML_CONFIG.apiKey : '';
     var PLATZ_GESICHERT_GROUP_ID = '[PLATZ_GESICHERT_GROUP_ID]'; // <- MailerLite group ID eintragen
 
-    /* ---- Spots-Zaehler (identisch zu angebot.html) ---- */
+    /* ---- Spots-Zähler ---- */
     (function() {
       var d   = new Date();
       var mo  = ['Januar','Februar','M\xe4rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -315,33 +440,30 @@
       var daysToNextSunday = dow === 0 ? 7 : 7 - dow;
       var s   = new Date(d);
       s.setDate(d.getDate() + daysToNextSunday + 7);
-      var txt = s.getDate() + '. ' + mo[s.getMonth()] + ' ' + s.getFullYear();
-      document.querySelectorAll('.js-startdatum').forEach(function(el) { el.textContent = txt; });
-
+      document.querySelectorAll('.js-startdatum').forEach(function(el) {
+        el.textContent = s.getDate() + '. ' + mo[s.getMonth()] + ' ' + s.getFullYear();
+      });
       var nextCohort = new Date(d);
       nextCohort.setDate(d.getDate() + daysToNextSunday + 7);
       nextCohort.setHours(0,0,0,0);
       var today = new Date(d); today.setHours(0,0,0,0);
-      var daysUntil   = Math.round((nextCohort - today) / 86400000);
-      var dayInCycle  = 14 - daysUntil;
-      var plaetze     = dayInCycle >= 12 ? 3 : Math.round(21 - (dayInCycle / 11) * 18);
+      var daysUntil  = Math.round((nextCohort - today) / 86400000);
+      var dayInCycle = 14 - daysUntil;
+      var plaetze    = dayInCycle >= 12 ? 3 : Math.round(21 - (dayInCycle / 11) * 18);
       document.querySelectorAll('.js-plaetze').forEach(function(el) { el.textContent = plaetze; });
     })();
 
-    /* ---- Seite initialisieren ---- */
     document.addEventListener('DOMContentLoaded', function() {
       var params  = new URLSearchParams(window.location.search);
       var urlTyp  = params.get('typ');
       var urlName = params.get('name');
 
-      /* Archetyp ermitteln */
       var key = (urlTyp && window.FDA.ARCHETYPEN[urlTyp]) ? urlTyp : null;
       if (!key) {
         var g = window.FDA.ladeErgebnis();
         if (g && g.archetyp && window.FDA.ARCHETYPEN[g.archetyp]) key = g.archetyp;
       }
 
-      /* Hero personalisieren */
       if (urlName) {
         document.getElementById('anm-titel').textContent = urlName + ', du bist qualifiziert.';
       }
@@ -351,7 +473,6 @@
         chip.style.display = 'inline-block';
       }
 
-      /* ---- Platz sichern ---- */
       document.getElementById('btn-platz-sichern').addEventListener('click', function() {
         var email = '';
         try { email = sessionStorage.getItem('fda_email') || ''; } catch(e) {}
@@ -364,7 +485,6 @@
           return;
         }
         if (PLATZ_GESICHERT_GROUP_ID === '[PLATZ_GESICHERT_GROUP_ID]') {
-          /* Platzhalter noch nicht ersetzt - trotzdem Erfolg zeigen fuer Tests */
           zeigeErfolg();
           return;
         }
@@ -380,24 +500,17 @@
             'Accept':        'application/json',
             'Authorization': 'Bearer ' + ML_API_KEY
           },
-          body: JSON.stringify({
-            email:  email,
-            groups: [PLATZ_GESICHERT_GROUP_ID],
-            status: 'active'
-          })
+          body: JSON.stringify({ email: email, groups: [PLATZ_GESICHERT_GROUP_ID], status: 'active' })
         })
         .then(function(res) {
           if (res.status !== 200 && res.status !== 201) throw new Error('HTTP ' + res.status);
           zeigeErfolg();
         })
-        .catch(function() {
-          /* Bei Fehler trotzdem Erfolg zeigen - Platz nicht wegen API-Problem verlieren */
-          zeigeErfolg();
-        });
+        .catch(function() { zeigeErfolg(); });
       });
 
       function zeigeErfolg() {
-        document.getElementById('cta-wrap').style.display    = 'none';
+        document.getElementById('cta-wrap').style.display     = 'none';
         document.getElementById('success-wrap').style.display = 'block';
         try { sessionStorage.removeItem('fda_email'); } catch(e) {}
       }
