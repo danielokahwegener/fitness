@@ -322,14 +322,50 @@
       margin-top: 0.75rem;
     }
 
+    /* ---- Coach-Karussell ---- */
+    .coach-carousel {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      width: 140px;
+      flex-shrink: 0;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+    }
+    .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; }
+    .carousel-slide.active { opacity: 1; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--bg-border);
+      border: 1px solid var(--text-muted);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      flex-shrink: 0;
+    }
+    .carousel-dot:hover { border-color: var(--gold); }
+    .carousel-dot.active { background: var(--gold); border-color: var(--gold); transform: scale(1.25); }
+
     @media (max-width: 768px) {
       .anm-hero    { padding: 2rem 1rem 1.5rem; }
       .anm-body    { padding: 1.5rem 1rem 2rem; }
       .angebot-card { padding: var(--spacing-md); }
       .coach-karte  { padding: var(--spacing-sm) var(--spacing-md); }
+      .coach-carousel { width: 110px; }
     }
     @media (max-width: 480px) {
       .coach-karte { flex-direction: column; align-items: center; text-align: center; }
+      .coach-carousel { width: 100%; aspect-ratio: 4/3; }
     }
   </style>
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
@@ -373,8 +409,15 @@
 
       <!-- Wer ist Daniel -->
       <div class="coach-karte fade-in">
-        <img src="coach-1.jpg" alt="Daniel" class="coach-karte-foto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="coach-karte-foto-placeholder" style="display:none;">D</div>
+        <div>
+          <div class="coach-carousel" id="coachCarouselAnm">
+            <div class="carousel-slide active"><img src="coach-1.jpg" alt="Daniel" loading="lazy"></div>
+            <div class="carousel-slide"><img src="coach-2.jpg" alt="Daniel" loading="lazy"></div>
+            <div class="carousel-slide"><img src="coach-3.jpg" alt="Daniel" loading="lazy"></div>
+            <div class="carousel-slide"><img src="coach-4.jpg" alt="Daniel" loading="lazy"></div>
+          </div>
+          <div class="carousel-dots" id="carouselDotsAnm"></div>
+        </div>
         <div>
           <p class="coach-karte-label">Dein Coach</p>
           <h3>Daniel Okahwegener</h3>
@@ -563,6 +606,31 @@
         try { sessionStorage.removeItem('fda_email'); } catch(e) {}
       }
     });
+  </script>
+  <script>
+    (function() {
+      var slides = document.querySelectorAll('#coachCarouselAnm .carousel-slide');
+      var dotsContainer = document.getElementById('carouselDotsAnm');
+      var current = 0;
+      var timer;
+      if (!slides.length || !dotsContainer) return;
+      slides.forEach(function(_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+        dot.addEventListener('click', function() { goTo(i); resetTimer(); });
+        dotsContainer.appendChild(dot);
+      });
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        if (dotsContainer.children[current]) dotsContainer.children[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        if (dotsContainer.children[current]) dotsContainer.children[current].classList.add('active');
+      }
+      function resetTimer() { clearInterval(timer); timer = setInterval(function() { goTo(current + 1); }, 4000); }
+      timer = setInterval(function() { goTo(current + 1); }, 4000);
+    })();
   </script>
 </body>
 </html>
