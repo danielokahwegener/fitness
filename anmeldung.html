@@ -390,7 +390,7 @@
   <!-- Hero -->
   <section class="anm-hero">
     <div class="container">
-      <div class="anm-eyebrow">Du bist qualifiziert</div>
+      <div class="anm-eyebrow" id="anm-eyebrow">Du bist qualifiziert!</div>
       <h1 id="anm-titel">Dein Platz wartet.</h1>
       <p class="sub" id="anm-sub">100 Tage kostenloses Coaching, zugeschnitten auf dein Profil.</p>
       <div class="archetyp-chip" id="archetyp-chip" style="display:none;"></div>
@@ -585,7 +585,8 @@
       }
 
       if (urlName) {
-        document.getElementById('anm-titel').textContent = urlName + ', du bist qualifiziert.';
+        document.getElementById('anm-eyebrow').textContent = 'Glückwunsch ' + urlName + ', du bist qualifiziert!';
+        document.getElementById('anm-titel').textContent = urlName + ', dein Platz wartet.';
       }
       if (key && window.FDA.ARCHETYPEN[key]) {
         var chip = document.getElementById('archetyp-chip');
