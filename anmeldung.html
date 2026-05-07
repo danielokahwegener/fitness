@@ -368,6 +368,7 @@
       .coach-carousel { width: 200px; aspect-ratio: 3/4; }
     }
   </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
   <link rel="shortcut icon" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -467,7 +468,7 @@
           <button class="btn btn--primary btn--lg btn--full" id="btn-platz-sichern" type="button">
             Ich bin startklar &rarr;
           </button>
-          <p class="cta-meta">Kein Kreditkartendetail &middot; Kein Vertrag &middot; 100 Tage kostenlos</p>
+          <p class="cta-meta">Kick-off Call buchen &middot; Kein Kreditkartendetail &middot; 100 Tage kostenlos</p>
           <div id="btn-status" style="font-size:0.8rem; color:var(--error); margin-top:0.5rem;"></div>
         </div>
 
@@ -493,6 +494,8 @@
   <script src="quiz-engine.js"></script>
   <script>
     var WORKER_URL = 'https://reprime-api.reprimecoaching.com';
+    /* ← Update to your Kick-off Call Calendly URL once created */
+    var KICKOFF_CALENDLY_URL = 'https://calendly.com/reprimecoaching/100tage';
 
     /* ---- Spots-Zähler ---- */
     (function() {
@@ -598,20 +601,22 @@
 
       renderFallstudien(key);
 
+      var token = params.get('token') || '';
+
+      /* Opens Calendly kick-off call popup */
       document.getElementById('btn-platz-sichern').addEventListener('click', function() {
-        var token    = params.get('token') || '';
-        var statusEl = document.getElementById('btn-status');
-        var btn      = document.getElementById('btn-platz-sichern');
+        Calendly.initPopupWidget({ url: KICKOFF_CALENDLY_URL });
+      });
 
-        if (!token) {
-          /* No token — show success anyway, subscriber already in MailerLite from results.html */
-          zeigeErfolg();
-          return;
+      /* After Calendly booking is confirmed → tag in MailerLite + show success */
+      window.addEventListener('message', function(e) {
+        if (e.data && e.data.event === 'calendly.event_scheduled') {
+          bestaetigenUndSichern();
         }
+      });
 
-        btn.disabled    = true;
-        btn.textContent = 'Wird gespeichert…';
-        statusEl.textContent = '';
+      function bestaetigenUndSichern() {
+        if (!token) { zeigeErfolg(); return; }
 
         fetch(WORKER_URL + '/api/platz-sichern', {
           method: 'POST',
@@ -622,11 +627,8 @@
           if (!res.ok) throw new Error('HTTP ' + res.status);
           zeigeErfolg();
         })
-        .catch(function() {
-          /* Show success regardless — subscriber is already in MailerLite */
-          zeigeErfolg();
-        });
-      });
+        .catch(function() { zeigeErfolg(); });
+      }
 
       function zeigeErfolg() {
         document.getElementById('cta-wrap').style.display     = 'none';
@@ -634,6 +636,7 @@
       }
     });
   </script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
     (function() {
       var slides = document.querySelectorAll('#coachCarouselAnm .carousel-slide');
