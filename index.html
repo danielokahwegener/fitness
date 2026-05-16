@@ -3,15 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ex-Athleten Audit | RePrime Athlet Coaching</title>
-  <meta name="description" content="Ehemaliger Vereinssportler mit 9-to-5-Job und über 20 kg seit dem letzten Spiel? Finde dein Ex-Athleten-Profil in 2 Minuten.">
+  <title>Ex-Athleten Coaching | RePrime Athlet Coaching</title>
+  <meta name="description" content="Ehemaliger Vereinssportler mit 9-to-5-Job und über 20 kg seit dem letzten Spiel? Finde dein Profil und starte 100 Tage kostenlos.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="components.css">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-    /* ---- Hero ---- */
+    /* === Scroll offset for sticky header === */
+    section[id] { scroll-margin-top: 110px; }
+
+    /* === Navigation === */
+    .main-nav {
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+    }
+    .main-nav a {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .main-nav a:hover { color: var(--text-primary); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: 1px solid var(--bg-border);
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0.45rem 0.7rem;
+      border-radius: var(--radius-sm);
+      font-size: 1.1rem;
+      line-height: 1;
+      align-items: center;
+    }
+    .hamburger:hover { border-color: var(--silver-dark); color: var(--text-primary); }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--bg-border);
+    }
+    .mobile-nav.is-open { display: flex; }
+    .mobile-nav a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--bg-border);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover { color: var(--text-primary); }
+    .mobile-nav a.nav-cta { color: var(--gold); }
+
+    /* === Hero === */
     .hero {
       background: var(--bg-subtle);
       border-bottom: 1px solid var(--bg-border);
@@ -64,7 +122,7 @@
     }
     .hero-meta span { margin: 0 0.5rem; opacity: 0.4; }
 
-    /* ---- Proof-Strip ---- */
+    /* === Proof-Strip === */
     .proof-strip {
       background: var(--bg-surface);
       border-bottom: 1px solid var(--bg-border);
@@ -76,55 +134,315 @@
     }
     .proof-strip strong { color: var(--gold); font-weight: 600; }
 
-    /* ---- Archetypen ---- */
-    .archetypen-section {
-      padding: var(--spacing-xl) var(--spacing-sm);
-      background: var(--bg-page);
-    }
-    .archetypen-section .intro {
-      text-align: center;
-      max-width: 520px;
-      margin: 0 auto var(--spacing-lg);
-    }
-    .archetypen-section .intro h2 { margin-bottom: 0.6rem; }
-    .archetypen-section .intro p  { color: var(--text-secondary); font-size: 0.95rem; }
-    .archetypen-grid {
+    /* === Pain Points === */
+    .pain-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1px;
-      background: var(--bg-border);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .pain-card {
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem;
+      background: var(--bg-surface);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .pain-card__title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .pain-card__copy {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.6;
+    }
+    .pain-closing {
+      text-align: center;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    /* === Archetype Tabs === */
+    .archetype-tabs {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      border-bottom: 1px solid var(--bg-border);
+      margin-bottom: 2.5rem;
+    }
+    .archetype-tabs::-webkit-scrollbar { display: none; }
+    .archetype-tab-btn {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: -1px;
+      white-space: nowrap;
+    }
+    .archetype-tab-btn:hover { color: var(--text-primary); }
+    .archetype-tab-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* === Archetype Panels === */
+    .archetype-panel { display: none; }
+    .archetype-panel.active {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      animation: fadeIn 0.3s ease;
+    }
+    .archetype-tagline {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      font-family: var(--font-heading);
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 1.25rem;
+    }
+    .archetype-pain-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      list-style: none;
+      padding: 0;
+    }
+    .archetype-pain-list li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .archetype-pain-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .archetype-hook {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--gold);
+      border-left: 2px solid var(--gold-dark);
+      padding-left: 1rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* === Case Study Cards === */
+    .case-study-card {
+      background: var(--bg-elevated);
       border: 1px solid var(--bg-border);
       border-radius: var(--radius-lg);
       overflow: hidden;
+      margin-bottom: 1.25rem;
     }
-    .archetyp-cell {
-      background: var(--bg-surface);
-      padding: 1.5rem 1.25rem;
-      transition: background 0.2s;
+    .case-study-card:last-child { margin-bottom: 0; }
+    .trans-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
     }
-    .archetyp-cell:hover { background: var(--bg-elevated); }
-    .archetyp-cell .nr {
+    .trans-pair-item { position: relative; }
+    .trans-pair-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      max-height: 220px;
+    }
+    .trans-label {
+      position: absolute;
+      bottom: 6px;
+      left: 6px;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      background: rgba(0,0,0,0.55);
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+    .case-study-info { padding: 1rem; }
+    .case-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+    .case-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+    }
+    .result-badge {
+      display: inline-block;
       font-size: 0.65rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      background: var(--gold-subtle);
       color: var(--gold);
-      margin-bottom: 0.5rem;
+      border: 1px solid var(--gold-dark);
     }
-    .archetyp-cell h4 {
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      margin-bottom: 0.4rem;
-      font-family: var(--font-heading);
-    }
-    .archetyp-cell p {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.45;
+    .case-quote {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.55;
       margin: 0;
     }
 
-    /* ---- Final CTA ---- */
+    /* === Benefit Cards === */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .benefit-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-top: 2px solid var(--gold);
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .benefit-card__title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .benefit-card__copy {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* === How It Works === */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .step-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin: 0;
+    }
+    .step-body {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* === About / Coach + Pillars === */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .coach-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius-lg);
+      display: block;
+    }
+    .coach-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 0.3rem;
+    }
+    .coach-name {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .coach-bio {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .pillar-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .pillar-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--bg-border);
+    }
+    .pillar-item:first-child { padding-top: 0; }
+    .pillar-item:last-child { border-bottom: none; }
+    .pillar-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+    .pillar-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+    .pillar-body {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* === Final CTA === */
     .final-cta {
       padding: var(--spacing-xl) var(--spacing-sm);
       background: var(--bg-subtle);
@@ -144,118 +462,354 @@
     .final-cta h2 { margin-bottom: 0.75rem; }
     .final-cta p {
       color: var(--text-secondary);
-      margin-bottom: var(--spacing-lg);
       max-width: 420px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto var(--spacing-lg);
     }
 
-    /* ---- Mobile ---- */
+    /* === Mobile === */
     @media (max-width: 768px) {
+      section[id] { scroll-margin-top: 90px; }
+      .main-nav { display: none; }
+      .hamburger { display: flex; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .archetype-panel.active { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .benefit-grid { grid-template-columns: 1fr 1fr; }
       .hero { padding: 2rem 1rem; }
       .hero h1 { font-size: clamp(1.7rem, 7vw, 2.4rem); }
       .hero .sub { font-size: 0.95rem; margin-bottom: 1.75rem; }
-      .archetypen-grid { grid-template-columns: repeat(2, 1fr); }
-      .archetyp-cell { padding: 1rem; }
       .final-cta { padding: 2.5rem 1rem; }
-      .final-cta h2 { font-size: clamp(1.3rem, 5vw, 1.8rem); }
     }
     @media (max-width: 480px) {
+      .benefit-grid { grid-template-columns: 1fr; }
       .hero { padding: 1.75rem 0.875rem; }
-      .archetypen-grid { grid-template-columns: 1fr; }
-      .proof-strip { font-size: 0.78rem; line-height: 1.5; }
     }
   </style>
-  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
-  <link rel="shortcut icon" href="favicon.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 
+  <!-- ===== HEADER / NAV ===== -->
   <header class="site-header">
-    <div class="container">
-      <img src="reprime-logo.png" alt="RePrime Athlet Coaching" class="site-logo">
-      <a href="quiz.html" class="btn btn--ghost" style="padding:0.5rem 1.1rem; font-size:0.82rem;">
-        Ex-Athleten Audit starten &rarr;
+    <div class="container container--wide">
+      <a href="index.html" class="site-logo-link">
+        <img src="reprime-logo.png" alt="RePrime Athlet Coaching" class="site-logo">
       </a>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#problem">Mein Problem</a>
+        <a href="#ergebnisse">Ergebnisse</a>
+        <a href="#programm">Das Programm</a>
+        <a href="#ablauf">Wie es funktioniert</a>
+        <a href="#ueber-uns">&Uuml;ber uns</a>
+      </nav>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <a href="quiz.html" class="btn btn--primary" style="padding:0.55rem 1.1rem; font-size:0.75rem; letter-spacing:0.07em;">
+          Quiz starten &rarr;
+        </a>
+        <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileNav" aria-label="Men&uuml; &ouml;ffnen">&#9776;</button>
+      </div>
     </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+      <a href="#problem">Mein Problem</a>
+      <a href="#ergebnisse">Ergebnisse</a>
+      <a href="#programm">Das Programm</a>
+      <a href="#ablauf">Wie es funktioniert</a>
+      <a href="#ueber-uns">&Uuml;ber uns</a>
+      <a href="quiz.html" class="nav-cta">Quiz starten &rarr;</a>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
     <div class="container">
       <div class="hero-eyebrow">Ex-Athleten Audit &middot; 7 Fragen &middot; Dein Profil sofort</div>
-      <h1>Du hast nicht aufgehört,<br>Athlet zu sein.<br><em>Du hast aufgehört, wie einer zu leben.</em></h1>
+      <h1>Du hast nicht aufgeh&ouml;rt,<br>Athlet zu sein.<br><em>Du hast aufgeh&ouml;rt, wie einer zu leben.</em></h1>
       <p class="sub">
-        Das System, das dich früher in Form gehalten hat, existiert nicht mehr. Kein Coach. Keine Mannschaft. Kein fester Plan. Starte mit dem Ex-Athleten Audit: 7 Fragen, die zeigen, warum es bisher immer an derselben Stelle aufgehört hat.
+        Das System, das dich fr&uuml;her in Form gehalten hat, existiert nicht mehr. Kein Coach. Keine Mannschaft. Kein fester Plan. Finde in 2 Minuten heraus, warum es bisher immer an derselben Stelle aufgeh&ouml;rt hat.
       </p>
       <a href="quiz.html" class="btn btn--primary btn--lg">
-        Mein Ex-Athleten-Profil herausfinden &rarr;
+        Meinen Athleten-Typ finden &rarr;
       </a>
-      <p class="hero-meta">
-        7 Fragen <span>·</span> 2 Minuten <span>·</span> Dein Profil sofort
-      </p>
+      <p class="hero-meta">7 Fragen <span>&middot;</span> 2 Minuten <span>&middot;</span> Kostenlos</p>
     </div>
   </section>
 
-  <!-- Proof-Strip -->
+  <!-- ===== PROOF STRIP ===== -->
   <div class="proof-strip">
-    Ex-Athleten mit 9-to-5-Job &nbsp;&middot;&nbsp; <strong>Über 20 kg seit dem letzten Spiel &middot; Kein Extremdiät &middot; Kein Training wie zu aktiven Zeiten</strong>
+    Ex-Athleten mit 9-to-5-Job &nbsp;&middot;&nbsp;
+    <strong>&Uuml;ber 20 kg seit dem letzten Spiel &middot; Keine Extremdi&auml;t &middot; Kein Training wie zu aktiven Zeiten</strong>
   </div>
 
-  <!-- Archetypen -->
-  <section class="archetypen-section">
-    <div class="container container--wide">
-      <div class="intro">
-        <div class="section-label" style="text-align:center;">Die 5 Athleten-Profile</div>
-        <h2>Einer davon bist du.</h2>
-        <p>Jeder ehemalige Vereinssportler scheitert aus einem anderen Grund. Jedes Profil braucht eine andere Lösung. Der Audit findet dein dominantes Profil in 2 Minuten.</p>
+  <!-- ===== PAIN POINTS ===== -->
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="section-label">Das Problem</div>
+      <h2 style="margin-bottom:0.75rem;">Du wei&szlig;t, wie Training geht.<br>Das Problem war nie Disziplin.</h2>
+      <p style="color:var(--text-secondary); margin-bottom:var(--spacing-lg); max-width:560px;">Jeder ehemalige Vereinssportler scheitert aus einem anderen Grund. Aber die Ursache ist fast immer dieselbe.</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <p class="pain-card__title">Der Dreiwochenzyklus</p>
+          <p class="pain-card__copy">Du startest stark. Dann kommt das Projekt, der Abend, die Dienstreise. Nach drei Wochen bist du wieder bei null. Nicht zum ersten Mal.</p>
+        </div>
+        <div class="pain-card">
+          <p class="pain-card__title">Der Identit&auml;tsgap</p>
+          <p class="pain-card__copy">Du schaust in den Spiegel und erkennst dich kaum noch. Nicht weil du nie in Form warst - sondern weil du es warst. Jahrelang.</p>
+        </div>
+        <div class="pain-card">
+          <p class="pain-card__title">Das Systemloch</p>
+          <p class="pain-card__copy">Kein Coach. Keine Mannschaft. Kein fester Plan. Das System, das dich jahrelang in Form gehalten hat, existiert nicht mehr.</p>
+        </div>
       </div>
-      <div class="archetypen-grid">
-        <div class="archetyp-cell">
-          <div class="nr">Profil 01</div>
-          <h4>Der Vollgasathlet</h4>
-          <p>Du trainierst wie vor dem Endspiel. Dann kommt nichts mehr. Das ist kein Charakterfehler.</p>
+      <p class="pain-closing">Das war nie dein Fehler. Du hattest das falsche System.</p>
+      <div class="text-center">
+        <a href="quiz.html" class="btn btn--ghost">Finde raus, welcher Typ du bist &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ARCHETYPEN + ERGEBNISSE ===== -->
+  <section class="section section--surface" id="ergebnisse">
+    <div class="container container--wide">
+      <div style="text-align:center; margin-bottom:var(--spacing-lg);">
+        <div class="section-label">5 Profile. Echte Ergebnisse.</div>
+        <h2>Welcher ehemalige Athlet bist du?</h2>
+        <p style="color:var(--text-secondary); max-width:520px; margin:0.5rem auto 0;">Jedes Profil hat ein anderes Kernproblem - und einen anderen Plan. Klick dich durch und finde dein Muster.</p>
+      </div>
+      <div class="archetype-tabs" id="archetypenTabs" role="tablist"></div>
+      <div id="archetypenPanels"></div>
+      <div class="text-center" style="margin-top:2.5rem;">
+        <a href="quiz.html" class="btn btn--primary btn--lg">Finde jetzt deinen Typ &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE OFFER ===== -->
+  <section class="section" id="programm">
+    <div class="container">
+      <div class="section-label">Das Programm</div>
+      <h2 style="margin-bottom:0.75rem;">100 Tage. Dein Athleten-K&ouml;rper. Kein Risiko.</h2>
+      <p style="color:var(--text-secondary); margin-bottom:var(--spacing-lg); max-width:500px;">Was du nach 100 Tagen sp&uuml;rst und siehst - nicht was im Paket ist.</p>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <p class="benefit-card__title">Wieder erkennbar</p>
+          <p class="benefit-card__copy">Du schaust morgens in den Spiegel und erkennst dich. Das ist keine &Uuml;bertreibung - es ist das, worum es wirklich geht.</p>
         </div>
-        <div class="archetyp-cell">
-          <div class="nr">Profil 02</div>
-          <h4>Das Teamkind</h4>
-          <p>Du hattest nie ein Disziplinproblem. Du hattest immer jemanden, der es für dich organisiert hat.</p>
+        <div class="benefit-card">
+          <p class="benefit-card__title">Endlich wieder Energie</p>
+          <p class="benefit-card__copy">Du kommst nach Hause und hast noch etwas &uuml;brig - f&uuml;r dich, f&uuml;r andere. Nicht mehr nur ersch&ouml;pft auf der Couch.</p>
         </div>
-        <div class="archetyp-cell">
-          <div class="nr">Profil 03</div>
-          <h4>Der Rost-Veteran</h4>
-          <p>Dein Körper erinnert sich an jeden Zweikampf. Du trainierst jetzt darum herum.</p>
+        <div class="benefit-card">
+          <p class="benefit-card__title">Die Struktur ist zur&uuml;ck</p>
+          <p class="benefit-card__copy">Ein Coach, ein Plan, null Entscheidungen im Gym. Du gehst rein und wei&szlig;t genau, was du tust.</p>
         </div>
-        <div class="archetyp-cell">
-          <div class="nr">Profil 04</div>
-          <h4>Der Metabolismus-Schock</h4>
-          <p>Du isst noch wie ein Sportler. Du bewegst dich wie ein Büroangestellter.</p>
+        <div class="benefit-card">
+          <p class="benefit-card__title">Kein Reset mehr</p>
+          <p class="benefit-card__copy">Dienstreise, Krankheit, stressige Woche - kein Neustart. Nur die n&auml;chste Session.</p>
         </div>
-        <div class="archetyp-cell">
-          <div class="nr">Profil 05</div>
-          <h4>Der Leistungsblockierte</h4>
-          <p>Du tust alles richtig. Du weißt nur nicht, warum es nicht mehr funktioniert.</p>
+        <div class="benefit-card">
+          <p class="benefit-card__title">Zero Risiko</p>
+          <p class="benefit-card__copy">100 Tage kostenlos. Keine Kreditkarte. Kein Druck. An Tag 100 entscheidest du - wenn du die Ergebnisse siehst.</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="quiz.html" class="btn btn--primary btn--lg">100 Tage kostenlos starten &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="section section--surface" id="ablauf">
+    <div class="container">
+      <div class="section-label">Wie es funktioniert</div>
+      <h2 style="margin-bottom:var(--spacing-lg);">So funktioniert es.</h2>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-number">01</div>
+          <p class="step-title">Quiz machen und Typ herausfinden</p>
+          <p class="step-body">7 Fragen, 2 Minuten. Du bekommst dein pers&ouml;nliches Athleten-Profil sofort - mit einem konkreten ersten Schritt f&uuml;r deinen Typ.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">02</div>
+          <p class="step-title">Pers&ouml;nlichen Plan erhalten</p>
+          <p class="step-body">Vollst&auml;ndig personalisiert auf deinen Typ, deine Verletzungsgeschichte und deinen Alltag. Kein Template. Kein App-Abo.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">03</div>
+          <p class="step-title">Termin buchen</p>
+          <p class="step-body">Schau in einem kostenlosen Gespr&auml;ch, ob du dich f&uuml;r unseren 100-Tage-Gratis-Test qualifizierst. Kein Verkaufsgespr&auml;ch. Ehrliche Analyse.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Final CTA -->
+  <!-- ===== ABOUT / WHY US ===== -->
+  <section class="section" id="ueber-uns">
+    <div class="container">
+      <div class="section-label">&Uuml;ber uns</div>
+      <h2 style="margin-bottom:var(--spacing-lg);">Daniel Wegener &amp; das RePrime-Prinzip.</h2>
+      <div class="about-grid">
+        <div>
+          <img src="coach-1.jpg" alt="Daniel Wegener - RePrime Coach" class="coach-photo">
+          <div style="margin-top:1.25rem;">
+            <span class="coach-label">Dein Coach</span>
+            <p class="coach-name">Daniel Wegener</p>
+            <p class="coach-bio">Ich arbeite ausschlie&szlig;lich mit ehemaligen Vereinssportlern, die einen anspruchsvollen 9-to-5-Job haben und seit dem Ende ihrer aktiven Zeit deutlich zugenommen haben. Nicht weil ich keine anderen coachen k&ouml;nnte. Sondern weil ich wei&szlig;, wie es sich anf&uuml;hlt, jahrelang mit Teamstruktur trainiert zu haben - und dann in einem K&ouml;rper aufzuwachen, den man nicht mehr erkennt.</p>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:1.5rem;">Warum RePrime anders ist.</h3>
+          <div class="pillar-list">
+            <div class="pillar-item">
+              <div class="pillar-dot"></div>
+              <div>
+                <p class="pillar-title">Athleten-spezifisch</p>
+                <p class="pillar-body">Kein generisches Fitness. Dein Profil. Dein Plan. Jede Methode hier ist f&uuml;r jemanden gemacht, der wei&szlig;, was echtes Training ist.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-dot"></div>
+              <div>
+                <p class="pillar-title">System statt Motivation</p>
+                <p class="pillar-body">Externe Struktur war immer deine St&auml;rke. Das war kein Zufall - das ist, wie Vereinssport funktioniert. Wir bringen es zur&uuml;ck.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-dot"></div>
+              <div>
+                <p class="pillar-title">Verletzungs-bewusst</p>
+                <p class="pillar-body">Um Verletzungen herumtrainieren schw&auml;cht sie. Wir trainieren damit - mit einem Plan, der deine Geschichte kennt.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-dot"></div>
+              <div>
+                <p class="pillar-title">Null Extremismus</p>
+                <p class="pillar-body">3 x 45 Min pro Woche. Eine Ern&auml;hrungsregel. Kein Chaos. Kein Programm, das nach zwei Wochen zusammenbricht.</p>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:2rem;">
+            <a href="quiz.html" class="btn btn--primary">Dein Profil herausfinden &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
   <section class="final-cta">
     <div class="container">
       <span class="gold-line"></span>
-      <h2>2 Minuten. Dein Profil. Dein erster Schritt.<br><em>Der Rest folgt von selbst.</em></h2>
-      <p>7 Fragen. Dein persönliches Ex-Athleten-Profil. Sofort umsetzbare Empfehlungen für deinen Typ.</p>
-      <a href="quiz.html" class="btn btn--primary btn--lg">Mein Ex-Athleten-Profil herausfinden &rarr;</a>
+      <h2>2 Minuten. Dein Profil.<br><em>Dein erster Schritt.</em></h2>
+      <p>Kostenlos. Kein Risiko. Keine Kreditkarte.</p>
+      <a href="quiz.html" class="btn btn--primary btn--lg">Quiz jetzt starten &rarr;</a>
     </div>
   </section>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container">
       <p>RePrime Athlet Coaching &copy; 2026 &nbsp;&middot;&nbsp; <a href="#">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></p>
     </div>
   </footer>
+
+  <script src="quiz-engine.js"></script>
+  <script>
+    /* === Build Archetype Tabs + Panels from quiz-engine.js data === */
+    (function () {
+      var ORDER  = ['V', 'T', 'R', 'M', 'L'];
+      var LABELS = ['Vollgasathlet', 'Teamkind', 'Rost-Veteran', 'Metabolismus-Schock', 'Leistungsblockierte'];
+      var tabsEl   = document.getElementById('archetypenTabs');
+      var panelsEl = document.getElementById('archetypenPanels');
+
+      ORDER.forEach(function (key, i) {
+        var a = window.FDA.ARCHETYPEN[key];
+
+        /* Tab button */
+        var btn = document.createElement('button');
+        btn.className   = 'archetype-tab-btn' + (i === 0 ? ' active' : '');
+        btn.dataset.key = key;
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        btn.textContent = LABELS[i];
+        tabsEl.appendChild(btn);
+
+        /* Case study cards */
+        var csHtml = a.fallstudien.map(function (fs) {
+          return '<div class="case-study-card">' +
+            '<div class="trans-pair">' +
+              '<div class="trans-pair-item">' +
+                '<img src="' + fs.vorher + '" alt="' + fs.name + ' vorher" loading="lazy">' +
+                '<span class="trans-label">Vorher</span>' +
+              '</div>' +
+              '<div class="trans-pair-item">' +
+                '<img src="' + fs.nachher + '" alt="' + fs.name + ' nachher" loading="lazy">' +
+                '<span class="trans-label">Nachher</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="case-study-info">' +
+              '<div class="case-meta">' +
+                '<span class="case-name">' + fs.name + '</span>' +
+                '<span class="badge">' + fs.sport + '</span>' +
+                '<span class="result-badge">' + fs.ergebnis + '</span>' +
+              '</div>' +
+              '<p class="case-quote">„' + fs.zitat + '“</p>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+
+        /* Pain points list */
+        var spHtml = '<ul class="archetype-pain-list">' +
+          a.schmerzpunkte.map(function (sp) { return '<li>' + sp + '</li>'; }).join('') +
+          '</ul>';
+
+        /* Panel */
+        var panel = document.createElement('div');
+        panel.className   = 'archetype-panel' + (i === 0 ? ' active' : '');
+        panel.dataset.key = key;
+        panel.setAttribute('role', 'tabpanel');
+        panel.innerHTML =
+          '<div>' +
+            '<div class="section-label" style="margin-bottom:0.6rem;">' + a.name + '</div>' +
+            '<p class="archetype-tagline">' + a.tagline + '</p>' +
+            spHtml +
+            '<p class="archetype-hook">' + a.hookZitat + '</p>' +
+          '</div>' +
+          '<div>' + csHtml + '</div>';
+        panelsEl.appendChild(panel);
+      });
+
+      /* Tab click handler */
+      tabsEl.addEventListener('click', function (e) {
+        var btn = e.target.closest('.archetype-tab-btn');
+        if (!btn) return;
+        var key = btn.dataset.key;
+        tabsEl.querySelectorAll('.archetype-tab-btn').forEach(function (b) {
+          b.classList.toggle('active', b.dataset.key === key);
+          b.setAttribute('aria-selected', b.dataset.key === key ? 'true' : 'false');
+        });
+        panelsEl.querySelectorAll('.archetype-panel').forEach(function (p) {
+          p.classList.toggle('active', p.dataset.key === key);
+        });
+      });
+    })();
+
+    /* === Hamburger Menu === */
+    (function () {
+      var btn = document.getElementById('hamburger');
+      var nav = document.getElementById('mobileNav');
+      btn.addEventListener('click', function () {
+        var isOpen = nav.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
