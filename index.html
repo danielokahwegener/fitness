@@ -376,6 +376,61 @@
       line-height: 1.65;
     }
 
+    /* === Coach Carousel (About section) === */
+    .coach-carousel-full {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      width: 100%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+    }
+    .coach-carousel-full .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .coach-carousel-full .carousel-slide.active { opacity: 1; }
+    .coach-carousel-full .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .coach-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .coach-carousel-dots button {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--bg-border);
+      border: 1px solid var(--text-muted);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      flex-shrink: 0;
+    }
+    .coach-carousel-dots button:hover { border-color: var(--gold); }
+    .coach-carousel-dots button.active { background: var(--gold); border-color: var(--gold); transform: scale(1.25); }
+
+    /* === Benefit Card Feature Label === */
+    .benefit-card__feature {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--silver-dark);
+      margin-bottom: 0.5rem;
+    }
+
     /* === About / Coach + Pillars === */
     .about-grid {
       display: grid;
@@ -499,7 +554,7 @@
         <img src="reprime-logo.png" alt="RePrime Athlet Coaching" class="site-logo">
       </a>
       <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="#problem">Mein Problem</a>
+        <a href="#problem">Das Problem</a>
         <a href="#ergebnisse">Ergebnisse</a>
         <a href="#programm">Das Programm</a>
         <a href="#ablauf">Wie es funktioniert</a>
@@ -513,7 +568,7 @@
       </div>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
-      <a href="#problem">Mein Problem</a>
+      <a href="#problem">Das Problem</a>
       <a href="#ergebnisse">Ergebnisse</a>
       <a href="#programm">Das Programm</a>
       <a href="#ablauf">Wie es funktioniert</a>
@@ -556,7 +611,7 @@
         </div>
         <div class="pain-card">
           <p class="pain-card__title">Der Identit&auml;tsgap</p>
-          <p class="pain-card__copy">Du schaust in den Spiegel und erkennst dich kaum noch. Nicht weil du nie in Form warst - sondern weil du es warst. Jahrelang.</p>
+          <p class="pain-card__copy">Du schaust in den Spiegel und erkennst dich kaum noch. Nicht weil du nie in Form warst. Sondern weil du es warst. Jahrelang.</p>
         </div>
         <div class="pain-card">
           <p class="pain-card__title">Das Systemloch</p>
@@ -576,7 +631,7 @@
       <div style="text-align:center; margin-bottom:var(--spacing-lg);">
         <div class="section-label">5 Profile. Echte Ergebnisse.</div>
         <h2>Welcher ehemalige Athlet bist du?</h2>
-        <p style="color:var(--text-secondary); max-width:520px; margin:0.5rem auto 0;">Jedes Profil hat ein anderes Kernproblem - und einen anderen Plan. Klick dich durch und finde dein Muster.</p>
+        <p style="color:var(--text-secondary); max-width:520px; margin:0.5rem auto 0;">Jedes Profil hat ein anderes Kernproblem. Und einen anderen Plan. Klick dich durch und finde dein Muster.</p>
       </div>
       <div class="archetype-tabs" id="archetypenTabs" role="tablist"></div>
       <div id="archetypenPanels"></div>
@@ -590,28 +645,33 @@
   <section class="section" id="programm">
     <div class="container">
       <div class="section-label">Das Programm</div>
-      <h2 style="margin-bottom:0.75rem;">100 Tage. Dein Athleten-K&ouml;rper. Kein Risiko.</h2>
-      <p style="color:var(--text-secondary); margin-bottom:var(--spacing-lg); max-width:500px;">Was du nach 100 Tagen sp&uuml;rst und siehst - nicht was im Paket ist.</p>
+      <h2 style="margin-bottom:0.75rem;">Was drin steckt. Was es dir bringt.</h2>
+      <p style="color:var(--text-secondary); margin-bottom:var(--spacing-lg); max-width:500px;">Jede Komponente des Programms l&ouml;st ein konkretes Problem. Hier siehst du welches.</p>
       <div class="benefit-grid">
         <div class="benefit-card">
-          <p class="benefit-card__title">Wieder erkennbar</p>
-          <p class="benefit-card__copy">Du schaust morgens in den Spiegel und erkennst dich. Das ist keine &Uuml;bertreibung - es ist das, worum es wirklich geht.</p>
+          <span class="benefit-card__feature">Personalisiertes Trainingsprogramm</span>
+          <p class="benefit-card__title">Kein Nachdenken. Nur Trainieren.</p>
+          <p class="benefit-card__copy">Dein kompletter Trainingsplan in TrueCoach ist auf dein Athleten-Profil, deine Verletzungsgeschichte und deinen Alltag zugeschnitten. Du gehst ins Gym und wei&szlig;t genau, was zu tun ist.</p>
         </div>
         <div class="benefit-card">
-          <p class="benefit-card__title">Endlich wieder Energie</p>
-          <p class="benefit-card__copy">Du kommst nach Hause und hast noch etwas &uuml;brig - f&uuml;r dich, f&uuml;r andere. Nicht mehr nur ersch&ouml;pft auf der Couch.</p>
+          <span class="benefit-card__feature">T&auml;glicher Coach-Check-in</span>
+          <p class="benefit-card__title">Die Struktur, die du vermisst hast, ist zur&uuml;ck.</p>
+          <p class="benefit-card__copy">Sprachnotiz morgens, pers&ouml;nliche Antwort von Daniel innerhalb von 2 Stunden. Wie ein Coach, der t&auml;glich wei&szlig;, ob du da warst und was als N&auml;chstes kommt.</p>
         </div>
         <div class="benefit-card">
-          <p class="benefit-card__title">Die Struktur ist zur&uuml;ck</p>
-          <p class="benefit-card__copy">Ein Coach, ein Plan, null Entscheidungen im Gym. Du gehst rein und wei&szlig;t genau, was du tust.</p>
+          <span class="benefit-card__feature">W&ouml;chentlicher Strategy-Call</span>
+          <p class="benefit-card__title">Probleme werden gel&ouml;st, bevor sie zu R&uuml;ckschl&auml;gen werden.</p>
+          <p class="benefit-card__copy">Einmal pro Woche schauen wir gemeinsam auf Plan, Zahlen und die n&auml;chste Woche. Der Dreiwochenzyklus hat keine Chance mehr.</p>
         </div>
         <div class="benefit-card">
-          <p class="benefit-card__title">Kein Reset mehr</p>
-          <p class="benefit-card__copy">Dienstreise, Krankheit, stressige Woche - kein Neustart. Nur die n&auml;chste Session.</p>
+          <span class="benefit-card__feature">Athleten-Profil und Sofortl&ouml;sung</span>
+          <p class="benefit-card__title">Dein Kernproblem wird zuerst angegangen.</p>
+          <p class="benefit-card__copy">Das Quiz identifiziert dein Profil. Darauf aufbauend bekommst du eine sofort umsetzbare L&ouml;sung f&uuml;r genau das, was bei deinem Typ am h&auml;ufigsten zum Reset f&uuml;hrt.</p>
         </div>
         <div class="benefit-card">
-          <p class="benefit-card__title">Zero Risiko</p>
-          <p class="benefit-card__copy">100 Tage kostenlos. Keine Kreditkarte. Kein Druck. An Tag 100 entscheidest du - wenn du die Ergebnisse siehst.</p>
+          <span class="benefit-card__feature">100-Tage-Gratis-Test</span>
+          <p class="benefit-card__title">Kein finanzielles Risiko.</p>
+          <p class="benefit-card__copy">100 Tage echtes 1-zu-1-Coaching ohne Kreditkarte und ohne automatische Abbuchungen. An Tag 100 entscheidest du, wenn du die Ergebnisse siehst.</p>
         </div>
       </div>
       <div class="text-center">
@@ -629,12 +689,12 @@
         <div class="step-item">
           <div class="step-number">01</div>
           <p class="step-title">Quiz machen und Typ herausfinden</p>
-          <p class="step-body">7 Fragen, 2 Minuten. Du bekommst dein pers&ouml;nliches Athleten-Profil sofort - mit einem konkreten ersten Schritt f&uuml;r deinen Typ.</p>
+          <p class="step-body">7 Fragen, 2 Minuten. Du bekommst dein pers&ouml;nliches Athleten-Profil sofort. Mit einem konkreten ersten Schritt f&uuml;r deinen Typ.</p>
         </div>
         <div class="step-item">
           <div class="step-number">02</div>
-          <p class="step-title">Pers&ouml;nlichen Plan erhalten</p>
-          <p class="step-body">Vollst&auml;ndig personalisiert auf deinen Typ, deine Verletzungsgeschichte und deinen Alltag. Kein Template. Kein App-Abo.</p>
+          <p class="step-title">Sofort umsetzbare L&ouml;sung erhalten</p>
+          <p class="step-body">Basierend auf deinem Athleten-Profil bekommst du eine gezielte L&ouml;sung f&uuml;r dein Kernproblem. Keine allgemeinen Tipps. Eine direkte Antwort auf dein spezifisches Muster.</p>
         </div>
         <div class="step-item">
           <div class="step-number">03</div>
@@ -652,11 +712,17 @@
       <h2 style="margin-bottom:var(--spacing-lg);">Daniel Wegener &amp; das RePrime-Prinzip.</h2>
       <div class="about-grid">
         <div>
-          <img src="coach-1.jpg" alt="Daniel Wegener - RePrime Coach" class="coach-photo">
+          <div class="coach-carousel-full" id="coachCarouselIndex">
+            <div class="carousel-slide active"><img src="coach-1.jpg" alt="Daniel Wegener" loading="lazy"></div>
+            <div class="carousel-slide"><img src="coach-2.jpg" alt="Daniel Wegener" loading="lazy"></div>
+            <div class="carousel-slide"><img src="coach-3.jpg" alt="Daniel Wegener" loading="lazy"></div>
+            <div class="carousel-slide"><img src="coach-4.jpg" alt="Daniel Wegener" loading="lazy"></div>
+          </div>
+          <div class="coach-carousel-dots" id="coachDotsIndex"></div>
           <div style="margin-top:1.25rem;">
             <span class="coach-label">Dein Coach</span>
             <p class="coach-name">Daniel Wegener</p>
-            <p class="coach-bio">Ich arbeite ausschlie&szlig;lich mit ehemaligen Vereinssportlern, die einen anspruchsvollen 9-to-5-Job haben und seit dem Ende ihrer aktiven Zeit deutlich zugenommen haben. Nicht weil ich keine anderen coachen k&ouml;nnte. Sondern weil ich wei&szlig;, wie es sich anf&uuml;hlt, jahrelang mit Teamstruktur trainiert zu haben - und dann in einem K&ouml;rper aufzuwachen, den man nicht mehr erkennt.</p>
+            <p class="coach-bio">Ich arbeite ausschlie&szlig;lich mit ehemaligen Vereinssportlern, die einen anspruchsvollen 9-to-5-Job haben und seit dem Ende ihrer aktiven Zeit deutlich zugenommen haben. Nicht weil ich keine anderen coachen k&ouml;nnte. Sondern weil ich wei&szlig;, wie es sich anf&uuml;hlt, jahrelang mit Teamstruktur trainiert zu haben. Und dann in einem K&ouml;rper aufzuwachen, den man nicht mehr erkennt.</p>
           </div>
         </div>
         <div>
@@ -673,14 +739,14 @@
               <div class="pillar-dot"></div>
               <div>
                 <p class="pillar-title">System statt Motivation</p>
-                <p class="pillar-body">Externe Struktur war immer deine St&auml;rke. Das war kein Zufall - das ist, wie Vereinssport funktioniert. Wir bringen es zur&uuml;ck.</p>
+                <p class="pillar-body">Externe Struktur war immer deine St&auml;rke. Das ist, wie Vereinssport funktioniert. Wir bringen es zur&uuml;ck.</p>
               </div>
             </div>
             <div class="pillar-item">
               <div class="pillar-dot"></div>
               <div>
                 <p class="pillar-title">Verletzungs-bewusst</p>
-                <p class="pillar-body">Um Verletzungen herumtrainieren schw&auml;cht sie. Wir trainieren damit - mit einem Plan, der deine Geschichte kennt.</p>
+                <p class="pillar-body">Um Verletzungen herumtrainieren schw&auml;cht sie. Wir trainieren damit. Mit einem Plan, der deine Geschichte kennt.</p>
               </div>
             </div>
             <div class="pillar-item">
@@ -795,6 +861,31 @@
           p.classList.toggle('active', p.dataset.key === key);
         });
       });
+    })();
+
+    /* === Coach Carousel (About section) === */
+    (function () {
+      var slides = document.querySelectorAll('#coachCarouselIndex .carousel-slide');
+      var dotsEl = document.getElementById('coachDotsIndex');
+      var current = 0;
+      var timer;
+      if (!slides.length || !dotsEl) return;
+      slides.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.className = i === 0 ? 'active' : '';
+        dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+        dot.addEventListener('click', function () { goTo(i); resetTimer(); });
+        dotsEl.appendChild(dot);
+      });
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        if (dotsEl.children[current]) dotsEl.children[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        if (dotsEl.children[current]) dotsEl.children[current].classList.add('active');
+      }
+      function resetTimer() { clearInterval(timer); timer = setInterval(function () { goTo(current + 1); }, 4000); }
+      timer = setInterval(function () { goTo(current + 1); }, 4000);
     })();
 
     /* === Hamburger Menu === */
