@@ -524,16 +524,134 @@
       margin: 0 auto var(--spacing-lg);
     }
 
+    /* === Hero Proof Strip === */
+    .hero-proof {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 2rem auto 0;
+      max-width: 520px;
+    }
+    .hero-proof-pair { flex: 1; }
+    .hero-proof-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .hero-proof-imgs img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      max-height: 120px;
+    }
+
+    /* === Pain Section 2-col Layout === */
+    .pain-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
+      align-items: start;
+    }
+    .pain-visual img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius-lg);
+      display: block;
+    }
+    .pain-visual-caption {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* === How It Works 2-col Layout === */
+    .ablauf-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: start;
+    }
+    .ablauf-layout .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+    .ablauf-visual img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius-lg);
+      display: block;
+    }
+
+    /* === Program Results Strip === */
+    .results-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: var(--spacing-lg) 0;
+    }
+    .results-strip-item {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .results-strip-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .results-strip-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 0.75rem 0.75rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+    }
+    .results-section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--silver-dark);
+      text-align: center;
+      margin-bottom: 1rem;
+      margin-top: var(--spacing-lg);
+    }
+
     /* === Mobile === */
     @media (max-width: 768px) {
       section[id] { scroll-margin-top: 90px; }
       .main-nav { display: none; }
       .hamburger { display: flex; }
       .pain-grid { grid-template-columns: 1fr; }
+      .pain-layout { grid-template-columns: 1fr; }
+      .pain-visual { display: none; }
       .case-studies-row { grid-template-columns: 1fr; }
+      .ablauf-layout { grid-template-columns: 1fr; }
+      .ablauf-layout .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .ablauf-visual { display: none; }
       .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .benefit-grid { grid-template-columns: 1fr 1fr; }
+      .results-strip { grid-template-columns: 1fr 1fr; }
+      .hero-proof { max-width: 100%; }
       .hero { padding: 2rem 1rem; }
       .hero h1 { font-size: clamp(1.7rem, 7vw, 2.4rem); }
       .hero .sub { font-size: 0.95rem; margin-bottom: 1.75rem; }
@@ -541,7 +659,9 @@
     }
     @media (max-width: 480px) {
       .benefit-grid { grid-template-columns: 1fr; }
+      .results-strip { grid-template-columns: 1fr; }
       .hero { padding: 1.75rem 0.875rem; }
+      .hero-proof { display: none; }
     }
   </style>
 </head>
@@ -589,6 +709,26 @@
         Meinen Athleten-Typ finden &rarr;
       </a>
       <p class="hero-meta">7 Fragen <span>&middot;</span> 2 Minuten <span>&middot;</span> Kostenlos</p>
+      <div class="hero-proof" aria-hidden="true">
+        <div class="hero-proof-pair">
+          <div class="hero-proof-imgs">
+            <img src="vorher-1.jpg" alt="" loading="lazy">
+            <img src="nachher-1.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="hero-proof-pair">
+          <div class="hero-proof-imgs">
+            <img src="vorher-2.jpg" alt="" loading="lazy">
+            <img src="nachher-2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="hero-proof-pair">
+          <div class="hero-proof-imgs">
+            <img src="vorher-3.jpg" alt="" loading="lazy">
+            <img src="nachher-3.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -600,27 +740,35 @@
 
   <!-- ===== PAIN POINTS ===== -->
   <section class="section" id="problem">
-    <div class="container">
-      <div class="section-label">Das Problem</div>
-      <h2 style="margin-bottom:0.75rem;">Du wei&szlig;t, wie Training geht.<br>Das Problem war nie Disziplin.</h2>
-      <p style="color:var(--text-secondary); margin-bottom:var(--spacing-lg); max-width:560px;">Jeder ehemalige Vereinssportler scheitert aus einem anderen Grund. Aber die Ursache ist fast immer dieselbe.</p>
-      <div class="pain-grid">
-        <div class="pain-card">
-          <p class="pain-card__title">Der Dreiwochenzyklus</p>
-          <p class="pain-card__copy">Du startest stark. Dann kommt das Projekt, der Abend, die Dienstreise. Nach drei Wochen bist du wieder bei null. Nicht zum ersten Mal.</p>
+    <div class="container container--wide">
+      <div class="pain-layout">
+        <div>
+          <div class="section-label">Das Problem</div>
+          <h2 style="margin-bottom:0.75rem;">Du wei&szlig;t, wie Training geht.<br>Das Problem war nie Disziplin.</h2>
+          <p style="color:var(--text-secondary); margin-bottom:var(--spacing-lg); max-width:560px;">Jeder ehemalige Vereinssportler scheitert aus einem anderen Grund. Aber die Ursache ist fast immer dieselbe.</p>
+          <div class="pain-grid">
+            <div class="pain-card">
+              <p class="pain-card__title">Der Dreiwochenzyklus</p>
+              <p class="pain-card__copy">Du startest stark. Dann kommt das Projekt, der Abend, die Dienstreise. Nach drei Wochen bist du wieder bei null. Nicht zum ersten Mal.</p>
+            </div>
+            <div class="pain-card">
+              <p class="pain-card__title">Der Identit&auml;tsgap</p>
+              <p class="pain-card__copy">Du schaust in den Spiegel und erkennst dich kaum noch. Nicht weil du nie in Form warst. Sondern weil du es warst. Jahrelang.</p>
+            </div>
+            <div class="pain-card">
+              <p class="pain-card__title">Das Systemloch</p>
+              <p class="pain-card__copy">Kein Coach. Keine Mannschaft. Kein fester Plan. Das System, das dich jahrelang in Form gehalten hat, existiert nicht mehr.</p>
+            </div>
+          </div>
+          <p class="pain-closing">Das war nie dein Fehler. Du hattest das falsche System.</p>
+          <div>
+            <a href="quiz.html" class="btn btn--ghost">Finde raus, welcher Typ du bist &rarr;</a>
+          </div>
         </div>
-        <div class="pain-card">
-          <p class="pain-card__title">Der Identit&auml;tsgap</p>
-          <p class="pain-card__copy">Du schaust in den Spiegel und erkennst dich kaum noch. Nicht weil du nie in Form warst. Sondern weil du es warst. Jahrelang.</p>
+        <div class="pain-visual">
+          <img src="vorher-1.jpg" alt="Ehemaliger Vereinssportler" loading="lazy">
+          <p class="pain-visual-caption">Vor dem Comeback</p>
         </div>
-        <div class="pain-card">
-          <p class="pain-card__title">Das Systemloch</p>
-          <p class="pain-card__copy">Kein Coach. Keine Mannschaft. Kein fester Plan. Das System, das dich jahrelang in Form gehalten hat, existiert nicht mehr.</p>
-        </div>
-      </div>
-      <p class="pain-closing">Das war nie dein Fehler. Du hattest das falsche System.</p>
-      <div class="text-center">
-        <a href="quiz.html" class="btn btn--ghost">Finde raus, welcher Typ du bist &rarr;</a>
       </div>
     </div>
   </section>
@@ -674,6 +822,21 @@
           <p class="benefit-card__copy">100 Tage echtes 1-zu-1-Coaching ohne Kreditkarte und ohne automatische Abbuchungen. An Tag 100 entscheidest du, wenn du die Ergebnisse siehst.</p>
         </div>
       </div>
+      <p class="results-section-label">Nach 100 Tagen. Echte Klienten.</p>
+      <div class="results-strip">
+        <div class="results-strip-item">
+          <img src="nachher-1.jpg" alt="Ergebnis nach 100 Tagen" loading="lazy">
+          <span class="results-strip-label">Ergebnis</span>
+        </div>
+        <div class="results-strip-item">
+          <img src="nachher-2.jpg" alt="Ergebnis nach 100 Tagen" loading="lazy">
+          <span class="results-strip-label">Ergebnis</span>
+        </div>
+        <div class="results-strip-item">
+          <img src="nachher-3.jpg" alt="Ergebnis nach 100 Tagen" loading="lazy">
+          <span class="results-strip-label">Ergebnis</span>
+        </div>
+      </div>
       <div class="text-center">
         <a href="quiz.html" class="btn btn--primary btn--lg">Meinen Typ herausfinden &rarr;</a>
       </div>
@@ -682,24 +845,31 @@
 
   <!-- ===== HOW IT WORKS ===== -->
   <section class="section section--surface" id="ablauf">
-    <div class="container">
-      <div class="section-label">Wie es funktioniert</div>
-      <h2 style="margin-bottom:var(--spacing-lg);">So funktioniert es.</h2>
-      <div class="steps-grid">
-        <div class="step-item">
-          <div class="step-number">01</div>
-          <p class="step-title">Quiz machen und Typ herausfinden</p>
-          <p class="step-body">7 Fragen, 2 Minuten. Du bekommst dein pers&ouml;nliches Athleten-Profil sofort. Mit einem konkreten ersten Schritt f&uuml;r deinen Typ.</p>
+    <div class="container container--wide">
+      <div class="ablauf-layout">
+        <div>
+          <div class="section-label">Wie es funktioniert</div>
+          <h2 style="margin-bottom:var(--spacing-lg);">So funktioniert es.</h2>
+          <div class="steps-grid">
+            <div class="step-item">
+              <div class="step-number">01</div>
+              <p class="step-title">Quiz machen und Typ herausfinden</p>
+              <p class="step-body">7 Fragen, 2 Minuten. Du bekommst dein pers&ouml;nliches Athleten-Profil sofort. Mit einem konkreten ersten Schritt f&uuml;r deinen Typ.</p>
+            </div>
+            <div class="step-item">
+              <div class="step-number">02</div>
+              <p class="step-title">Sofort umsetzbare L&ouml;sung erhalten</p>
+              <p class="step-body">Basierend auf deinem Athleten-Profil bekommst du eine gezielte L&ouml;sung f&uuml;r dein Kernproblem. Keine allgemeinen Tipps. Eine direkte Antwort auf dein spezifisches Muster.</p>
+            </div>
+            <div class="step-item">
+              <div class="step-number">03</div>
+              <p class="step-title">Termin buchen</p>
+              <p class="step-body">Schau in einem kostenlosen Gespr&auml;ch, ob du dich f&uuml;r unseren 100-Tage-Gratis-Test qualifizierst. Kein Verkaufsgespr&auml;ch. Ehrliche Analyse.</p>
+            </div>
+          </div>
         </div>
-        <div class="step-item">
-          <div class="step-number">02</div>
-          <p class="step-title">Sofort umsetzbare L&ouml;sung erhalten</p>
-          <p class="step-body">Basierend auf deinem Athleten-Profil bekommst du eine gezielte L&ouml;sung f&uuml;r dein Kernproblem. Keine allgemeinen Tipps. Eine direkte Antwort auf dein spezifisches Muster.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-number">03</div>
-          <p class="step-title">Termin buchen</p>
-          <p class="step-body">Schau in einem kostenlosen Gespr&auml;ch, ob du dich f&uuml;r unseren 100-Tage-Gratis-Test qualifizierst. Kein Verkaufsgespr&auml;ch. Ehrliche Analyse.</p>
+        <div class="ablauf-visual">
+          <img src="coach-4.jpg" alt="Daniel Wegener" loading="lazy">
         </div>
       </div>
     </div>
