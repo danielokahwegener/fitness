@@ -552,12 +552,54 @@
     /* === Pain Section 2-col Layout === */
     .pain-layout {
       display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: 3rem;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
       align-items: start;
     }
+    /* Desktop: carousel, hide grid */
+    .pain-carousel {
+      position: relative;
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-elevated);
+    }
+    .pain-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .pain-slide.active { opacity: 1; }
+    .pain-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .pain-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pain-carousel-dots button {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--bg-border);
+      border: 1px solid var(--text-muted);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      flex-shrink: 0;
+    }
+    .pain-carousel-dots button:hover { border-color: var(--gold); }
+    .pain-carousel-dots button.active { background: var(--gold); border-color: var(--gold); transform: scale(1.25); }
+    /* Mobile: grid, hide carousel */
     .pain-visual-grid {
-      display: grid;
+      display: none;
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
     }
@@ -627,6 +669,9 @@
       .hamburger { display: flex; }
       .pain-grid { grid-template-columns: 1fr; }
       .pain-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .pain-carousel { display: none; }
+      .pain-carousel-dots { display: none; }
+      .pain-visual-grid { display: grid; }
       .pain-visual-grid img { max-height: 160px; }
       .case-studies-row { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -750,12 +795,20 @@
           </div>
         </div>
         <div class="pain-visual">
+          <!-- Desktop: carousel (one at a time) -->
+          <div class="pain-carousel" id="painCarousel">
+            <div class="pain-slide active"><img src="vorher-1.jpg" alt="Ehemaliger Vereinssportler" loading="lazy"></div>
+            <div class="pain-slide"><img src="vorher-2.jpg" alt="Ehemaliger Vereinssportler" loading="lazy"></div>
+            <div class="pain-slide"><img src="vorher-3.jpg" alt="Ehemaliger Vereinssportler" loading="lazy"></div>
+          </div>
+          <div class="pain-carousel-dots" id="painDots"></div>
+          <!-- Mobile: all three side by side -->
           <div class="pain-visual-grid">
             <img src="vorher-1.jpg" alt="Ehemaliger Vereinssportler" loading="lazy">
             <img src="vorher-2.jpg" alt="Ehemaliger Vereinssportler" loading="lazy">
             <img src="vorher-3.jpg" alt="Ehemaliger Vereinssportler" loading="lazy">
           </div>
-          <p class="pain-visual-caption">Ohne unsere Prinzipien</p>
+          <p class="pain-visual-caption">Vor dem Comeback</p>
         </div>
       </div>
     </div>
@@ -1025,6 +1078,31 @@
         var dot = document.createElement('button');
         dot.className = i === 0 ? 'active' : '';
         dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+        dot.addEventListener('click', function () { goTo(i); resetTimer(); });
+        dotsEl.appendChild(dot);
+      });
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        if (dotsEl.children[current]) dotsEl.children[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        if (dotsEl.children[current]) dotsEl.children[current].classList.add('active');
+      }
+      function resetTimer() { clearInterval(timer); timer = setInterval(function () { goTo(current + 1); }, 4000); }
+      timer = setInterval(function () { goTo(current + 1); }, 4000);
+    })();
+
+    /* === Pain Section Carousel (desktop only) === */
+    (function () {
+      var slides = document.querySelectorAll('#painCarousel .pain-slide');
+      var dotsEl = document.getElementById('painDots');
+      var current = 0;
+      var timer;
+      if (!slides.length || !dotsEl) return;
+      slides.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.className = i === 0 ? 'active' : '';
+        dot.setAttribute('aria-label', 'Bild ' + (i + 1));
         dot.addEventListener('click', function () { goTo(i); resetTimer(); });
         dotsEl.appendChild(dot);
       });
