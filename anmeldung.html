@@ -659,8 +659,8 @@
         slides[current].classList.add('active');
         if (dotsContainer.children[current]) dotsContainer.children[current].classList.add('active');
       }
-      function resetTimer() { clearInterval(timer); timer = setInterval(function() { goTo(current + 1); }, 2500); }
-      timer = setInterval(function() { goTo(current + 1); }, 2500);
+      function resetTimer() { clearInterval(timer); timer = setInterval(function() { goTo(current + 1); }, 1500); }
+      timer = setInterval(function() { goTo(current + 1); }, 1500);
     })();
   </script>
 </body>
