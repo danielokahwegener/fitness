@@ -60,7 +60,7 @@ window.FDA.ARCHETYPEN = {
         sport: 'ehem. Handballer',
         beruf: 'Abteilungsleiter',
         ergebnis: '-16 kg \xb7 18 Monate',
-        zitat: '18 Monate lang hatte ich jemanden, der jeden Montag gefragt hat, was letzte Woche war. Das klingt einfach. Aber genau das hat den Unterschied gemacht.',
+        zitat: '18 Monate lang hatte ich jemanden, der jeden Tag an meiner Seite war. Egal ob Telefonat, FaceTime, Sprachnachricht oder Zoom, ich war nie auf mich allein gestellt. Das klingt einfach. Aber genau das hat den Unterschied gemacht.',
         vorher: '6before-34y35lbs18mon.jpg',
         nachher: '6after-34y35lbs18mon.jpg'
       },
@@ -140,7 +140,7 @@ window.FDA.ARCHETYPEN = {
         sport: 'ehem. Schwimmer',
         beruf: 'Unternehmensberater',
         ergebnis: '-63 kg \xb7 24 Monate',
-        zitat: 'Fr\xfcher hat mein K\xf6rper alles verarbeitet. Irgendwann hat das aufgeh\xf6rt. Ich dachte, mein Stoffwechsel ist kaputt. Er war nur nicht mehr derselbe Job wie fr\xfcher.',
+        zitat: 'Fr\xfcher hat mein K\xf6rper alles verarbeitet. Irgendwann hat das aufgeh\xf6rt. Ich dachte, mein Stoffwechsel ist kaputt. Allerdings, lag es komplett an meinem veränderten Lebensstil',
         vorher: '3before-27y138lbs24mon.jpg',
         nachher: '3after-27y138lbs24mon.jpg'
       }
