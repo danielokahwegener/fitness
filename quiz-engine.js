@@ -51,7 +51,7 @@ window.FDA.ARCHETYPEN = {
       'Du weißt genau, was du tun solltest. Du tust es einfach nicht, wenn niemand es von dir erwartet.',
       'Die Mannschaft hat dich täglich auf den Platz gebracht, nicht du selbst. Das ist keine Schwäche. Das ist, wie Vereinssport funktioniert.'
     ],
-    schnellgewinn: 'Ein nicht verhandelbarer Wochenplan mit fixen Trainingszeiten und einem externen Accountability-Mechanismus, der nicht auf deiner Motivation basiert.',
+    schnellgewinn: 'Ein nicht verhandelbarer Wochenplan mit fixen Trainingszeiten und einem externen Accountability-Mechanismus (z.B. deinen Plan mit einem Freund, Kollegen, oder Familie teieln), der nicht auf deiner Motivation basiert.',
     hookZitat: 'Du brauchst keinen Motivationscoach. Du brauchst eine neue Mannschaft.',
     fallstudien: [
       {
@@ -86,7 +86,7 @@ window.FDA.ARCHETYPEN = {
       'Du hast Angst, wieder ernsthaft zu trainieren, weil du weißt, was Überlastung kostet.',
       'Du trainierst um die Verletzungen herum, statt ein Programm zu haben, das mit ihnen arbeitet.'
     ],
-    schnellgewinn: 'Eine ehrliche Bestandsaufnahme deiner tatsächlichen körperlichen Einschränkungen. 80 Prozent davon sind handhabbar, nicht disqualifizierend. Der Rest braucht einen angepassten Plan, kein weniger Training.',
+    schnellgewinn: 'Eine ehrliche Bestandsaufnahme deiner tatsächlichen körperlichen Einschränkungen. 80 Prozent davon sind handhabbar, nicht disqualifizierend. Der Rest braucht einen angepassten Plan, kein reduziertes Training.',
     hookZitat: 'Du musst nicht trainieren wie mit 22. Du musst trainieren wie jemand, der mit 22 einer der Besten war, und jetzt einen anderen Ansatz braucht.',
     fallstudien: [
       {
@@ -121,7 +121,7 @@ window.FDA.ARCHETYPEN = {
       'Früher hat dein Körper alles verziehen. Heute scheint alles zu verfangen.',
       'Du denkst, dein Stoffwechsel hat sich mit dem Alter verlangsamt. In Wirklichkeit hat sich dein Alltag verändert.'
     ],
-    schnellgewinn: 'Eine realistische Bestandsaufnahme deiner tatsächlichen täglichen Aktivität, nicht nur der Trainingszeit. Die Lücke zwischen früher und heute ist größer als du denkst, und kleiner zu überbrücken als du glaubst.',
+    schnellgewinn: 'Eine realistische Bestandsaufnahme deiner tatsächlichen täglichen Aktivität, nicht nur der Trainingszeit. Die Lücke zwischen früher und heute ist größer, als du denkst, und leichter zu überbrücken, als du glaubst.',
     hookZitat: 'Dein Stoffwechsel ist nicht kaputt. Dein Sportlerleben ist vorbei, und dein Körper hat das verstanden. Jetzt musst nur noch du es verstehen.',
     fallstudien: [
       {
@@ -156,7 +156,7 @@ window.FDA.ARCHETYPEN = {
       'Du machst die richtigen Übungen, aber niemand hat dir erklärt, warum sie aufgehört haben zu wirken.',
       'Ohne progressive Belastungssteigerung gibt es keine Anpassung. Dein Körper braucht einen Grund zu wachsen.'
     ],
-    schnellgewinn: 'Messe jede Session. Erhöhe in mindestens einer Übung pro Training die Last oder die Wiederholungen um einen kleinen Schritt. Dein Körper reagiert schneller als ein Nicht-Sportler, weil das Fundament noch da ist.',
+    schnellgewinn: 'Messe jede Session. Erhöhe in mindestens einer Übung pro Training die Last oder die Wiederholungen um einen kleinen Schritt (Last um 5-10% erhöhen oder eine weitere Wiederholung). Dein Körper reagiert schneller als der eines Trainingsanfänger, weil das Fundament noch da ist.',
     hookZitat: 'Du hast das sportliche Fundament. Du brauchst nur jemanden, der dir zeigt, wie man es wieder aktiviert.',
     fallstudien: [
       {
