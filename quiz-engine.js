@@ -189,12 +189,12 @@ window.FDA.ARCHETYPEN = {
 window.FDA.FRAGEN = [
   {
     id: 1,
-    text: 'Was hat dein Training zu deiner aktiven Sportlerzeit am besten funktionieren lassen?',
+    text: 'Was hat dir am Training zu deiner aktiven Sportlerzeit am besten gefallen?',
     optionen: [
-      { text: 'Ich habe trainiert wie vor einem Endspiel. Immer. Ohne halbe Sachen.', key: 'V' },
-      { text: 'Der Plan war da, der Coach hat gesagt, was zu tun ist. Ich habe es getan.', key: 'T' },
-      { text: 'Ich konnte alles essen, alles trainieren. Mein Körper hat das einfach weggesteckt.', key: 'M' },
-      { text: 'Mein Körper war belastbar. Heute erinnert er mich an jeden Zweikampf von damals.', key: 'R' }
+      { text: 'Die Intensität. Wenn ich alles gegeben habe und mein Körper mitgemacht hat, war das unschlagbar.', key: 'V' },
+      { text: 'Das Teamgefühl. Der Coach, der Plan, die Mannschaft. Wenn das Ding läuft, ist das ein Gefühl wie kein anderes.', key: 'T' },
+      { text: 'Wie viel ich essen und trotzdem in Form bleiben konnte. Mein Körper hat damals alles verarbeitet.', key: 'M' },
+      { text: 'Wie belastbar ich war. Schmerzen haben mich nie lange aufgehalten. Ich war einfach immer da.', key: 'R' }
     ]
   },
   {
@@ -221,10 +221,10 @@ window.FDA.FRAGEN = [
     id: 4,
     text: 'Du siehst ein altes Foto aus deiner Spielerzeit. Was geht dir als Erstes durch den Kopf?',
     optionen: [
-      { text: 'Damals hatte ich eine Mannschaft und einen Trainer. Heute bin ich auf mich allein gestellt.', key: 'T' },
-      { text: 'Ich war in dieser Form, weil ich täglich auf dem Platz war. So läuft das heute einfach nicht mehr.', key: 'V' },
-      { text: 'Mein Körper von damals hat das problemlos vertragen. Heute ist das eine andere Geschichte.', key: 'R' },
-      { text: 'Damals habe ich alles gegessen und trotzdem so ausgesehen. Das ist heute vorbei.', key: 'M' }
+      { text: 'Ich sehe eine Zeit, in der alles seinen Platz hatte. Der Trainer, die Mannschaft, der Plan. Das vermisse ich.', key: 'T' },
+      { text: 'Damals habe ich mir alles abverlangt und mein Körper hat es einfach weggesteckt. Das will ich zurück.', key: 'V' },
+      { text: 'Mein Körper hat damals so viel mitgemacht, ohne zu murren. Heute kenne ich jeden alten Schmerz.', key: 'R' },
+      { text: 'Alles war so einfach damals. Das Essen, das Training, der Körper. Es hat einfach funktioniert.', key: 'M' }
     ]
   },
   {
@@ -249,7 +249,7 @@ window.FDA.FRAGEN = [
   },
   {
     id: 7,
-    text: 'Was wäre für dich der ehrlichste Satz darüber, was fehlt?',
+    text: 'Was beschreibt dein größtes Problem am ehesten?',
     optionen: [
       { text: 'Ich weiß, wie man hart trainiert. Ich weiß nicht, wie man das dauerhaft macht ohne Wettkampfdruck.', key: 'V' },
       { text: 'Ich brauche jemanden, der mir einen Plan gibt und prüft, ob ich ihn wirklich einhalte.', key: 'T' },

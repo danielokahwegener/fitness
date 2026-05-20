@@ -187,12 +187,34 @@
     card.querySelectorAll('.profil-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var field = btn.dataset.field;
-        profilAuswahl[field] = btn.dataset.value;
 
         card.querySelectorAll('.profil-btn[data-field="' + field + '"]').forEach(function(b) {
           b.classList.remove('is-selected');
         });
         btn.classList.add('is-selected');
+
+        if (field === 'sport' && btn.dataset.value === 'anderes') {
+          profilAuswahl.sport = null;
+          var existing = card.querySelector('.profil-text-input');
+          if (!existing) {
+            var sportOptionen = card.querySelector('.profil-btn[data-field="sport"]').closest('.profil-optionen');
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'profil-text-input';
+            input.placeholder = 'Dein Sport...';
+            sportOptionen.insertAdjacentElement('afterend', input);
+            input.focus();
+            input.addEventListener('input', function() {
+              profilAuswahl.sport = input.value.trim() || null;
+              var alleGesetzt = PROFIL_FELDER.every(function(f) { return profilAuswahl[f.key] !== null; });
+              document.getElementById('btn-profil-weiter').disabled = !alleGesetzt;
+            });
+          }
+        } else {
+          var inputEl = card.querySelector('.profil-text-input');
+          if (field === 'sport' && inputEl) { inputEl.remove(); }
+          profilAuswahl[field] = btn.dataset.value;
+        }
 
         var alleGesetzt = PROFIL_FELDER.every(function(f) { return profilAuswahl[f.key] !== null; });
         document.getElementById('btn-profil-weiter').disabled = !alleGesetzt;
