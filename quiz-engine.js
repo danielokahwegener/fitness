@@ -1,5 +1,5 @@
 /* =============================================
-   QUIZ-ENGINE.JS — Athlete Audit
+   QUIZ-ENGINE.JS — Sportlere Audit
    7 Fragen, 4 Antworten, localStorage
    Archetypen: V, T, R, M, L
    ============================================= */
@@ -8,7 +8,7 @@ window.FDA = window.FDA || {};
 window.FDA.ARCHETYPEN = {
   V: {
     id: 'vollgas-athlet',
-    name: 'Der Vollgasathlet',
+    name: 'Der Vollgassportler',
     tagline: 'Du trainierst wie vor dem Endspiel. Dann kommt nichts mehr. Das ist kein Charakterfehler.',
     beschreibung: 'Du hast in deiner aktiven Zeit gelernt, dass Training weh tun muss. Alles darunter fühlt sich nicht wie Training an. Das Problem: Wettkampfintensität ohne Wettkampfstruktur, ohne Recovery-Protokoll, ohne Coach, der die Trainingslast steuert, garantiert den Absturz. Immer wieder.',
     schmerzpunkte: [
@@ -17,7 +17,7 @@ window.FDA.ARCHETYPEN = {
       'Dein Körper kann die Intensität nicht mehr halten wie mit 22, aber dein Kopf hat das noch nicht akzeptiert.'
     ],
     schnellgewinn: 'Ein 4-Wochen-Block bei 60 Prozent deiner gewohnten Intensität. Langweilig. Aber es ist das Einzige, das wirklich funktioniert, um wieder eine belastbare Basis aufzubauen.',
-    hookZitat: 'Du weißt, wie man hart trainiert. Das ist nicht das Problem. Das Problem ist, dass dein System aus der Athletenzeit fehlt.',
+    hookZitat: 'Du weißt, wie man hart trainiert. Das ist nicht das Problem. Das Problem ist, dass dein System aus der Sportlerzeit fehlt.',
     fallstudien: [
       {
         name: 'Lukas M.',
@@ -115,14 +115,14 @@ window.FDA.ARCHETYPEN = {
     id: 'metabolismus-schock',
     name: 'Der Metabolismus-Schock',
     tagline: 'Du isst noch wie ein Sportler. Du bewegst dich wie ein Büroangestellter. Dein Körper macht da keinen Unterschied mehr.',
-    beschreibung: 'In deiner aktiven Zeit hat dein Körper alles verarbeitet. 15 bis 20 Stunden Training pro Woche, kombiniert mit einem Athletenstoffwechsel auf Hochlast. Heute trainierst du vielleicht 2 Stunden pro Woche. Dein Essen hat sich kaum verändert. Die Mathematik ist simpel. Dein mentales Modell hat sie noch nicht akzeptiert.',
+    beschreibung: 'In deiner aktiven Zeit hat dein Körper alles verarbeitet. 15 bis 20 Stunden Training pro Woche, kombiniert mit einem Sportlerstoffwechsel auf Hochlast. Heute trainierst du vielleicht 2 Stunden pro Woche. Dein Essen hat sich kaum verändert. Die Mathematik ist simpel. Dein mentales Modell hat sie noch nicht akzeptiert.',
     schmerzpunkte: [
       'Du isst eigentlich gesund, aber das Gewicht geht nicht runter. Du verstehst es nicht.',
       'Früher hat dein Körper alles verziehen. Heute scheint alles zu verfangen.',
       'Du denkst, dein Stoffwechsel hat sich mit dem Alter verlangsamt. In Wirklichkeit hat sich dein Alltag verändert.'
     ],
     schnellgewinn: 'Eine realistische Bestandsaufnahme deiner tatsächlichen täglichen Aktivität, nicht nur der Trainingszeit. Die Lücke zwischen früher und heute ist größer als du denkst, und kleiner zu überbrücken als du glaubst.',
-    hookZitat: 'Dein Stoffwechsel ist nicht kaputt. Dein Athletenleben ist vorbei, und dein Körper hat das verstanden. Jetzt musst nur noch du es verstehen.',
+    hookZitat: 'Dein Stoffwechsel ist nicht kaputt. Dein Sportlerleben ist vorbei, und dein Körper hat das verstanden. Jetzt musst nur noch du es verstehen.',
     fallstudien: [
       {
         name: 'Jonas F.',
@@ -150,14 +150,14 @@ window.FDA.ARCHETYPEN = {
     id: 'leistungsblockierte',
     name: 'Der Leistungsblockierte',
     tagline: 'Du tust alles richtig. Du weißt nur nicht, warum es nicht mehr funktioniert.',
-    beschreibung: 'Du trainierst regelmäßig. Du isst vernünftig. Du machst keine Ausreden. Und trotzdem verändert sich kaum etwas. Dein athletischer Körper hat sich in Woche 2 an dein Training angepasst. Seitdem gibt es keinen Reiz mehr zum Wachsen. Das ist kein Alters- oder Motivationsproblem.',
+    beschreibung: 'Du trainierst regelmäßig. Du isst vernünftig. Du machst keine Ausreden. Und trotzdem verändert sich kaum etwas. Dein sportlicher Körper hat sich in Woche 2 an dein Training angepasst. Seitdem gibt es keinen Reiz mehr zum Wachsen. Das ist kein Alters- oder Motivationsproblem.',
     schmerzpunkte: [
       'Du trainierst seit Monaten, aber der Körper sieht aus wie vor 6 Monaten.',
       'Du machst die richtigen Übungen, aber niemand hat dir erklärt, warum sie aufgehört haben zu wirken.',
       'Ohne progressive Belastungssteigerung gibt es keine Anpassung. Dein Körper braucht einen Grund zu wachsen.'
     ],
-    schnellgewinn: 'Messe jede Session. Erhöhe in mindestens einer Übung pro Training die Last oder die Wiederholungen um einen kleinen Schritt. Dein Körper reagiert schneller als ein Nicht-Athlet, weil das Fundament noch da ist.',
-    hookZitat: 'Du hast das athletische Fundament. Du brauchst nur jemanden, der dir zeigt, wie man es wieder aktiviert.',
+    schnellgewinn: 'Messe jede Session. Erhöhe in mindestens einer Übung pro Training die Last oder die Wiederholungen um einen kleinen Schritt. Dein Körper reagiert schneller als ein Nicht-Sportler, weil das Fundament noch da ist.',
+    hookZitat: 'Du hast das sportliche Fundament. Du brauchst nur jemanden, der dir zeigt, wie man es wieder aktiviert.',
     fallstudien: [
       {
         name: 'Kevin A.',
