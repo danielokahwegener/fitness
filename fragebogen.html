@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leistungsdiagnostik Fragebogen | RePrime Performance</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="css/fragebogen.css">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html"><img src="reprime-logo.png" alt="RePrime Performance" class="site-logo"></a>
+    </div>
+  </header>
+
+  <!-- ===== PROGRESS BAR ===== -->
+  <div class="frag-progress" id="frag-progress-bar" aria-hidden="true">
+    <div class="frag-progress-inner">
+      <div class="frag-progress-track">
+        <div class="frag-progress-fill" id="progress-fill" style="width: 14.28%;"></div>
+      </div>
+      <div class="frag-progress-label" id="progress-label">1 von 7</div>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="frag-hero">
+    <div class="container">
+      <p class="section-label">Leistungsdiagnostik &middot; Schritt 3 von 3</p>
+      <h1>Dein Fragebogen.</h1>
+      <p class="sub">10 Minuten. Ehrlich ausfüllen. Je mehr ich vorher weiß, desto tiefer kommen wir im Gespräch.</p>
+    </div>
+  </section>
+
+  <!-- ===== FORM ===== -->
+  <main>
+    <div class="frag-body">
+      <div class="container">
+
+        <!-- Error banner -->
+        <div class="frag-error-banner" id="frag-error">
+          Bitte fülle alle markierten Felder aus.
+        </div>
+
+        <!-- ===========================
+             STEP 1 — Deine Angaben
+             =========================== -->
+        <div class="frag-step active" id="step-1">
+          <div class="frag-section-header">
+            <p class="frag-section-num">Angaben 1 von 7</p>
+            <h2>Deine Kontaktdaten</h2>
+            <p>Damit wir deinen Fragebogen deiner Bewerbung zuordnen können.</p>
+          </div>
+
+          <div class="frag-fields">
+            <div class="frag-two-col">
+              <div class="form-group">
+                <label class="form-label" for="f-name">Vollständiger Name <span style="color:var(--gold)">*</span></label>
+                <input class="form-input" type="text" id="f-name" name="name" autocomplete="name" placeholder="Max Mustermann" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-email">E-Mail-Adresse <span style="color:var(--gold)">*</span></label>
+                <input class="form-input" type="email" id="f-email" name="email" autocomplete="email" placeholder="max@beispiel.de" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="frag-nav">
+            <button class="frag-nav-back" type="button" hidden>&larr; Zurück</button>
+            <button class="btn btn--primary btn--lg" type="button" onclick="nextStep(1)">Weiter &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ===========================
+             STEP 2 — Sportliche Identität
+             =========================== -->
+        <div class="frag-step" id="step-2">
+          <div class="frag-section-header">
+            <p class="frag-section-num">Abschnitt 2 von 7 &mdash; Sportliche Identität</p>
+            <h2>Dein sportlicher Hintergrund</h2>
+            <p>Ich möchte verstehen, wer du als Sportler warst — bevor ich verstehe, wo du heute stehst.</p>
+          </div>
+
+          <div class="frag-fields">
+            <div class="frag-two-col">
+              <div class="form-group">
+                <label class="form-label" for="f-sport">Welchen Sport hast du betrieben? <span style="color:var(--gold)">*</span></label>
+                <input class="form-input" type="text" id="f-sport" name="sport" placeholder="z. B. Fußball, Rugby, Basketball" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-aktiv-bis">Aktiv bis Alter <span style="color:var(--gold)">*</span></label>
+                <input class="form-input" type="number" id="f-aktiv-bis" name="aktiv_bis" min="10" max="65" placeholder="z. B. 28" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-niveau">Auf welchem Niveau hast du gespielt? <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-niveau" name="niveau" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Freizeitliga">Freizeitliga</option>
+                <option value="Kreisliga">Kreisliga</option>
+                <option value="Bezirksliga">Bezirksliga</option>
+                <option value="Landes-/Verbandsliga">Landes-/Verbandsliga</option>
+                <option value="Profi/Leistungssport">Profi / Leistungssport</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-vermisst">Was vermisst du am meisten aus deiner aktiven Zeit? <span style="color:var(--gold)">*</span></label>
+              <textarea class="form-input" id="f-vermisst" name="vermisst" rows="3" placeholder="Das Körpergefühl, die Struktur, den Mannschaftssport — was auch immer es war." required></textarea>
+            </div>
+          </div>
+
+          <div class="frag-nav">
+            <button class="frag-nav-back" type="button" onclick="prevStep(2)">&larr; Zurück</button>
+            <button class="btn btn--primary btn--lg" type="button" onclick="nextStep(2)">Weiter &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ===========================
+             STEP 3 — Aktuelle Performance
+             =========================== -->
+        <div class="frag-step" id="step-3">
+          <div class="frag-section-header">
+            <p class="frag-section-num">Abschnitt 3 von 7 &mdash; Aktuelle Performance</p>
+            <h2>Wo du heute stehst</h2>
+            <p>Keine Beschönigung nötig. Ich brauche die echten Zahlen, um dir helfen zu können.</p>
+          </div>
+
+          <div class="frag-fields">
+            <div class="frag-two-col">
+              <div class="form-group">
+                <label class="form-label" for="f-gewicht">Aktuelles Körpergewicht (kg) <span style="color:var(--gold)">*</span></label>
+                <input class="form-input" type="number" id="f-gewicht" name="gewicht_aktuell" min="50" max="200" placeholder="z. B. 95" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-zielgewicht">Zielgewicht (kg) <span style="color:var(--gold)">*</span></label>
+                <input class="form-input" type="number" id="f-zielgewicht" name="gewicht_ziel" min="50" max="200" placeholder="z. B. 82" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-training-freq">Aktuelle Trainingsfrequenz <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-training-freq" name="training_frequenz" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Gar nicht">Gar nicht</option>
+                <option value="1x pro Woche">1x pro Woche</option>
+                <option value="2-3x pro Woche">2-3x pro Woche</option>
+                <option value="4-5x pro Woche">4-5x pro Woche</option>
+                <option value="6+ pro Woche">6+ pro Woche</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-energie">Energielevel tagsüber <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-energie" name="energie_level" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Sehr niedrig — ich kämpfe den ganzen Tag">Sehr niedrig — ich kämpfe den ganzen Tag</option>
+                <option value="Niedrig — Mittagstief, oft müde">Niedrig — Mittagstief, oft müde</option>
+                <option value="Mittel — okay, aber nicht gut">Mittel — okay, aber nicht gut</option>
+                <option value="Hoch — meistens fit und wach">Hoch — meistens fit und wach</option>
+                <option value="Sehr hoch — konstant leistungsfähig">Sehr hoch — konstant leistungsfähig</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-verletzungen">Verletzungen oder körperliche Einschränkungen <span class="optional-label">(optional)</span></label>
+              <textarea class="form-input" id="f-verletzungen" name="verletzungen" rows="3" placeholder="z. B. Knieschmerzen links, alter Schultereinriss, Rückenprobleme seit 2019"></textarea>
+            </div>
+          </div>
+
+          <div class="frag-nav">
+            <button class="frag-nav-back" type="button" onclick="prevStep(3)">&larr; Zurück</button>
+            <button class="btn btn--primary btn--lg" type="button" onclick="nextStep(3)">Weiter &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ===========================
+             STEP 4 — Ernährung
+             =========================== -->
+        <div class="frag-step" id="step-4">
+          <div class="frag-section-header">
+            <p class="frag-section-num">Abschnitt 4 von 7 &mdash; Ernährung</p>
+            <h2>Deine Ernährung</h2>
+            <p>Einer der häufigsten Bottlenecks bei Ex-Sportlern. Und einer der am leichtesten zu lösenden — wenn man weiß, wo man anfängt.</p>
+          </div>
+
+          <div class="frag-fields">
+            <div class="form-group">
+              <label class="form-label" for="f-ernaehrung">Wie würdest du deine aktuelle Ernährung beschreiben? <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-ernaehrung" name="ernaehrung_beschreibung" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Unstrukturiert — ich esse was verfügbar ist">Unstrukturiert — ich esse was verfügbar ist</option>
+                <option value="Sporadisch gesund — manchmal gut, oft nicht">Sporadisch gesund — manchmal gut, oft nicht</option>
+                <option value="Grundsätzlich gut — mit regelmäßigen Ausreißern">Grundsätzlich gut — mit regelmäßigen Ausreißern</option>
+                <option value="Sehr diszipliniert — aber ohne sichtbares Ergebnis">Sehr diszipliniert — aber ohne sichtbares Ergebnis</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-auswaerts">Wie oft isst du auswärts oder auf Reisen? <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-auswaerts" name="auswaerts_frequenz" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Selten (unter 1x pro Woche)">Selten (unter 1x pro Woche)</option>
+                <option value="1-3x pro Woche">1-3x pro Woche</option>
+                <option value="4-6x pro Woche">4-6x pro Woche</option>
+                <option value="Täglich">Täglich</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-alkohol">Alkoholkonsum pro Woche <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-alkohol" name="alkohol" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Keinen">Keinen</option>
+                <option value="1-3 Gläser">1-3 Gläser</option>
+                <option value="4-7 Gläser">4-7 Gläser</option>
+                <option value="8+ Gläser">8+ Gläser</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-versuche">Was hast du bisher versucht, um dein Gewicht oder deinen Körper zu verändern? <span style="color:var(--gold)">*</span></label>
+              <textarea class="form-input" id="f-versuche" name="ernaehrung_versuche" rows="3" placeholder="Diäten, Pläne, Apps, Kalorien zählen — was auch immer du probiert hast." required></textarea>
+            </div>
+          </div>
+
+          <div class="frag-nav">
+            <button class="frag-nav-back" type="button" onclick="prevStep(4)">&larr; Zurück</button>
+            <button class="btn btn--primary btn--lg" type="button" onclick="nextStep(4)">Weiter &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ===========================
+             STEP 5 — Regeneration
+             =========================== -->
+        <div class="frag-step" id="step-5">
+          <div class="frag-section-header">
+            <p class="frag-section-num">Abschnitt 5 von 7 &mdash; Regeneration</p>
+            <h2>Schlaf & Erholung</h2>
+            <p>Performance beginnt mit Regeneration. Das ist kein Lifestyle-Tipp — das ist Physiologie.</p>
+          </div>
+
+          <div class="frag-fields">
+            <div class="frag-two-col">
+              <div class="form-group">
+                <label class="form-label" for="f-schlaf-h">Durchschnittliche Schlafdauer (Stunden) <span style="color:var(--gold)">*</span></label>
+                <input class="form-input" type="number" id="f-schlaf-h" name="schlaf_stunden" min="3" max="12" step="0.5" placeholder="z. B. 6.5" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-schlaf-q">Schlafqualität <span style="color:var(--gold)">*</span></label>
+                <select class="form-input" id="f-schlaf-q" name="schlaf_qualitaet" required>
+                  <option value="" disabled selected>Bitte wählen</option>
+                  <option value="Sehr schlecht — ich wache erschöpft auf">Sehr schlecht — ich wache erschöpft auf</option>
+                  <option value="Schlecht — oft unterbrochen oder unruhig">Schlecht — oft unterbrochen oder unruhig</option>
+                  <option value="Okay — weder gut noch schlecht">Okay — weder gut noch schlecht</option>
+                  <option value="Gut — meistens erholsam">Gut — meistens erholsam</option>
+                  <option value="Sehr gut — ich schlafe tief und durch">Sehr gut — ich schlafe tief und durch</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-wearable">Nutzt du ein Wearable? <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-wearable" name="wearable" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Nein">Nein</option>
+                <option value="Apple Watch">Apple Watch</option>
+                <option value="Garmin">Garmin</option>
+                <option value="Whoop">Whoop</option>
+                <option value="Oura Ring">Oura Ring</option>
+                <option value="Anderes">Anderes</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-stress">Stressniveau auf der Arbeit <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-stress" name="stress_level" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Gering — überwiegend entspannt">Gering — überwiegend entspannt</option>
+                <option value="Mittel — gelegentlich stressig">Mittel — gelegentlich stressig</option>
+                <option value="Hoch — oft unter Druck">Hoch — oft unter Druck</option>
+                <option value="Sehr hoch — fast täglich intensiv">Sehr hoch — fast täglich intensiv</option>
+                <option value="Chronisch hoch — dauerhafter Hochdruck">Chronisch hoch — dauerhafter Hochdruck</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="frag-nav">
+            <button class="frag-nav-back" type="button" onclick="prevStep(5)">&larr; Zurück</button>
+            <button class="btn btn--primary btn--lg" type="button" onclick="nextStep(5)">Weiter &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ===========================
+             STEP 6 — Alltag & Reise
+             =========================== -->
+        <div class="frag-step" id="step-6">
+          <div class="frag-section-header">
+            <p class="frag-section-num">Abschnitt 6 von 7 &mdash; Alltag &amp; Reise</p>
+            <h2>Dein Alltag</h2>
+            <p>Der Plan muss in dein Leben passen — nicht umgekehrt. Ich brauche das echte Bild.</p>
+          </div>
+
+          <div class="frag-fields">
+            <div class="form-group">
+              <label class="form-label" for="f-alltag">Wie sieht dein typischer Arbeitstag aus? <span style="color:var(--gold)">*</span></label>
+              <textarea class="form-input" id="f-alltag" name="alltag" rows="4" placeholder="Wann stehst du auf? Wann bist du im Büro / im Home-Office? Wann kommst du nach Hause? Abendprogramm?" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-reise">Wie oft bist du beruflich auf Reisen? <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-reise" name="reise_frequenz" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Nie oder sehr selten">Nie oder sehr selten</option>
+                <option value="1-2x im Monat">1-2x im Monat</option>
+                <option value="1x pro Woche">1x pro Woche</option>
+                <option value="Mehrmals pro Woche">Mehrmals pro Woche</option>
+              </select>
+            </div>
+
+            <div class="frag-two-col">
+              <div class="form-group">
+                <label class="form-label" for="f-training-h">Verfügbare Zeit für Training pro Woche <span style="color:var(--gold)">*</span></label>
+                <select class="form-input" id="f-training-h" name="training_stunden" required>
+                  <option value="" disabled selected>Bitte wählen</option>
+                  <option value="Unter 2 Stunden">Unter 2 Stunden</option>
+                  <option value="2-4 Stunden">2-4 Stunden</option>
+                  <option value="4-6 Stunden">4-6 Stunden</option>
+                  <option value="6-8 Stunden">6-8 Stunden</option>
+                  <option value="Mehr als 8 Stunden">Mehr als 8 Stunden</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-training-zeit">Bevorzugte Trainingszeit <span style="color:var(--gold)">*</span></label>
+                <select class="form-input" id="f-training-zeit" name="training_zeit" required>
+                  <option value="" disabled selected>Bitte wählen</option>
+                  <option value="Früh morgens (vor 8 Uhr)">Früh morgens (vor 8 Uhr)</option>
+                  <option value="Vormittags (8-12 Uhr)">Vormittags (8-12 Uhr)</option>
+                  <option value="Mittags (12-15 Uhr)">Mittags (12-15 Uhr)</option>
+                  <option value="Abends (nach 17 Uhr)">Abends (nach 17 Uhr)</option>
+                  <option value="Kein fester Zeitpunkt">Kein fester Zeitpunkt</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="frag-nav">
+            <button class="frag-nav-back" type="button" onclick="prevStep(6)">&larr; Zurück</button>
+            <button class="btn btn--primary btn--lg" type="button" onclick="nextStep(6)">Weiter &rarr;</button>
+          </div>
+        </div>
+
+        <!-- ===========================
+             STEP 7 — Deine Ziele
+             =========================== -->
+        <div class="frag-step" id="step-7">
+          <div class="frag-section-header">
+            <p class="frag-section-num">Abschnitt 7 von 7 &mdash; Deine Ziele</p>
+            <h2>Was du erreichen willst</h2>
+            <p>Konkret, ehrlich, und ohne das, was du glaubst, was ich hören will.</p>
+          </div>
+
+          <div class="frag-fields">
+            <div class="form-group">
+              <label class="form-label" for="f-ziel-90">Was möchtest du in den nächsten 90 Tagen konkret erreichen? <span style="color:var(--gold)">*</span></label>
+              <textarea class="form-input" id="f-ziel-90" name="ziel_90_tage" rows="4" placeholder="Nicht 'abnehmen' oder 'fitter werden'. Was genau? Wie viel? Woran wirst du merken, dass du es geschafft hast?" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-lebensbereich">Welcher Lebensbereich soll durch bessere Performance am stärksten profitieren? <span style="color:var(--gold)">*</span></label>
+              <select class="form-input" id="f-lebensbereich" name="lebensbereich" required>
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Karriere &amp; Leistungsfähigkeit">Karriere &amp; Leistungsfähigkeit</option>
+                <option value="Familie &amp; Präsenz">Familie &amp; Präsenz</option>
+                <option value="Sport &amp; Freizeit">Sport &amp; Freizeit</option>
+                <option value="Gesundheit &amp; Langlebigkeit">Gesundheit &amp; Langlebigkeit</option>
+                <option value="Selbstbild &amp; Identität">Selbstbild &amp; Identität</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="f-ereignisse">Gibt es wichtige Ereignisse in den nächsten 6 Monaten? <span class="optional-label">(optional)</span></label>
+              <textarea class="form-input" id="f-ereignisse" name="ereignisse" rows="2" placeholder="Hochzeit, Klassentreffen, Urlaub, Firmenfeier — alles, für das du bis dahin eine bestimmte Form haben willst."></textarea>
+            </div>
+          </div>
+
+          <div class="frag-nav">
+            <button class="frag-nav-back" type="button" onclick="prevStep(7)">&larr; Zurück</button>
+            <button class="btn btn--primary btn--lg" type="button" id="btn-submit" onclick="submitFragebogen()">
+              Fragebogen absenden &rarr;
+            </button>
+          </div>
+          <p style="font-size:0.72rem; color:var(--text-muted); margin-top:0.75rem; text-align:right;">
+            Deine Daten werden vertraulich behandelt &middot; Nie weitergegeben
+          </p>
+        </div>
+
+        <!-- ===========================
+             SUCCESS STATE
+             =========================== -->
+        <div class="frag-success" id="frag-success">
+          <div class="check-ring" aria-hidden="true">&#10003;</div>
+          <h2>Dein Fragebogen ist eingegangen.</h2>
+          <p class="success-body">
+            Ich lese ihn durch, bevor wir sprechen. Kein Smalltalk, keine allgemeinen Fragen &mdash; wir fangen genau da an, wo du stehst.
+          </p>
+          <p class="success-body">
+            Du bekommst eine Erinnerung kurz vor dem Gespräch. Bis dahin: mach weiter wie bisher.
+          </p>
+          <p class="coach-sig">Daniel, RePrime Performance</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>RePrime Performance &copy; 2026 &nbsp;&middot;&nbsp; <a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var TOTAL_STEPS = 7;
+    var currentStep = 1;
+    var WORKER_URL = 'https://reprime-api.reprimecoaching.com/api/fragebogen';
+
+    /* ---- Pre-fill from URL params (Calendly passes ?email=&name=) ---- */
+    (function prefill() {
+      var params = new URLSearchParams(window.location.search);
+      var email = params.get('email') || params.get('invitee_email');
+      var name  = params.get('name')  || params.get('invitee_full_name');
+      if (email) document.getElementById('f-email').value = decodeURIComponent(email);
+      if (name)  document.getElementById('f-name').value  = decodeURIComponent(name);
+    })();
+
+    /* ---- Progress bar ---- */
+    function updateProgress(step) {
+      var pct = (step / TOTAL_STEPS * 100).toFixed(2);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-label').textContent = step + ' von ' + TOTAL_STEPS;
+    }
+
+    /* ---- Show a step ---- */
+    function showStep(n) {
+      document.querySelectorAll('.frag-step').forEach(function (el) {
+        el.classList.remove('active');
+      });
+      var el = document.getElementById('step-' + n);
+      if (el) {
+        el.classList.add('active');
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      updateProgress(n);
+      currentStep = n;
+      hideError();
+    }
+
+    /* ---- Validate required fields in active step ---- */
+    function validateStep(n) {
+      var step = document.getElementById('step-' + n);
+      if (!step) return true;
+      var fields = step.querySelectorAll('[required]');
+      var valid = true;
+      fields.forEach(function (f) {
+        f.style.borderColor = '';
+        if (!f.value.trim()) {
+          f.style.borderColor = 'var(--error)';
+          valid = false;
+        }
+      });
+      return valid;
+    }
+
+    function showError() {
+      var el = document.getElementById('frag-error');
+      el.classList.add('visible');
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideError() {
+      document.getElementById('frag-error').classList.remove('visible');
+    }
+
+    /* ---- Navigation ---- */
+    window.nextStep = function (from) {
+      if (!validateStep(from)) { showError(); return; }
+      if (from < TOTAL_STEPS) showStep(from + 1);
+    };
+
+    window.prevStep = function (from) {
+      if (from > 1) showStep(from - 1);
+    };
+
+    /* ---- Collect all data ---- */
+    function collect() {
+      function val(id) {
+        var el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+      }
+      return {
+        name:                   val('f-name'),
+        email:                  val('f-email'),
+        sport:                  val('f-sport'),
+        aktiv_bis:              val('f-aktiv-bis'),
+        niveau:                 val('f-niveau'),
+        vermisst:               val('f-vermisst'),
+        gewicht_aktuell:        val('f-gewicht'),
+        gewicht_ziel:           val('f-zielgewicht'),
+        training_frequenz:      val('f-training-freq'),
+        energie_level:          val('f-energie'),
+        verletzungen:           val('f-verletzungen'),
+        ernaehrung_beschreibung: val('f-ernaehrung'),
+        auswaerts_frequenz:     val('f-auswaerts'),
+        alkohol:                val('f-alkohol'),
+        ernaehrung_versuche:    val('f-versuche'),
+        schlaf_stunden:         val('f-schlaf-h'),
+        schlaf_qualitaet:       val('f-schlaf-q'),
+        wearable:               val('f-wearable'),
+        stress_level:           val('f-stress'),
+        alltag:                 val('f-alltag'),
+        reise_frequenz:         val('f-reise'),
+        training_stunden:       val('f-training-h'),
+        training_zeit:          val('f-training-zeit'),
+        ziel_90_tage:           val('f-ziel-90'),
+        lebensbereich:          val('f-lebensbereich'),
+        ereignisse:             val('f-ereignisse')
+      };
+    }
+
+    /* ---- Submit ---- */
+    window.submitFragebogen = function () {
+      if (!validateStep(7)) { showError(); return; }
+      hideError();
+
+      var btn = document.getElementById('btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet...';
+
+      fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(collect())
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('server');
+        showSuccess();
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Fragebogen absenden →';
+        document.getElementById('frag-error').textContent = 'Etwas ist schiefgelaufen. Bitte versuch es noch einmal.';
+        showError();
+      });
+    };
+
+    function showSuccess() {
+      document.querySelectorAll('.frag-step').forEach(function (el) { el.style.display = 'none'; });
+      document.getElementById('frag-progress-bar').style.display = 'none';
+      var s = document.getElementById('frag-success');
+      s.classList.add('visible');
+      s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ---- Init ---- */
+    updateProgress(1);
+  })();
+  </script>
+
+</body>
+</html>

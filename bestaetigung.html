@@ -162,11 +162,42 @@
       color: var(--text-muted);
     }
 
+    /* Fragebogen CTA */
+    .fragebogen-cta {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .fragebogen-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+    .fragebogen-cta h3 {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      margin-bottom: 0.6rem;
+    }
+    .fragebogen-cta p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 420px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.55;
+    }
+
     @media (max-width: 768px) {
       .best-hero { padding: 2rem 1rem 1.5rem; }
       .best-body { padding: 1.5rem 1rem 2rem; }
       .naechste-schritte { padding: var(--spacing-md); }
       .coach-erwartung { padding: var(--spacing-sm) var(--spacing-md); }
+      .fragebogen-cta { padding: var(--spacing-md); }
     }
   </style>
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
@@ -283,10 +314,13 @@
         <p class="coach-sig">Daniel, RePrime Performance</p>
       </div>
 
-      <!-- Bridge to offer page -->
-      <p style="text-align:center; margin-top:var(--spacing-lg); font-size:0.85rem; color:var(--text-muted);">
-        Während du auf das Gespräch wartest: <a href="index.html#assessment" style="color:var(--gold); text-decoration:underline;">Lies mehr &uuml;ber die Leistungsdiagnostik &rarr;</a>
-      </p>
+      <!-- Fragebogen CTA -->
+      <div class="fragebogen-cta fade-in">
+        <p class="schritte-label">Dein n&auml;chster Schritt</p>
+        <h3>F&uuml;ll den Fragebogen aus &mdash; vor unserem Gespr&auml;ch.</h3>
+        <p>Je mehr ich vorher wei&szlig;, desto tiefer k&ouml;nnen wir im Call einsteigen. 10 Minuten. Ehrlich ausf&uuml;llen.</p>
+        <a href="fragebogen.html" class="btn btn--primary btn--lg">Fragebogen jetzt ausf&uuml;llen &rarr;</a>
+      </div>
 
     </div>
   </main>

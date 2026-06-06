@@ -1,0 +1,268 @@
+/* =============================================
+   FRAGEBOGEN.CSS — Leistungsdiagnostik
+   Pre-assessment questionnaire styles
+   ============================================= */
+
+/* ---- Progress Bar ---- */
+.frag-progress {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--bg-border);
+  padding: 0.75rem var(--spacing-sm);
+}
+
+.frag-progress-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.frag-progress-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  min-width: 5rem;
+  text-align: right;
+}
+
+.frag-progress-track {
+  flex: 1;
+  height: 3px;
+  background: var(--bg-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.frag-progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+
+/* ---- Page hero ---- */
+.frag-hero {
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--bg-border);
+  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.frag-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(193,18,31,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.frag-hero .container { position: relative; }
+
+.frag-hero h1 {
+  margin-bottom: 0.5rem;
+}
+
+.frag-hero .sub {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ---- Form body ---- */
+.frag-body {
+  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
+}
+
+.frag-body .container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ---- Step panels ---- */
+.frag-step {
+  display: none;
+}
+
+.frag-step.active {
+  display: block;
+  animation: stepIn 0.25s ease;
+}
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Section header ---- */
+.frag-section-header {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--bg-border);
+}
+
+.frag-section-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.frag-section-header h2 {
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  margin-bottom: 0.4rem;
+}
+
+.frag-section-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ---- Form fields ---- */
+.frag-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.frag-fields .form-group {
+  margin-bottom: 0;
+}
+
+.frag-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 540px) {
+  .frag-two-col { grid-template-columns: 1fr; }
+}
+
+/* ---- Navigation buttons ---- */
+.frag-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--bg-border);
+}
+
+.frag-nav-back {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+  font-family: var(--font-body);
+}
+
+.frag-nav-back:hover { color: var(--text-secondary); }
+
+.frag-nav-back[hidden] { visibility: hidden; }
+
+/* ---- Optional label ---- */
+.optional-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 0.4rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ---- Success state ---- */
+.frag-success {
+  display: none;
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-sm);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.frag-success.visible {
+  display: block;
+  animation: stepIn 0.3s ease;
+}
+
+.frag-success .check-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dark);
+  background: var(--gold-subtle);
+  color: var(--gold);
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-md);
+}
+
+.frag-success h2 {
+  margin-bottom: 0.75rem;
+}
+
+.frag-success .success-body {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 440px;
+  margin: 0 auto 1rem;
+}
+
+.frag-success .coach-sig {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* ---- Error banner ---- */
+.frag-error-banner {
+  display: none;
+  background: rgba(192, 57, 43, 0.12);
+  border: 1px solid var(--error);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  color: var(--error);
+  font-size: 0.88rem;
+}
+
+.frag-error-banner.visible { display: block; }
+
+/* ---- Mobile adjustments ---- */
+@media (max-width: 480px) {
+  .frag-hero {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  .frag-progress-label {
+    font-size: 0.72rem;
+    min-width: 4rem;
+  }
+
+  .frag-nav {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .frag-nav-back {
+    text-align: center;
+  }
+}
