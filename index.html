@@ -205,6 +205,62 @@
       line-height: 1.55;
       margin: 0;
     }
+    .case-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 0.9rem 0 1rem;
+    }
+    .case-split-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .case-bottleneck-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .case-bottleneck-list li {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      padding-left: 0.95rem;
+      position: relative;
+    }
+    .case-bottleneck-list li::before {
+      content: '\2013';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .case-fix-text {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .case-outcome {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-left: 3px solid var(--gold-dark);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 0.9rem 1.1rem;
+    }
+    .case-outcome-quote {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0;
+    }
 
     /* === Benefit Cards === */
     .benefit-grid {
@@ -483,6 +539,7 @@
       .main-nav { display: none; }
       .hamburger { display: flex; }
       .case-studies-row { grid-template-columns: 1fr; }
+      .case-split { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .benefit-grid { grid-template-columns: 1fr 1fr; }
@@ -540,9 +597,9 @@
   <section class="hero" id="hero">
     <div class="container">
       <div class="hero-eyebrow">Leistungsdiagnostik &middot; Kostenlos &middot; Qualifizierung erforderlich</div>
-      <h1>Möchtest du dich wieder<br>wie ein Sportler fühlen<br><em>und aussehen?</em></h1>
+      <h1>Möchtest du wieder <br>der Athlet sein, <br><em>der du einmal warst?</em></h1>
       <p class="sub">
-        Das System, das dich fr&uuml;her in Form gehalten hat, existiert nicht mehr. Kein Coach. Keine Mannschaft. Kein fester Plan. Wir bringen es zur&uuml;ck.
+        Kostenlose RePrime Leistungsdiagnostik inklusive persönlichem Leistungsbericht für ehemalige Vereinssportler, die ihre athletische Leistungsfähigkeit zurückgewinnen wollen, ohne Fitness zu einem zweiten Job zu machen.
       </p>
       <a href="bewerbung.html" class="btn btn--primary btn--lg">
         Leistungsdiagnostik beantragen &rarr;
@@ -577,7 +634,9 @@
     <strong>Starke Gewichtszunahme seit dem letzten Spiel &middot; Keine Extremdi&auml;t &middot; Kein Training wie zu aktiven Zeiten</strong>
   </div>
 
-  <!-- ===== FOUNDER VIDEO ===== -->
+  <!-- ===== FOUNDER VIDEO =====
+  Hidden until the founder video is ready - the placeholder image makes the
+  section look unfinished. Re-enable by removing this comment wrapper.
   <section class="section section--surface" id="video">
     <div class="container" style="max-width:760px; text-align:center;">
       <div class="section-label">Der Gr&uuml;nder</div>
@@ -586,7 +645,6 @@
         Profisportler. Private Equity in London. 15&nbsp;kg &uuml;ber meinem Spielgewicht.
         Ich kenne das Gef&uuml;hl genau - und ich wei&szlig;, wie man es l&ouml;st.
       </p>
-      <!-- TODO: replace with video embed -->
       <div class="video-placeholder" style="max-width:480px; margin:0 auto;">
         <img src="coach-1.jpg" alt="Daniel Wegener" style="width:100%; border-radius:var(--radius-md); display:block;" loading="lazy">
         <p style="font-size:0.8rem; color:var(--text-muted); margin-top:1rem;">Video wird in K&uuml;rze verf&uuml;gbar sein.</p>
@@ -596,6 +654,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- ===== ERFOLGSGESCHICHTEN / TESTIMONIALS ===== -->
   <section class="section" id="erfolge">
@@ -622,7 +681,23 @@
               <span class="case-name">Lukas M.</span>
               <span class="result-badge">ehem. Fu&szlig;baller &middot; -12 kg &middot; 6 Monate</span>
             </div>
-            <p class="case-quote">&bdquo;Ich habe immer alles gegeben wenn ich angefangen habe. Das Problem war, dass das System nicht durchhalten konnte. Mit einem Plan der daf&uuml;r gemacht ist, bin ich in 6 Monaten weiter gekommen als in den 3 Jahren davor.&ldquo;</p>
+            <div class="case-split">
+              <div class="case-split-col">
+                <p class="case-split-label">Die 3 gr&ouml;&szlig;ten Bremsen</p>
+                <ul class="case-bottleneck-list">
+                  <li>Kein Trainingsrhythmus mehr nach dem Karriereende - Training lief nur noch &bdquo;wenn Zeit war&ldquo;</li>
+                  <li>Ern&auml;hrung noch im alten Sportler-Modus, ohne den t&auml;glichen Verbrauch von fr&uuml;her</li>
+                  <li>Kein Feedback-System, das Fortschritt einordnet oder rechtzeitig gegensteuert</li>
+                </ul>
+              </div>
+              <div class="case-split-col">
+                <p class="case-split-label">Wie das System sie gel&ouml;st hat</p>
+                <p class="case-fix-text">Wir haben Lukas kein generisches Programm gegeben, sondern ein System, das sich seinem Alltag als Berufst&auml;tiger anpasst: feste Trainingsfenster, eine auf seinen Tagesablauf abgestimmte Ern&auml;hrungsstruktur und t&auml;gliche Check-ins, die sofort gegensteuern, wenn er vom Kurs abkommt.</p>
+              </div>
+            </div>
+            <div class="case-outcome">
+              <p class="case-outcome-quote">&bdquo;Ich f&uuml;hle mich heute fitter als mit 22. Aber das Beste ist: Ich wei&szlig; jetzt, wie ich das halte, auch wenn das Leben mal dazwischenkommt.&ldquo;</p>
+            </div>
           </div>
         </div>
         <div class="case-study-card">
@@ -641,7 +716,23 @@
               <span class="case-name">Philipp H.</span>
               <span class="result-badge">ehem. Handballer &middot; -16 kg &middot; 18 Monate</span>
             </div>
-            <p class="case-quote">&bdquo;18 Monate lang hatte ich jemanden, der jeden Tag an meiner Seite war. Egal ob Telefonat, FaceTime, Sprachnachricht oder Zoom, ich war nie auf mich allein gestellt. Das klingt einfach. Aber genau das hat den Unterschied gemacht.&ldquo;</p>
+            <div class="case-split">
+              <div class="case-split-col">
+                <p class="case-split-label">Die 3 gr&ouml;&szlig;ten Bremsen</p>
+                <ul class="case-bottleneck-list">
+                  <li>Fehlende Verbindlichkeit, sobald Trainer und Team wegfielen</li>
+                  <li>Schwankende Motivation - lange Phasen ohne Fortschritt f&uuml;hrten zur&uuml;ck in alte Muster</li>
+                  <li>Alles im Alleingang versucht, ohne jemanden, der seine Situation wirklich kennt</li>
+                </ul>
+              </div>
+              <div class="case-split-col">
+                <p class="case-split-label">Wie das System sie gel&ouml;st hat</p>
+                <p class="case-fix-text">Wir haben f&uuml;r Philipp ein Begleitsystem aufgebaut, das genau dort ansetzt, wo der Vereinssport aufgeh&ouml;rt hat: t&auml;gliche pers&ouml;nliche Check-ins, feste Ansprechpartner aus unserem Team und ein Plan, der sich anpasst, sobald sich sein Alltag ver&auml;ndert.</p>
+              </div>
+            </div>
+            <div class="case-outcome">
+              <p class="case-outcome-quote">&bdquo;Ich habe zum ersten Mal seit dem Karriereende das Gef&uuml;hl, dass jemand mitdenkt. Nicht nur ein Plan auf Papier, sondern echte Begleitung. Das hat alles ver&auml;ndert.&ldquo;</p>
+            </div>
           </div>
         </div>
         <div class="case-study-card">
@@ -660,7 +751,23 @@
               <span class="case-name">Thomas W.</span>
               <span class="result-badge">ehem. Eishockeyspieler &middot; -6 kg &middot; 5 Monate</span>
             </div>
-            <p class="case-quote">&bdquo;Die Zahl auf der Waage war nicht das Ziel. Ich wollte wieder trainieren k&ouml;nnen ohne danach tagelang au&szlig;er Gefecht zu sein. Das Programm hat um meine Geschichte herum gebaut, nicht trotzdem.&ldquo;</p>
+            <div class="case-split">
+              <div class="case-split-col">
+                <p class="case-split-label">Die 3 gr&ouml;&szlig;ten Bremsen</p>
+                <ul class="case-bottleneck-list">
+                  <li>Alte Verletzungen ohne Belastungssteuerung - Training, das seinen K&ouml;rper st&auml;ndig zur&uuml;ckwarf</li>
+                  <li>Kein Plan f&uuml;r Regeneration - Belastung ohne Erholung f&uuml;hrte zu wiederkehrenden R&uuml;ckschl&auml;gen</li>
+                  <li>Falscher Fokus auf die Waage statt auf echte Leistungsf&auml;higkeit</li>
+                </ul>
+              </div>
+              <div class="case-split-col">
+                <p class="case-split-label">Wie das System sie gel&ouml;st hat</p>
+                <p class="case-fix-text">Wir haben f&uuml;r Thomas ein System entwickelt, das seine Vorgeschichte als Ma&szlig;stab nimmt: Trainingsbelastung, die zu seinem K&ouml;rper passt, feste Regenerationsphasen und ein Fokus auf das, was wirklich z&auml;hlt - wieder schmerzfrei und mit Energie durch den Tag zu kommen.</p>
+              </div>
+            </div>
+            <div class="case-outcome">
+              <p class="case-outcome-quote">&bdquo;Ich kann heute trainieren, ohne danach drei Tage zu brauchen, um mich zu erholen. Das ist mehr wert als jede Zahl auf der Waage.&ldquo;</p>
+            </div>
           </div>
         </div>
         <div class="case-study-card">
@@ -679,7 +786,23 @@
               <span class="case-name">Jonas F.</span>
               <span class="result-badge">ehem. Leichtathlet &middot; -26 kg &middot; 33 Monate</span>
             </div>
-            <p class="case-quote">&bdquo;Ich habe gegessen wie zu meiner Sportlerzeit und nicht verstanden warum das Gewicht stieg. Es dauerte eine Weile zu begreifen, dass sich mein Alltag komplett ver&auml;ndert hatte, nicht mein K&ouml;rper.&ldquo;</p>
+            <div class="case-split">
+              <div class="case-split-col">
+                <p class="case-split-label">Die 3 gr&ouml;&szlig;ten Bremsen</p>
+                <ul class="case-bottleneck-list">
+                  <li>Ern&auml;hrung noch aus der Sportlerzeit - Mengen, die zum fr&uuml;heren Trainingspensum passten, nicht zum neuen Alltag</li>
+                  <li>Kein Bewusstsein daf&uuml;r, wie sehr sich der eigene Alltag ver&auml;ndert hatte</li>
+                  <li>Kein Au&szlig;enblick, der ihm die eigentliche L&uuml;cke zwischen fr&uuml;her und heute gezeigt h&auml;tte</li>
+                </ul>
+              </div>
+              <div class="case-split-col">
+                <p class="case-split-label">Wie das System sie gel&ouml;st hat</p>
+                <p class="case-fix-text">Wir haben mit Jonas zuerst die L&uuml;cke zwischen seinem fr&uuml;heren und seinem heutigen Alltag sichtbar gemacht und darauf ein komplett neues Ern&auml;hrungs- und Trainingssystem aufgebaut, das zu seinem Leben heute passt, nicht zu dem von vor drei Jahren.</p>
+              </div>
+            </div>
+            <div class="case-outcome">
+              <p class="case-outcome-quote">&bdquo;Es hat eine Weile gedauert, bis ich verstanden habe, was wirklich passiert ist. Heute wei&szlig; ich, wo ich stehe und wo ich hinwill. Genau das hat mir am meisten gefehlt.&ldquo;</p>
+            </div>
           </div>
         </div>
       </div>
