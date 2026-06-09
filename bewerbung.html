@@ -329,6 +329,18 @@
       .frag-nav-back { text-align: center; }
     }
   </style>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1617129252307599');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1617129252307599&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
 </head>
 <body>
 
@@ -353,7 +365,7 @@
     <div class="container">
       <p class="section-label">Leistungsdiagnostik &middot; Kostenlos &middot; 10 Minuten</p>
       <h1>Deine Leistungsdiagnostik-Bewerbung.</h1>
-      <p class="sub">F&uuml;ll alles ehrlich aus. Ich lese es durch, bevor wir sprechen &mdash; dann kommen wir im Call direkt zum Punkt.</p>
+      <p class="sub">F&uuml;ll alles ehrlich aus. Wir lesen es durch, bevor wir sprechen &mdash; dann kommen wir im Call direkt zum Punkt.</p>
     </div>
   </section>
 
@@ -416,7 +428,7 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 2 von 7 &mdash; Sportliche Identit&auml;t</p>
             <h2>Dein sportlicher Hintergrund</h2>
-            <p>Ich m&ouml;chte verstehen, wer du als Sportler warst &mdash; bevor ich verstehe, wo du heute stehst.</p>
+            <p>Wir m&ouml;chten verstehen, wer du als Sportler warst &mdash; bevor wir verstehen, wo du heute stehst.</p>
           </div>
 
           <div class="frag-fields">
@@ -462,7 +474,7 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 3 von 7 &mdash; Aktuelle Performance</p>
             <h2>Wo du heute stehst</h2>
-            <p>Keine Besch&ouml;nigung n&ouml;tig. Ich brauche die echten Zahlen, um dir helfen zu k&ouml;nnen.</p>
+            <p>Keine Besch&ouml;nigung n&ouml;tig. Wir brauchen die echten Zahlen, um dir helfen zu k&ouml;nnen.</p>
           </div>
 
           <div class="frag-fields">
@@ -640,7 +652,7 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 6 von 7 &mdash; Alltag &amp; Reise</p>
             <h2>Dein Alltag</h2>
-            <p>Der Plan muss in dein Leben passen &mdash; nicht umgekehrt. Ich brauche das echte Bild.</p>
+            <p>Der Plan muss in dein Leben passen &mdash; nicht umgekehrt. Wir brauchen das echte Bild.</p>
           </div>
 
           <div class="frag-fields">
@@ -699,7 +711,7 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 7 von 7 &mdash; Deine Ziele</p>
             <h2>Was du erreichen willst</h2>
-            <p>Konkret, ehrlich &mdash; und ohne das, was du glaubst, was ich h&ouml;ren will.</p>
+            <p>Konkret, ehrlich &mdash; und ohne das, was du glaubst, was wir h&ouml;ren wollen.</p>
           </div>
 
           <div class="frag-fields">
@@ -744,10 +756,10 @@
           <div class="check-ring" aria-hidden="true">&#10003;</div>
           <h2>Deine Angaben sind eingegangen.</h2>
           <p class="success-body">
-            Ich werte jetzt alles aus und erstelle deinen pers&ouml;nlichen Leistungsbericht - mit deinem Performance Score, deinen gr&ouml;&szlig;ten Leistungsbremsen und einer individuellen 90-Tage-Roadmap.
+            Wir werten jetzt alles aus und erstellen deinen pers&ouml;nlichen Leistungsbericht - mit deinem Performance Score, deinen gr&ouml;&szlig;ten Leistungsbremsen und einer individuellen 90-Tage-Roadmap.
           </p>
           <p class="success-body">
-            Du bekommst ihn in den n&auml;chsten Tagen direkt per E-Mail. Im Anschluss melde ich mich pers&ouml;nlich bei dir - per Telefon oder Nachricht - um alles gemeinsam durchzugehen.
+            Du bekommst ihn in den n&auml;chsten Tagen direkt per E-Mail. Im Anschluss meldet sich jemand aus unserem Team pers&ouml;nlich bei dir - per Telefon oder Nachricht - um alles gemeinsam durchzugehen.
           </p>
           <p class="coach-sig">Daniel, RePrime Performance</p>
         </div>
@@ -875,7 +887,7 @@
       .catch(function () {
         /* Fallback: mailto */
         var lines = Object.entries(data).map(function(kv) { return kv[0] + ': ' + kv[1]; });
-        window.location.href = 'mailto:daniel@reprimecoaching.com' +
+        window.location.href = 'mailto:support@reprimeperformance.com' +
           '?subject=' + encodeURIComponent('Neue Bewerbung: ' + data.name) +
           '&body='    + encodeURIComponent(lines.join('\n'));
         showSuccess();

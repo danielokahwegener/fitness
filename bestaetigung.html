@@ -172,6 +172,18 @@
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
   <link rel="shortcut icon" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1617129252307599');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1617129252307599&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
 </head>
 <body>
 
@@ -208,7 +220,7 @@
           <div class="schritt-item">
             <div class="schritt-num">2</div>
             <div class="schritt-text">
-              <strong>Ich lese dein Profil vor dem Gespräch</strong>
+              <strong>Wir lesen dein Profil vor dem Gespräch</strong>
               <span>Wir fangen genau da an, wo du stehst. Keine allgemeinen Fragen, keine Vorstellungsrunde.</span>
             </div>
           </div>
@@ -216,7 +228,7 @@
             <div class="schritt-num">3</div>
             <div class="schritt-text">
               <strong>Das Gespräch: 45 Minuten, ehrlich</strong>
-              <span>Ich stelle dir Fragen und höre zu. Am Ende weißt du, was dein nächster Schritt ist.</span>
+              <span>Wir stellen dir Fragen und hören zu. Am Ende weißt du, was dein nächster Schritt ist.</span>
             </div>
           </div>
         </div>
@@ -304,14 +316,14 @@
       2. In MailerLite create "Termin gebucht" group, set its ID as
          GEBUCHT_GROUP_ID secret in the Worker: wrangler secret put GEBUCHT_GROUP_ID
       3. In Calendly set redirect URL to:
-         https://reprimecoaching.com/bestaetigung.html?email={invitee.email}
+         https://reprimeperformance.com/bestaetigung.html?email={invitee.email}
       4. In each MailerLite automation add "Stop if in group Termin gebucht"
     */
     (function() {
       var email = new URLSearchParams(window.location.search).get('email');
       if (!email) return;
 
-      fetch('https://reprime-api.reprimecoaching.com/api/booking-stop', {
+      fetch('https://reprime-api.reprimeperformance.com/api/booking-stop', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email })

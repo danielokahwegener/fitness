@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="components.css">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <style>
     .confirm-hero {
       background: var(--bg-subtle);
@@ -128,6 +129,18 @@
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
   <link rel="shortcut icon" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1617129252307599');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1617129252307599&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
 </head>
 <body>
 
@@ -161,8 +174,8 @@
           <div class="schritt-item">
             <div class="schritt-num">2</div>
             <div class="schritt-text">
-              <strong>Willkommen bei RePrime (innerhalb von 24 Stunden)</strong>
-              <span>Daniel meldet sich innerhalb von 24 Stunden persönlich. Wir richten WhatsApp als primären Kommunikationskanal ein und legen die Erwartungen für tägliche Check-ins und Support-Verfügbarkeit fest.</span>
+              <strong>Onboarding-Call buchen</strong>
+              <span>Buch dir jetzt deinen ersten Onboarding-Call &uuml;ber den Button unten. Dort legen wir gemeinsam die ersten Schritte, deinen Kommunikationskanal und die Erwartungen f&uuml;r die kommenden Wochen fest.</span>
             </div>
           </div>
           <div class="schritt-item">
@@ -183,7 +196,8 @@
       </div>
 
       <div class="cta-group fade-in">
-        <a href="https://wa.me/4915143147952" class="btn btn--primary btn--lg">Daniel auf WhatsApp schreiben &rarr;</a>
+        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/reprimeperformance/onboarding'});return false;" class="btn btn--primary btn--lg">Jetzt Onboarding-Call buchen &rarr;</a>
+        <a href="https://wa.me/4915143147952" class="btn btn--ghost">Daniel auf WhatsApp schreiben</a>
         <a href="mailto:support@reprimeperformance.com" class="btn btn--ghost">Per E-Mail schreiben</a>
       </div>
 
@@ -196,6 +210,7 @@
     </div>
   </footer>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 </body>
 </html>
