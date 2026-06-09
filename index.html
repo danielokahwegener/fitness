@@ -418,6 +418,18 @@
     .founder-bio-full .coach-bio {
       text-align: left;
     }
+    .founder-expand-btn {
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.5rem 0 0;
+      letter-spacing: 0.03em;
+    }
+    .founder-expand-btn:hover { color: var(--text-primary); }
+    #founder-more .coach-bio { margin-top: 0.75rem; }
     .pillar-list {
       display: flex;
       flex-direction: column;
@@ -959,7 +971,16 @@
       </div>
       <div class="founder-bio-full">
         <span class="coach-label">&Uuml;ber unseren Gr&uuml;nder</span>
-        <p class="coach-bio">Ich helfe ehemaligen Sportlern wie mir, wieder in Form zu kommen. Kurz zu mir: Mit 16 habe ich ein Basketballstipendium für die USA erhalten und dort in der High School sowie im College gespielt. Danach bin ich nach England gezogen und habe dort meinen Master abgeschlossen, während ich professionell für die Essex Leopards gespielt habe. Anschließend arbeitete ich im Private Equity in London, mit anspruchsvollen Arbeitszeiten und wenig Zeit für alles andere außer Sport.</p>
+        <p class="coach-bio">Sport hat mein Leben &uuml;ber mehr als zwei Jahrzehnte gepr&auml;gt.</p>
+        <p class="coach-bio">Mit 16 Jahren erhielt ich ein Basketballstipendium f&uuml;r die USA, spielte dort als Kapit&auml;n auf High School und College Niveau und sp&auml;ter professionell f&uuml;r die Essex Leopards in England. Anschlie&szlig;end f&uuml;hrte mich mein Weg vom Studium in England in die Finanzbranche. Zun&auml;chst ins Private Equity nach London, sp&auml;ter ins Energy Trading nach D&uuml;sseldorf.</p>
+        <div id="founder-more" style="display:none;">
+          <p class="coach-bio">Mit dem Ende meiner aktiven Sportkarriere verlor ich jedoch etwas, das mich &uuml;ber zwei Jahrzehnte leistungsf&auml;hig gemacht hatte: Nicht die Motivation. Nicht die Disziplin. Sondern die Struktur.</p>
+          <p class="coach-bio">Trainer, Teamkollegen und feste Routinen waren verschwunden. Und mit ihnen das System, das meine Leistungsf&auml;higkeit und k&ouml;rperliche Verfassung &uuml;ber Jahre aufrechterhalten hatte.</p>
+          <p class="coach-bio">Als ich begann, die Prinzipien aus dem Leistungssport auf meinen Berufsalltag zu &uuml;bertragen, &auml;nderte sich alles.</p>
+          <p class="coach-bio">Als mir dann auffiel, wie viele ehemalige Vereinssportler vor derselben Herausforderung standen, entstand RePrime Performance.</p>
+          <p class="coach-bio">Heute helfen wir ehemaligen Athleten dabei, ihre Leistungsf&auml;higkeit, Energie und Bestform zur&uuml;ckzugewinnen, ohne Fitness zu einem zweiten Job machen zu m&uuml;ssen.</p>
+        </div>
+        <button onclick="var el=document.getElementById('founder-more'); var btn=this; if(el.style.display==='none'){el.style.display='block'; btn.textContent='Weniger lesen';}else{el.style.display='none'; btn.textContent='Mehr lesen →';}" class="founder-expand-btn">Mehr lesen &rarr;</button>
       </div>
       <div style="margin-top:2rem; text-align:center;">
         <a href="bewerbung.html" class="btn btn--primary">Leistungsdiagnostik beantragen &rarr;</a>
@@ -1120,6 +1141,14 @@
         });
       });
     })();
+  </script>
+
+  <script>
+    document.querySelectorAll('a[href="bewerbung.html"]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (typeof fbq === 'function') fbq('track', 'Lead');
+      });
+    });
   </script>
 
 </body>
