@@ -1011,7 +1011,20 @@
       })
       .then(function (res) {
         if (!res.ok) throw new Error('server');
-        showSuccess();
+        return res.json();
+      })
+      .then(function (result) {
+        localStorage.setItem('fda_ergebnis', JSON.stringify({
+          name:               data.name,
+          email:              data.email,
+          performanceScore:   result.performanceScore,
+          tier:               result.tier,
+          tierLabel:          result.tierLabel,
+          dimensionen:        result.dimensionen,
+          leistungsbremsen:   result.leistungsbremsen,
+          timestamp:          Date.now()
+        }));
+        window.location.href = 'diagnose-ergebnis.html';
       })
       .catch(function () {
         /* Fallback: mailto */

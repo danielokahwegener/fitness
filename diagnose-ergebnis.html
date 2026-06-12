@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deine Leistungsdiagnostik | RePrime Performance</title>
+  <meta name="description" content="Dein Performance Score, deine größten Leistungsbremsen und der nächste Schritt: dein Diagnostik-Call.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    /* ---- Design tokens (self-contained fallback) ---- */
+    :root {
+      --bg-page:     #0D0D0F;
+      --bg-surface:  #1A1A1D;
+      --bg-elevated: #252528;
+      --bg-border:   #2E2E32;
+      --bg-subtle:   #0D0D0F;
+      --text-primary:   #FFFFFF;
+      --text-secondary: #B0B3B8;
+      --text-muted:     #6B6F76;
+      --gold:        #C1121F;
+      --gold-light:  #D4192A;
+      --gold-dark:   #8A0D16;
+      --gold-subtle: rgba(193,18,31,0.08);
+      --silver:        #E6E6E6;
+      --silver-dark:   #B0B3B8;
+      --silver-subtle: rgba(230,230,230,0.08);
+      --error:   #c0392b;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --radius-sm:  4px;
+      --radius-md:  8px;
+      --radius-lg:  14px;
+      --spacing-sm: 1rem;
+      --spacing-lg: 2.5rem;
+      --spacing-xl: 5rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--bg-page);
+    }
+    h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
+    h1 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); }
+    h2 { font-size: clamp(1.2rem, 3vw, 1.55rem); }
+    a { color: var(--gold); }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--silver); text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    /* Site header */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,13,15,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bg-border);
+      padding: 0.5rem 0;
+    }
+    .site-header .container { display: flex; align-items: center; }
+    .site-logo { height: 52px; display: block; }
+    /* Site footer */
+    .site-footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--bg-border);
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .site-footer a { color: var(--silver-dark); text-decoration: none; }
+    .site-footer a:hover { color: var(--silver); }
+
+    /* ---- Hero / score reveal ---- */
+    .erg-hero {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--bg-border);
+      padding: 3rem 1rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .erg-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(193,18,31,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .erg-hero .container { position: relative; max-width: 680px; }
+    .erg-hero h1 { margin-bottom: 1.25rem; }
+
+    .score-ring {
+      --pct: 0;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(var(--gold) calc(var(--pct) * 1%), var(--bg-border) 0%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      position: relative;
+    }
+    .score-ring::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border-radius: 50%;
+      background: var(--bg-page);
+    }
+    .score-ring-value {
+      position: relative;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 2.6rem;
+      color: var(--text-primary);
+      line-height: 1;
+      text-align: center;
+    }
+    .score-ring-value small {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.35rem;
+    }
+    .erg-tier-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .erg-tier-intro {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ---- Body sections ---- */
+    .erg-body { padding: 2.5rem 1rem 5rem; }
+    .erg-body .container { max-width: 680px; margin: 0 auto; }
+    .erg-section { margin-bottom: 2.75rem; }
+    .erg-section:last-child { margin-bottom: 0; }
+    .erg-section h2 { margin-bottom: 0.5rem; }
+    .erg-section-intro {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ---- Dimension bars ---- */
+    .dim-row { margin-bottom: 1.15rem; }
+    .dim-row:last-child { margin-bottom: 0; }
+    .dim-row-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+    .dim-row-head .dim-label { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
+    .dim-row-head .dim-score { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+    .dim-bar-track {
+      height: 8px;
+      background: var(--bg-border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .dim-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      border-radius: 4px;
+      transition: width 0.8s ease;
+    }
+
+    /* ---- Leistungsbremsen ---- */
+    .bremse-list { display: flex; flex-direction: column; gap: 1rem; }
+    .bremse-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-left: 3px solid var(--gold-dark);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1rem 1.2rem;
+    }
+    .bremse-card h3 {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .bremse-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ---- Case study card (reused from index.html) ---- */
+    .case-study-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .trans-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .trans-pair-item { position: relative; }
+    .trans-pair-item img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      max-height: 320px;
+    }
+    .trans-label {
+      position: absolute;
+      bottom: 6px;
+      left: 6px;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      background: rgba(0,0,0,0.55);
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+    .case-study-info { padding: 1rem; }
+    .case-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+    .case-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+    }
+    .result-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      background: var(--gold-subtle);
+      color: var(--gold);
+      border: 1px solid var(--gold-dark);
+    }
+    .case-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 0.9rem 0 1rem;
+    }
+    .case-split-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .case-bottleneck-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .case-bottleneck-list li {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      padding-left: 0.95rem;
+      position: relative;
+    }
+    .case-bottleneck-list li::before {
+      content: '\2013';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .case-fix-text {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .case-outcome {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-left: 3px solid var(--gold-dark);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 0.9rem 1.1rem;
+    }
+    .case-outcome-quote {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ---- Calendly inline booking ---- */
+    .calendly-inline-widget { min-width: 320px; height: 700px; }
+
+    /* ---- Inline booking confirmation (no redirect) ---- */
+    .erg-booking-confirm { text-align: center; }
+    .check-ring {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-dark);
+      background: var(--gold-subtle);
+      color: var(--gold);
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .erg-booking-confirm h2 { margin-bottom: 0.5rem; }
+    .erg-booking-confirm > p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      max-width: 480px;
+      margin: 0 auto 1.75rem;
+    }
+    .naechste-schritte {
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+    .naechste-schritte::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+    .schritte-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .schritte-list { display: flex; flex-direction: column; gap: 1rem; }
+    .schritt-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .schritt-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold-subtle);
+      border: 1px solid var(--gold-dark);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .schritt-text strong { display: block; font-size: 0.92rem; color: var(--text-primary); margin-bottom: 0.15rem; }
+    .schritt-text span { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; }
+
+    @media (max-width: 768px) {
+      .erg-hero { padding: 2rem 1rem 1.75rem; }
+      .erg-body { padding: 1.75rem 1rem 3.5rem; }
+      .score-ring { width: 150px; height: 150px; }
+      .score-ring-value { font-size: 2.1rem; }
+      .case-split { grid-template-columns: 1fr; }
+      .calendly-inline-widget { height: 900px; }
+      .naechste-schritte { padding: 1.1rem; }
+    }
+  </style>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1617129252307599');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1617129252307599&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html"><img src="reprime-logo.png" alt="RePrime Performance" class="site-logo"></a>
+    </div>
+  </header>
+
+  <!-- ===== HERO / SCORE REVEAL ===== -->
+  <section class="erg-hero erg-needs-data">
+    <div class="container">
+      <p class="section-label">Deine Leistungsdiagnostik</p>
+      <h1 id="erg-greeting">Deine Leistungsdiagnostik ist fertig.</h1>
+      <div class="score-ring">
+        <div class="score-ring-value"><span id="score-value">--</span><small>von 100</small></div>
+      </div>
+      <p class="erg-tier-label" id="erg-tier-label"></p>
+      <p class="erg-tier-intro" id="erg-tier-intro"></p>
+    </div>
+  </section>
+
+  <main>
+    <div class="erg-body">
+      <div class="container">
+
+        <!-- ===== FALLBACK (no stored result) ===== -->
+        <section class="erg-section" id="erg-fallback" style="display:none;">
+          <h1 style="margin-bottom:0.75rem;">Dein Diagnostik-Call</h1>
+          <p class="erg-section-intro">
+            Wähle dir jetzt einen passenden Termin für deinen Diagnostik-Call. Dort gehen wir deine Ausgangslage gemeinsam durch und besprechen, wie der Weg zu deiner alten Form aussehen kann.
+          </p>
+        </section>
+
+        <!-- ===== DIMENSION BREAKDOWN ===== -->
+        <section class="erg-section erg-needs-data" id="erg-dimensions">
+          <h2>Deine Leistungsbereiche im &Uuml;berblick</h2>
+          <p class="erg-section-intro">So steht es aktuell um die vier Bereiche, die deine Leistungsf&auml;higkeit als Ex-Sportler bestimmen.</p>
+          <div id="dim-list"></div>
+        </section>
+
+        <!-- ===== LEISTUNGSBREMSEN ===== -->
+        <section class="erg-section erg-needs-data" id="erg-bremsen">
+          <h2>Deine gr&ouml;&szlig;ten Leistungsbremsen</h2>
+          <p class="erg-section-intro">Das sind die drei Bereiche, die deinen Performance Score aktuell am st&auml;rksten nach unten ziehen.</p>
+          <div class="bremse-list" id="bremse-list"></div>
+        </section>
+
+        <!-- ===== TIER-MATCHED CASE STUDY ===== -->
+        <section class="erg-section erg-needs-data" id="erg-case-study">
+          <h2>Menschen mit einem &auml;hnlichen Ausgangspunkt</h2>
+          <p class="erg-section-intro">So sieht es aus, wenn jemand mit einem &auml;hnlichen Ausgangspunkt das Performance Concierge System nutzt.</p>
+
+          <div class="case-study-card" data-tier-card="jonas" style="display:none;">
+            <div class="trans-pair">
+              <div class="trans-pair-item">
+                <img src="1before-23y58lbs33mon.jpg" alt="Jonas F. vorher" loading="lazy">
+                <span class="trans-label">Vorher</span>
+              </div>
+              <div class="trans-pair-item">
+                <img src="1after-23y58lbs33mon.jpg" alt="Jonas F. nachher" loading="lazy">
+                <span class="trans-label">Nachher</span>
+              </div>
+            </div>
+            <div class="case-study-info">
+              <div class="case-meta">
+                <span class="case-name">Jonas F.</span>
+                <span class="result-badge">ehem. Leichtathlet &middot; Management Consultant &middot; Unternehmensberatung</span>
+              </div>
+              <div class="case-split">
+                <div class="case-split-col">
+                  <p class="case-split-label">Die 3 gr&ouml;&szlig;ten Bremsen</p>
+                  <ul class="case-bottleneck-list">
+                    <li>Lange Projekttage beim Klienten lie&szlig;en weder Zeit noch Energie f&uuml;r Training</li>
+                    <li>Keine Kontrolle &uuml;ber Ern&auml;hrung, Kantinen und Teamessen auf Projektwochen bestimmten die Kalorienbilanz</li>
+                    <li>Mentale Ersch&ouml;pfung durch komplexe Analysearbeit lie&szlig; keine Willenskraft mehr f&uuml;r Selbstdisziplin &uuml;brig</li>
+                  </ul>
+                </div>
+                <div class="case-split-col">
+                  <p class="case-split-label">Wie das System sie gel&ouml;st hat</p>
+                  <p class="case-fix-text">Wir haben mit Jonas ein System aufgebaut, das so wenig Willenskraft wie m&ouml;glich erfordert: klare Regeln f&uuml;r Projektwochen, einfache Entscheidungsframeworks f&uuml;r Ern&auml;hrung beim Klienten und kurze Trainingsformate, die auch nach einem langen Analysetag noch funktionieren.</p>
+                </div>
+              </div>
+              <div class="case-outcome">
+                <p class="case-outcome-quote">&bdquo;Es hat eine Weile gedauert, bis ich verstanden habe, was wirklich passiert ist. Heute wei&szlig; ich, wo ich stehe und wo ich hinwill. Genau das hat mir am meisten gefehlt.&ldquo;</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-study-card" data-tier-card="philipp" style="display:none;">
+            <div class="trans-pair">
+              <div class="trans-pair-item">
+                <img src="6before-34y35lbs18mon.jpg" alt="Philipp H. vorher" loading="lazy">
+                <span class="trans-label">Vorher</span>
+              </div>
+              <div class="trans-pair-item">
+                <img src="6after-34y35lbs18mon.jpg" alt="Philipp H. nachher" loading="lazy">
+                <span class="trans-label">Nachher</span>
+              </div>
+            </div>
+            <div class="case-study-info">
+              <div class="case-meta">
+                <span class="case-name">Philipp H.</span>
+                <span class="result-badge">ehem. Handballer &middot; Gr&uuml;nder &amp; CEO &middot; B2B Software</span>
+              </div>
+              <div class="case-split">
+                <div class="case-split-col">
+                  <p class="case-split-label">Die 3 gr&ouml;&szlig;ten Bremsen</p>
+                  <ul class="case-bottleneck-list">
+                    <li>Gr&uuml;nderalltag ohne feste Struktur, der n&auml;chste Brand bestimmte den Tag, nicht der eigene Plan</li>
+                    <li>Sitzende Arbeit und Schlafentzug durch lange Produktentwicklungs- und Investorengespr&auml;che</li>
+                    <li>Kein externer Anker mehr, kein Trainer, kein Team, keine Pflicht zu erscheinen</li>
+                  </ul>
+                </div>
+                <div class="case-split-col">
+                  <p class="case-split-label">Wie das System sie gel&ouml;st hat</p>
+                  <p class="case-fix-text">Wir haben f&uuml;r Philipp feste Verbindlichkeitsstrukturen aufgebaut, die den Vereinssport ersetzen: t&auml;gliche Check-ins, ein Plan, der die Unberechenbarkeit eines Gr&uuml;nderalltags einkalkuliert, und ein Team, das mitdenkt, wenn er es selbst nicht mehr kann.</p>
+                </div>
+              </div>
+              <div class="case-outcome">
+                <p class="case-outcome-quote">&bdquo;Ich habe zum ersten Mal seit dem Karriereende das Gef&uuml;hl, dass jemand mitdenkt. Nicht nur ein Plan auf Papier, sondern echte Begleitung. Das hat alles ver&auml;ndert.&ldquo;</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-study-card" data-tier-card="lukas" style="display:none;">
+            <div class="trans-pair">
+              <div class="trans-pair-item">
+                <img src="5before-31y27lbs6mon.jpg" alt="Lukas M. vorher" loading="lazy">
+                <span class="trans-label">Vorher</span>
+              </div>
+              <div class="trans-pair-item">
+                <img src="5after-31y27lbs6mon.jpg" alt="Lukas M. nachher" loading="lazy">
+                <span class="trans-label">Nachher</span>
+              </div>
+            </div>
+            <div class="case-study-info">
+              <div class="case-meta">
+                <span class="case-name">Lukas M.</span>
+                <span class="result-badge">ehem. Fu&szlig;baller &middot; Gesch&auml;ftsf&uuml;hrer &middot; Finanzdienstleistungen</span>
+              </div>
+              <div class="case-split">
+                <div class="case-split-col">
+                  <p class="case-split-label">Die 3 gr&ouml;&szlig;ten Bremsen</p>
+                  <ul class="case-bottleneck-list">
+                    <li>Repr&auml;sentationspflichten als Gesch&auml;ftsf&uuml;hrer, Kundenessen und Events machten Ern&auml;hrung kaum steuerbar</li>
+                    <li>Kein Trainingsrhythmus zwischen F&uuml;hrungsaufgaben und langen Arbeitstagen</li>
+                    <li>Kein System, das mit dem Druck eines Gesch&auml;ftsf&uuml;hreralltags mithalten konnte</li>
+                  </ul>
+                </div>
+                <div class="case-split-col">
+                  <p class="case-split-label">Wie das System sie gel&ouml;st hat</p>
+                  <p class="case-fix-text">Wir haben f&uuml;r Lukas ein System entwickelt, das um seinen F&uuml;hrungsalltag herum gebaut ist: kurze, wirkungsvolle Trainingseinheiten, klare Regeln f&uuml;r Kundenessen und t&auml;gliche Check-ins, die ihn auch in der stressigsten Woche auf Kurs halten.</p>
+                </div>
+              </div>
+              <div class="case-outcome">
+                <p class="case-outcome-quote">&bdquo;Ich f&uuml;hle mich heute fitter als mit 22. Aber das Beste ist: Ich wei&szlig; jetzt, wie ich das halte, auch wenn das Leben mal dazwischenkommt.&ldquo;</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-study-card" data-tier-card="thomas" style="display:none;">
+            <div class="trans-pair">
+              <div class="trans-pair-item">
+                <img src="4before-28y14lbs5mon.jpg" alt="Thomas W. vorher" loading="lazy">
+                <span class="trans-label">Vorher</span>
+              </div>
+              <div class="trans-pair-item">
+                <img src="4after-28y14lbs5mon.jpg" alt="Thomas W. nachher" loading="lazy">
+                <span class="trans-label">Nachher</span>
+              </div>
+            </div>
+            <div class="case-study-info">
+              <div class="case-meta">
+                <span class="case-name">Thomas W.</span>
+                <span class="result-badge">ehem. Eishockeyspieler &middot; Managing Director &middot; Strategieberatung</span>
+              </div>
+              <div class="case-split">
+                <div class="case-split-col">
+                  <p class="case-split-label">Die 3 gr&ouml;&szlig;ten Bremsen</p>
+                  <ul class="case-bottleneck-list">
+                    <li>St&auml;ndige Reiset&auml;tigkeit als Managing Director, kein stabiles Umfeld f&uuml;r Training oder Ern&auml;hrung</li>
+                    <li>Alte Verletzungen aus der Eishockeyzeit ohne gezieltes Management im neuen Berufsalltag</li>
+                    <li>Hoher Erwartungsdruck von Klienten und Team lie&szlig; Eigenverantwortung f&uuml;r den K&ouml;rper auf der Strecke</li>
+                  </ul>
+                </div>
+                <div class="case-split-col">
+                  <p class="case-split-label">Wie das System sie gel&ouml;st hat</p>
+                  <p class="case-fix-text">Wir haben f&uuml;r Thomas ein System entwickelt, das seinen reiseintensiven Beratungsalltag als Grundlage nimmt: hoteltaugliche Trainingseinheiten, klare Regenerationsregeln und ein Belastungsmanagement, das seine Verletzungshistorie ber&uuml;cksichtigt.</p>
+                </div>
+              </div>
+              <div class="case-outcome">
+                <p class="case-outcome-quote">&bdquo;Ich kann heute trainieren, ohne danach drei Tage zu brauchen, um mich zu erholen. Das ist mehr wert als jede Zahl auf der Waage.&ldquo;</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== CALENDLY BOOKING ===== -->
+        <section class="erg-section" id="erg-booking">
+          <h2>W&auml;hle deinen Termin f&uuml;r den Diagnostik-Call</h2>
+          <p class="erg-section-intro">Im Diagnostik-Call gehen wir deine Auswertung gemeinsam durch und besprechen, wie der Weg zu deiner alten Form aussehen kann.</p>
+          <div class="calendly-inline-widget" id="calendly-embed" data-url="https://calendly.com/reprimeperformance/diagnostik"></div>
+        </section>
+
+        <!-- ===== BOOKING CONFIRMATION (shown after Calendly booking, no redirect) ===== -->
+        <section class="erg-section erg-booking-confirm" id="erg-booking-confirm" style="display:none;">
+          <div class="check-ring" aria-hidden="true">&#10003;</div>
+          <h2>Dein Gespr&auml;ch ist gebucht.</h2>
+          <p>Du bekommst eine Best&auml;tigung per E-Mail mit allen Details zu deinem Diagnostik-Call.</p>
+
+          <div class="naechste-schritte">
+            <p class="schritte-label">Vor dem Gespr&auml;ch</p>
+            <div class="schritte-list">
+              <div class="schritt-item">
+                <div class="schritt-num">1</div>
+                <div class="schritt-text">
+                  <strong>Best&auml;tigung per E-Mail</strong>
+                  <span>Du bekommst eine automatische Best&auml;tigung mit Datum, Uhrzeit und Zugangslink von Calendly. Schau auch im Spam-Ordner.</span>
+                </div>
+              </div>
+              <div class="schritt-item">
+                <div class="schritt-num">2</div>
+                <div class="schritt-text">
+                  <strong>Wir lesen dein Profil vor dem Gespr&auml;ch</strong>
+                  <span>Deine Antworten aus der Diagnostik liegen uns bereits vor. Wir bereiten uns gezielt auf deine Situation vor.</span>
+                </div>
+              </div>
+              <div class="schritt-item">
+                <div class="schritt-num">3</div>
+                <div class="schritt-text">
+                  <strong>Das Gespr&auml;ch: 45 Minuten, ehrlich</strong>
+                  <span>Wir gehen deine Auswertung durch und besprechen gemeinsam, ob und wie das Performance Concierge Service zu dir passt.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>RePrime Performance &copy; 2026 &nbsp;&middot;&nbsp; <a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var CALENDLY_URL = 'https://calendly.com/reprimeperformance/diagnostik';
+    var BOOKING_STOP_URL = 'https://reprime-api.reprimeperformance.com/api/booking-stop';
+    var bookingEmail = '';
+
+    var TIER_META = {
+      reaktivierung: {
+        stufe: 1,
+        card: 'jonas',
+        intro: 'Dein System braucht aktuell eine klare Struktur, um wieder ins Laufen zu kommen. Genau hier setzt das Performance Concierge System an.'
+      },
+      aufbau: {
+        stufe: 2,
+        card: 'philipp',
+        intro: 'Die Grundlage ist da, aber noch nicht stabil genug, um konstant Fortschritte zu sichern. Mit der richtigen Struktur lässt sich das schnell ändern.'
+      },
+      fortgeschritten: {
+        stufe: 3,
+        card: 'lukas',
+        intro: 'Du bist auf einem guten Weg, aber einzelne Bereiche bremsen dein Potenzial noch aus. Mit gezielten Anpassungen ist mehr möglich.'
+      },
+      optimierung: {
+        stufe: 4,
+        card: 'thomas',
+        intro: 'Du bist bereits auf einem starken Niveau. Jetzt geht es darum, die letzten Prozente herauszuholen und das Niveau zu halten.'
+      }
+    };
+
+    function loadCalendly(url) {
+      var embed = document.getElementById('calendly-embed');
+      embed.setAttribute('data-url', url);
+      var script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    function hideNeedsData() {
+      document.querySelectorAll('.erg-needs-data').forEach(function (el) {
+        el.style.display = 'none';
+      });
+      document.getElementById('erg-fallback').style.display = 'block';
+    }
+
+    function notifyBookingStop(email) {
+      if (!email) return;
+      fetch(BOOKING_STOP_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      }).catch(function () {});
+    }
+
+    function showBookingConfirmation() {
+      document.getElementById('erg-booking').style.display = 'none';
+      var confirm = document.getElementById('erg-booking-confirm');
+      confirm.style.display = 'block';
+      confirm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (typeof fbq === 'function') fbq('trackCustom', 'DiagnostikCallGebucht');
+    }
+
+    var raw = null;
+    try { raw = localStorage.getItem('fda_ergebnis'); } catch (e) { raw = null; }
+
+    var data = null;
+    if (raw) {
+      try { data = JSON.parse(raw); } catch (e) { data = null; }
+    }
+
+    if (data && typeof data.performanceScore === 'number' && TIER_META[data.tier]) {
+      var meta = TIER_META[data.tier];
+
+      var vorname = (data.name || '').trim().split(' ')[0];
+      document.getElementById('erg-greeting').textContent = vorname
+        ? 'Deine Leistungsdiagnostik ist fertig, ' + vorname + '.'
+        : 'Deine Leistungsdiagnostik ist fertig.';
+
+      document.getElementById('score-value').textContent = data.performanceScore;
+      document.querySelector('.score-ring').style.setProperty('--pct', data.performanceScore);
+
+      document.getElementById('erg-tier-label').textContent = 'Stufe ' + meta.stufe + ' von 4: ' + data.tierLabel;
+      document.getElementById('erg-tier-intro').textContent = meta.intro;
+
+      var dimList = document.getElementById('dim-list');
+      (data.dimensionen || []).forEach(function (dim) {
+        var row = document.createElement('div');
+        row.className = 'dim-row';
+        row.innerHTML =
+          '<div class="dim-row-head"><span class="dim-label"></span><span class="dim-score">' + dim.score + ' / 100</span></div>' +
+          '<div class="dim-bar-track"><div class="dim-bar-fill" style="width:' + dim.score + '%"></div></div>';
+        row.querySelector('.dim-label').textContent = dim.label;
+        dimList.appendChild(row);
+      });
+
+      var bremseList = document.getElementById('bremse-list');
+      (data.leistungsbremsen || []).forEach(function (b) {
+        var card = document.createElement('div');
+        card.className = 'bremse-card';
+        var h3 = document.createElement('h3');
+        h3.textContent = b.label;
+        var p = document.createElement('p');
+        p.textContent = b.bremse;
+        card.appendChild(h3);
+        card.appendChild(p);
+        bremseList.appendChild(card);
+      });
+
+      var activeCard = document.querySelector('[data-tier-card="' + meta.card + '"]');
+      if (activeCard) activeCard.style.display = 'block';
+
+      bookingEmail = data.email || '';
+      var calUrl = CALENDLY_URL + '?name=' + encodeURIComponent(data.name || '') + '&email=' + encodeURIComponent(data.email || '');
+      loadCalendly(calUrl);
+    } else {
+      hideNeedsData();
+      loadCalendly(CALENDLY_URL);
+    }
+
+    window.addEventListener('message', function (e) {
+      if (e.data && e.data.event === 'calendly.event_scheduled') {
+        notifyBookingStop(bookingEmail);
+        showBookingConfirmation();
+      }
+    });
+
+    if (typeof fbq === 'function') fbq('trackCustom', 'DiagnoseErgebnisAngesehen');
+  })();
+  </script>
+
+</body>
+</html>
