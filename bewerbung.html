@@ -227,6 +227,7 @@
       font-size: 0.7rem; color: var(--text-muted); font-weight: 400;
       margin-left: 0.4rem; text-transform: none; letter-spacing: 0;
     }
+    .field-other { margin-top: 0.6rem; }
 
     /* ---- Two-col grid ---- */
     .frag-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -365,7 +366,7 @@
     <div class="container">
       <p class="section-label">Leistungsdiagnostik &middot; Kostenlos &middot; 10 Minuten</p>
       <h1>Deine Leistungsdiagnostik beantragen.</h1>
-      <p class="sub">F&uuml;ll alles ehrlich aus. Wir analysieren deinen Hintergrund und aktuelle Situation, danach erhälts du deine persönliche Leistungsdiagnostik</p>
+      <p class="sub">F&uuml;ll alles ehrlich und so detailliert wie möglich aus. Wir analysieren deinen Hintergrund und aktuelle Situation, danach erhälts du deine persönliche Leistungsdiagnostik.</p>
     </div>
   </section>
 
@@ -382,7 +383,7 @@
         <div class="frag-step" id="step-1">
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 1 von 7</p>
-            <h2>Kontakt &amp; Person</h2>
+            <h2>Für wen ist der Bericht?</h2>
             <p>Grundlegende Angaben, damit wir dich einordnen und kontaktieren k&ouml;nnen.</p>
           </div>
 
@@ -411,7 +412,17 @@
 
             <div class="form-group">
               <label for="f-beruf">Beruf und Branche <span style="color:var(--gold)">*</span></label>
-              <input type="text" id="f-beruf" name="beruf" placeholder="z. B. Gesch&auml;ftsf&uuml;hrer, Finanzbranche" required>
+              <select id="f-beruf" name="beruf" required>
+                <option value="" disabled selected>Bitte w&auml;hlen</option>
+                <option value="Geschäftsführer / Unternehmer">Gesch&auml;ftsf&uuml;hrer / Unternehmer</option>
+                <option value="Führungskraft (Management)">F&uuml;hrungskraft (Management)</option>
+                <option value="Selbstständig / Freiberufler">Selbstst&auml;ndig / Freiberufler</option>
+                <option value="Berater / Consultant">Berater / Consultant</option>
+                <option value="Vertrieb / Sales">Vertrieb / Sales</option>
+                <option value="Finanzbranche / Banking">Finanzbranche / Banking</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <input type="text" id="f-beruf-other" class="field-other" style="display:none;" placeholder="Bitte angeben">
             </div>
           </div>
 
@@ -428,14 +439,24 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 2 von 7 &mdash; Sportliche Identit&auml;t</p>
             <h2>Dein sportlicher Hintergrund</h2>
-            <p>Wir m&ouml;chten verstehen, wer du als Sportler warst &mdash; bevor wir verstehen, wo du heute stehst.</p>
+            <p>Wir m&ouml;chten verstehen, wer du als Sportler warst, bevor wir verstehen, wo du heute stehst.</p>
           </div>
 
           <div class="frag-fields">
             <div class="frag-two-col">
               <div class="form-group">
                 <label for="f-sport">Sportart <span style="color:var(--gold)">*</span></label>
-                <input type="text" id="f-sport" name="sport" placeholder="z. B. Fu&szlig;ball, Rugby, Basketball" required>
+                <select id="f-sport" name="sport" required>
+                  <option value="" disabled selected>Bitte w&auml;hlen</option>
+                  <option value="Fußball">Fu&szlig;ball</option>
+                  <option value="Handball">Handball</option>
+                  <option value="Basketball">Basketball</option>
+                  <option value="Eishockey">Eishockey</option>
+                  <option value="Leichtathletik">Leichtathletik</option>
+                  <option value="Volleyball">Volleyball</option>
+                  <option value="Sonstiges">Sonstiges</option>
+                </select>
+                <input type="text" id="f-sport-other" class="field-other" style="display:none;" placeholder="Bitte angeben">
               </div>
               <div class="form-group">
                 <label for="f-aktiv-bis">Aktiv bis Alter <span style="color:var(--gold)">*</span></label>
@@ -457,7 +478,17 @@
 
             <div class="form-group">
               <label for="f-vermisst">Was vermisst du am meisten aus deiner aktiven Zeit? <span style="color:var(--gold)">*</span></label>
-              <textarea id="f-vermisst" name="vermisst" rows="3" placeholder="Das K&ouml;rpergef&uuml;hl, die Struktur, den Mannschaftssport &mdash; was auch immer es war." required></textarea>
+              <select id="f-vermisst" name="vermisst" required>
+                <option value="" disabled selected>Bitte w&auml;hlen</option>
+                <option value="Das Körpergefühl und die Fitness">Das K&ouml;rpergef&uuml;hl und die Fitness</option>
+                <option value="Die feste Struktur und Routine">Die feste Struktur und Routine</option>
+                <option value="Den Teamgeist und die Kameradschaft">Den Teamgeist und die Kameradschaft</option>
+                <option value="Den Wettkampf und den Ehrgeiz">Den Wettkampf und den Ehrgeiz</option>
+                <option value="Die Disziplin, die der Sport mir gegeben hat">Die Disziplin, die der Sport mir gegeben hat</option>
+                <option value="Das Adrenalin und die Intensität">Das Adrenalin und die Intensit&auml;t</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <textarea id="f-vermisst-other" class="field-other" rows="2" style="display:none;" placeholder="Was vermisst du am meisten?"></textarea>
             </div>
           </div>
 
@@ -505,18 +536,28 @@
                 <label for="f-energie">Energielevel tags&uuml;ber <span style="color:var(--gold)">*</span></label>
                 <select id="f-energie" name="energie_level" required>
                   <option value="" disabled selected>Bitte w&auml;hlen</option>
-                  <option value="Sehr niedrig">Sehr niedrig &mdash; ich k&auml;mpfe den ganzen Tag</option>
-                  <option value="Niedrig">Niedrig &mdash; Mittagstief, oft m&uuml;de</option>
-                  <option value="Mittel">Mittel &mdash; okay, aber nicht gut</option>
-                  <option value="Hoch">Hoch &mdash; meistens fit und wach</option>
-                  <option value="Sehr hoch">Sehr hoch &mdash; konstant leistungsf&auml;hig</option>
+                  <option value="Sehr niedrig">Sehr niedrig, ich k&auml;mpfe den ganzen Tag</option>
+                  <option value="Niedrig">Niedrig, Mittagstief, oft m&uuml;de</option>
+                  <option value="Mittel">Mittel, okay, aber nicht gut</option>
+                  <option value="Hoch">Hoch, meistens fit und wach</option>
+                  <option value="Sehr hoch">Sehr hoch, konstant leistungsf&auml;hig</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
               <label for="f-verletzungen">Verletzungen oder k&ouml;rperliche Einschr&auml;nkungen <span class="optional-label">(optional)</span></label>
-              <textarea id="f-verletzungen" name="verletzungen" rows="2" placeholder="z. B. Knieschmerzen links, alter Schultereinriss, R&uuml;ckenprobleme seit 2019"></textarea>
+              <select id="f-verletzungen" name="verletzungen">
+                <option value="" disabled selected>Bitte w&auml;hlen</option>
+                <option value="Keine">Keine</option>
+                <option value="Knieprobleme">Knieprobleme</option>
+                <option value="Rückenprobleme">R&uuml;ckenprobleme</option>
+                <option value="Schulterprobleme">Schulterprobleme</option>
+                <option value="Hüftprobleme">H&uuml;ftprobleme</option>
+                <option value="Alte Verletzung (andere Stelle)">Alte Verletzung (andere Stelle)</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <textarea id="f-verletzungen-other" class="field-other" rows="2" style="display:none;" placeholder="Bitte kurz beschreiben"></textarea>
             </div>
           </div>
 
@@ -533,7 +574,7 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 4 von 7 &mdash; Ern&auml;hrung</p>
             <h2>Deine Ern&auml;hrung</h2>
-            <p>Einer der h&auml;ufigsten Bottlenecks bei Ex-Sportlern &mdash; und einer der am leichtesten zu l&ouml;senden.</p>
+            <p>Einer der h&auml;ufigsten Bottlenecks bei Ex-Sportlern und einer der am leichtesten zu l&ouml;senden.</p>
           </div>
 
           <div class="frag-fields">
@@ -542,10 +583,10 @@
                 <label for="f-ernaehrung">Wie w&uuml;rdest du deine Ern&auml;hrung beschreiben? <span style="color:var(--gold)">*</span></label>
                 <select id="f-ernaehrung" name="ernaehrung_beschreibung" required>
                   <option value="" disabled selected>Bitte w&auml;hlen</option>
-                  <option value="Unstrukturiert">Unstrukturiert &mdash; esse was verf&uuml;gbar ist</option>
-                  <option value="Sporadisch gesund">Sporadisch gesund &mdash; manchmal gut, oft nicht</option>
-                  <option value="Grundsätzlich gut">Grunds&auml;tzlich gut &mdash; mit regelm&auml;&szlig;igen Ausrei&szlig;ern</option>
-                  <option value="Sehr diszipliniert">Sehr diszipliniert &mdash; aber ohne sichtbares Ergebnis</option>
+                  <option value="Unstrukturiert">Unstrukturiert, esse was verf&uuml;gbar ist</option>
+                  <option value="Sporadisch gesund">Sporadisch gesund, manchmal gut, oft nicht</option>
+                  <option value="Grundsätzlich gut">Grunds&auml;tzlich gut, mit regelm&auml;&szlig;igen Ausrei&szlig;ern</option>
+                  <option value="Sehr diszipliniert">Sehr diszipliniert, aber ohne sichtbares Ergebnis</option>
                 </select>
               </div>
               <div class="form-group">
@@ -573,7 +614,17 @@
 
             <div class="form-group">
               <label for="f-versuche">Was hast du bisher versucht, um deinen K&ouml;rper zu ver&auml;ndern? <span style="color:var(--gold)">*</span></label>
-              <textarea id="f-versuche" name="ernaehrung_versuche" rows="3" placeholder="Di&auml;ten, Pl&auml;ne, Apps, Personal Trainer &mdash; was auch immer du probiert hast und warum es nicht gehalten hat." required></textarea>
+              <select id="f-versuche" name="ernaehrung_versuche" required>
+                <option value="" disabled selected>Bitte w&auml;hlen</option>
+                <option value="Diäten (z. B. Low Carb, Intervallfasten)">Di&auml;ten (z. B. Low Carb, Intervallfasten)</option>
+                <option value="Personal Trainer">Personal Trainer</option>
+                <option value="Fitness-Apps oder Online-Programme">Fitness-Apps oder Online-Programme</option>
+                <option value="Eigenständig im Fitnessstudio trainiert">Eigenst&auml;ndig im Fitnessstudio trainiert</option>
+                <option value="Ernährungsumstellung auf eigene Faust">Ern&auml;hrungsumstellung auf eigene Faust</option>
+                <option value="Nichts Ernsthaftes bisher">Nichts Ernsthaftes bisher</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <textarea id="f-versuche-other" class="field-other" rows="2" style="display:none;" placeholder="Was genau hast du versucht?"></textarea>
             </div>
           </div>
 
@@ -590,7 +641,7 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 5 von 7 &mdash; Regeneration</p>
             <h2>Schlaf &amp; Erholung</h2>
-            <p>Performance beginnt mit Regeneration. Das ist kein Lifestyle-Tipp &mdash; das ist Physiologie.</p>
+            <p>Performance beginnt mit Regeneration. Das ist kein Lifestyle-Tipp. Das ist Physiologie.</p>
           </div>
 
           <div class="frag-fields">
@@ -603,11 +654,11 @@
                 <label for="f-schlaf-q">Schlafqualit&auml;t <span style="color:var(--gold)">*</span></label>
                 <select id="f-schlaf-q" name="schlaf_qualitaet" required>
                   <option value="" disabled selected>Bitte w&auml;hlen</option>
-                  <option value="Sehr schlecht">Sehr schlecht &mdash; wache ersch&ouml;pft auf</option>
-                  <option value="Schlecht">Schlecht &mdash; oft unterbrochen</option>
-                  <option value="Okay">Okay &mdash; weder gut noch schlecht</option>
-                  <option value="Gut">Gut &mdash; meistens erholsam</option>
-                  <option value="Sehr gut">Sehr gut &mdash; tief und durch</option>
+                  <option value="Sehr schlecht">Sehr schlecht, wache ersch&ouml;pft auf</option>
+                  <option value="Schlecht">Schlecht, oft unterbrochen</option>
+                  <option value="Okay">Okay, weder gut noch schlecht</option>
+                  <option value="Gut">Gut, meistens erholsam</option>
+                  <option value="Sehr gut">Sehr gut, tief und durch</option>
                 </select>
               </div>
             </div>
@@ -629,11 +680,11 @@
                 <label for="f-stress">Stressniveau Arbeit <span style="color:var(--gold)">*</span></label>
                 <select id="f-stress" name="stress_level" required>
                   <option value="" disabled selected>Bitte w&auml;hlen</option>
-                  <option value="Gering">Gering &mdash; &uuml;berwiegend entspannt</option>
-                  <option value="Mittel">Mittel &mdash; gelegentlich stressig</option>
-                  <option value="Hoch">Hoch &mdash; oft unter Druck</option>
-                  <option value="Sehr hoch">Sehr hoch &mdash; fast t&auml;glich intensiv</option>
-                  <option value="Chronisch hoch">Chronisch hoch &mdash; dauerhafter Hochdruck</option>
+                  <option value="Gering">Gering, &uuml;berwiegend entspannt</option>
+                  <option value="Mittel">Mittel, gelegentlich stressig</option>
+                  <option value="Hoch">Hoch, oft unter Druck</option>
+                  <option value="Sehr hoch">Sehr hoch, fast t&auml;glich intensiv</option>
+                  <option value="Chronisch hoch">Chronisch hoch, dauerhafter Hochdruck</option>
                 </select>
               </div>
             </div>
@@ -652,13 +703,23 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 6 von 7 &mdash; Alltag &amp; Reise</p>
             <h2>Dein Alltag</h2>
-            <p>Der Plan muss in dein Leben passen &mdash; nicht umgekehrt. Wir brauchen das echte Bild.</p>
+            <p>Der Plan muss in dein Leben passen, nicht umgekehrt. Wir brauchen das echte Bild.</p>
           </div>
 
           <div class="frag-fields">
             <div class="form-group">
               <label for="f-alltag">Wie sieht dein typischer Arbeitstag aus? <span style="color:var(--gold)">*</span></label>
-              <textarea id="f-alltag" name="alltag" rows="4" placeholder="Wann stehst du auf? B&uuml;ro oder Home-Office? Meetings, Reisen, Pendelzeit? Wann kommst du heim?" required></textarea>
+              <select id="f-alltag" name="alltag" required>
+                <option value="" disabled selected>Bitte w&auml;hlen</option>
+                <option value="Klassischer Bürotag mit vielen Meetings">Klassischer B&uuml;rotag mit vielen Meetings</option>
+                <option value="Home-Office mit langen Bildschirmzeiten">Home-Office mit langen Bildschirmzeiten</option>
+                <option value="Häufige Geschäftsreisen">H&auml;ufige Gesch&auml;ftsreisen</option>
+                <option value="Schicht- oder unregelmäßige Arbeitszeiten">Schicht- oder unregelm&auml;&szlig;ige Arbeitszeiten</option>
+                <option value="Gemischt: Büro, Home-Office und Außendienst">Gemischt: B&uuml;ro, Home-Office und Au&szlig;endienst</option>
+                <option value="Selbstständig mit unvorhersehbaren Tagen">Selbstst&auml;ndig mit unvorhersehbaren Tagen</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <textarea id="f-alltag-other" class="field-other" rows="3" style="display:none;" placeholder="Beschreibe kurz deinen Tagesablauf"></textarea>
             </div>
 
             <div class="frag-two-col">
@@ -711,13 +772,23 @@
           <div class="frag-section-header">
             <p class="frag-section-num">Abschnitt 7 von 7 &mdash; Deine Ziele</p>
             <h2>Was du erreichen willst</h2>
-            <p>Konkret, ehrlich &mdash; und ohne das, was du glaubst, was wir h&ouml;ren wollen.</p>
+            <p>Konkret, ehrlich und ohne das, was du glaubst, was wir h&ouml;ren wollen.</p>
           </div>
 
           <div class="frag-fields">
             <div class="form-group">
               <label for="f-ziel-90">Was m&ouml;chtest du in den n&auml;chsten 90 Tagen konkret erreichen? <span style="color:var(--gold)">*</span></label>
-              <textarea id="f-ziel-90" name="ziel_90_tage" rows="4" placeholder="Nicht 'abnehmen' oder 'fitter werden'. Was genau? Wie viel? Woran wirst du merken, dass du es geschafft hast?" required></textarea>
+              <select id="f-ziel-90" name="ziel_90_tage" required>
+                <option value="" disabled selected>Bitte w&auml;hlen</option>
+                <option value="Eine bestimmte Anzahl kg abnehmen">Eine bestimmte Anzahl kg abnehmen</option>
+                <option value="Wieder regelmäßig und konsequent trainieren">Wieder regelm&auml;&szlig;ig und konsequent trainieren</option>
+                <option value="Mehr Energie und Leistungsfähigkeit im Alltag">Mehr Energie und Leistungsf&auml;higkeit im Alltag</option>
+                <option value="Sichtbare Verbesserung von Fitness und Kraft">Sichtbare Verbesserung von Fitness und Kraft</option>
+                <option value="Bessere Gewohnheiten bei Ernährung und Schlaf">Bessere Gewohnheiten bei Ern&auml;hrung und Schlaf</option>
+                <option value="Für ein bestimmtes Ereignis in Form kommen">F&uuml;r ein bestimmtes Ereignis in Form kommen</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <textarea id="f-ziel-90-other" class="field-other" rows="3" style="display:none;" placeholder="Was genau m&ouml;chtest du erreichen?"></textarea>
             </div>
 
             <div class="form-group">
@@ -734,7 +805,17 @@
 
             <div class="form-group">
               <label for="f-ereignisse">Wichtige Ereignisse in den n&auml;chsten 6 Monaten <span class="optional-label">(optional)</span></label>
-              <textarea id="f-ereignisse" name="ereignisse" rows="2" placeholder="Hochzeit, Klassentreffen, Urlaub &mdash; alles, f&uuml;r das du bis dahin eine bestimmte Form haben willst."></textarea>
+              <select id="f-ereignisse" name="ereignisse">
+                <option value="" disabled selected>Bitte w&auml;hlen</option>
+                <option value="Keine">Keine</option>
+                <option value="Hochzeit">Hochzeit</option>
+                <option value="Urlaub / Reise">Urlaub / Reise</option>
+                <option value="Klassentreffen oder Wiedersehen">Klassentreffen oder Wiedersehen</option>
+                <option value="Geschäftliche Veranstaltung (Konferenz, Gala)">Gesch&auml;ftliche Veranstaltung (Konferenz, Gala)</option>
+                <option value="Geburtstag (rundes Jubiläum)">Geburtstag (rundes Jubil&auml;um)</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <textarea id="f-ereignisse-other" class="field-other" rows="2" style="display:none;" placeholder="Welches Ereignis?"></textarea>
             </div>
           </div>
 
@@ -756,10 +837,10 @@
           <div class="check-ring" aria-hidden="true">&#10003;</div>
           <h2>Deine Angaben sind eingegangen.</h2>
           <p class="success-body">
-            Wir werten jetzt alles aus und erstellen deinen pers&ouml;nlichen Leistungsbericht - mit deinem Performance Score, deinen gr&ouml;&szlig;ten Leistungsbremsen und einer individuellen 90-Tage-Roadmap.
+            Wir werten jetzt alles aus und erstellen deinen pers&ouml;nlichen Leistungsbericht mit deinem Performance Score, deinen gr&ouml;&szlig;ten Leistungsbremsen und einer individuellen 90-Tage-Roadmap.
           </p>
           <p class="success-body">
-            Du bekommst ihn in den n&auml;chsten Tagen direkt per E-Mail. Im Anschluss meldet sich jemand aus unserem Team pers&ouml;nlich bei dir - per Telefon oder Nachricht - um alles gemeinsam durchzugehen.
+            Du bekommst ihn in den n&auml;chsten Tagen direkt per E-Mail. Im Anschluss meldet sich jemand aus unserem Team pers&ouml;nlich bei dir, per Telefon oder Nachricht, um alles gemeinsam durchzugehen.
           </p>
           <p class="coach-sig">Daniel, RePrime Performance</p>
         </div>
@@ -824,6 +905,41 @@
 
     function val(id) { var e = document.getElementById(id); return e ? e.value.trim() : ''; }
 
+    function valOrOther(selectId, otherId) {
+      var sel = val(selectId);
+      return sel === 'Sonstiges' ? val(otherId) : sel;
+    }
+
+    var OTHER_FIELDS = [
+      ['f-beruf', 'f-beruf-other'],
+      ['f-sport', 'f-sport-other'],
+      ['f-vermisst', 'f-vermisst-other'],
+      ['f-verletzungen', 'f-verletzungen-other'],
+      ['f-versuche', 'f-versuche-other'],
+      ['f-alltag', 'f-alltag-other'],
+      ['f-ziel-90', 'f-ziel-90-other'],
+      ['f-ereignisse', 'f-ereignisse-other']
+    ];
+
+    function bindOther(selectId, otherId) {
+      var select = document.getElementById(selectId);
+      var other = document.getElementById(otherId);
+      function sync() {
+        if (select.value === 'Sonstiges') {
+          other.style.display = 'block';
+          if (select.hasAttribute('required')) other.setAttribute('required', '');
+        } else {
+          other.style.display = 'none';
+          other.removeAttribute('required');
+          other.value = '';
+        }
+      }
+      select.addEventListener('change', sync);
+      sync();
+    }
+
+    OTHER_FIELDS.forEach(function (pair) { bindOther(pair[0], pair[1]); });
+
     function collect() {
       return {
         /* Contact */
@@ -831,37 +947,37 @@
         email:                   val('f-email'),
         telefon:                 val('f-telefon'),
         alter:                   val('f-alter'),
-        beruf:                   val('f-beruf'),
+        beruf:                   valOrOther('f-beruf', 'f-beruf-other'),
         /* Athletic identity */
-        sport:                   val('f-sport'),
+        sport:                   valOrOther('f-sport', 'f-sport-other'),
         aktiv_bis:               val('f-aktiv-bis'),
         niveau:                  val('f-niveau'),
-        vermisst:                val('f-vermisst'),
+        vermisst:                valOrOther('f-vermisst', 'f-vermisst-other'),
         /* Current performance */
         gewicht_aktuell:         val('f-gewicht'),
         gewicht_ziel:            val('f-zielgewicht'),
         training_frequenz:       val('f-training-freq'),
         energie_level:           val('f-energie'),
-        verletzungen:            val('f-verletzungen'),
+        verletzungen:            valOrOther('f-verletzungen', 'f-verletzungen-other'),
         /* Nutrition */
         ernaehrung_beschreibung: val('f-ernaehrung'),
         auswaerts_frequenz:      val('f-auswaerts'),
         alkohol:                 val('f-alkohol'),
-        ernaehrung_versuche:     val('f-versuche'),
+        ernaehrung_versuche:     valOrOther('f-versuche', 'f-versuche-other'),
         /* Recovery */
         schlaf_stunden:          val('f-schlaf-h'),
         schlaf_qualitaet:        val('f-schlaf-q'),
         wearable:                val('f-wearable'),
         stress_level:            val('f-stress'),
         /* Daily life */
-        alltag:                  val('f-alltag'),
+        alltag:                  valOrOther('f-alltag', 'f-alltag-other'),
         reise_frequenz:          val('f-reise'),
         training_stunden:        val('f-training-h'),
         training_zeit:           val('f-training-zeit'),
         /* Goals */
-        ziel_90_tage:            val('f-ziel-90'),
+        ziel_90_tage:            valOrOther('f-ziel-90', 'f-ziel-90-other'),
         lebensbereich:           val('f-lebensbereich'),
-        ereignisse:              val('f-ereignisse')
+        ereignisse:              valOrOther('f-ereignisse', 'f-ereignisse-other')
       };
     }
 
